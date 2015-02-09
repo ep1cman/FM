@@ -1,0 +1,29 @@
+# /robots.txt file for http://www.ee.surrey.ac.uk/
+# mail webmaster@ee.surrey.ac.uk for info
+
+
+User-agent: 212.123.67.61
+Disallow: /
+
+User-agent: *
+Disallow: /Contrib/UK-Indie/
+Disallow: /contrib/UK-Indie/
+Disallow: /Contrib/manx/
+Disallow: /contrib/manx/
+Disallow: /tmp/
+Disallow: /Docs/
+Disallow: /Finance/
+Disallow: /test/
+Disallow: /Admin/
+Disallow: /Meetings/
+Disallow: /cgi-bin/
+Disallow: /SCS/network/
+Disallow: /SCS/faq/
+Disallow: /SCS/wiki/
+Disallow: /External/
+
+
+Disallow: /Research/VSSP/xm2vtsdb/results/
+Disallow: /CVSSP/xm2vtsdb/results/
+Disallow: /EE/VSSP/xm2vtsdb/results/
+

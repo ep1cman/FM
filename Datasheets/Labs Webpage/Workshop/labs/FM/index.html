@@ -1,0 +1,1169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="description" content="Relating to SEPS teaching">
+	<meta name="author" content="Richard Clarke">	
+	<meta name="generator" content="BBEdit 10.5">
+	<link rel="Stylesheet" href="../../styles/styleA.css" type="text/css">
+	<style type="text/css">
+		td.serB	{
+			background-color: yellow;
+			padding: 1ex;
+		}
+		td.serC { 
+			background-color: #E0FFE0;
+			padding: 1ex;
+		}
+		table.rmap {
+			caption-side: bottom;    
+			margin: 1em;
+			border: 0.2em solid silver;
+			border-collapse: collapse;
+			text-align: center
+		}
+		table.rmap td {
+			 border: 0.1em solid gray;
+		}
+		table.rmap th {
+			 border: 0.1em solid gray;
+		}
+
+		dt { 
+			font-weight: bold
+		}
+	</style>
+	<title> FM Tx/Rx</title>
+</head>
+<body class="soothe">
+
+
+<h1 id="top"> FM Tx/Rx</h1>
+
+<dl>
+   <dd><a href="#brf"><b>*</b></a> Design brief</dd>
+   <dd><a href="#dsn"><b>*</b></a> Reference design</dd>
+   <dd><a href="#ckt"><b>*</b></a> Circuits</dd>
+   <dd><a href="#fct"><b>*</b></a> Facilities</dd>
+   <dd><a href="#cst"><b>*</b></a> Construction</dd>
+   <dd><a href="#pbc"><b>*</b></a> Pushbutton connections</dd>
+   <dd><a href="#lcn"><b>*</b></a> LCD connections</dd>
+   <dd><a href="#pts"><b>*</b></a> Parts list</dd>
+   <dd><a href="#rmp"><b>*</b></a> Register map</dd>
+   <dd><a href="#fwr"><b>*</b></a> Firmware</dd>
+   <dd><a href="#mpx"><b>*</b></a> Development with MPLABX</dd>
+   <dd><a href="#mpl"><b>*</b></a> Development with MPLAB</dd>
+   <dd><a href="#tbs"><b>*</b></a> Troubleshooting</dd>
+   <dd><a href="#lks"><b>*</b></a> Links to resources</dd>
+<!--
+   <dd><a href="#"><b>*</b></a> </dd>
+-->
+</dl>
+
+<p>
+[<a href="../index.html"><big>&uarr;</big> Projects index</a>]
+</p>
+<hr>
+
+
+<h2 id="brf"> Design brief</h2> 
+<p>
+Objective: To produce an FM radio receiver which should be -
+</p>
+<ul>
+	<li>
+		Tuneable approximately over the<a href=
+			"http://en.wikipedia.org/wiki/FM_broadcasting_in_the_UK" title=
+			"Broadcast band described at Wikipedia"> UK broadcast band</a> 
+		(87.5 - 108 MHz).<br>&nbsp;
+	</li><li> 
+		Able to give<a href="http://en.wikipedia.org/wiki/Stereo" title=
+			"The stereo format described at Wikipedia"> stereo</a> (L &amp; R 
+		channels) audio outputs.<br>&nbsp;
+	</li><li>
+		Capable of driving a normal set of 35 ohm impedance headphones.<br>&nbsp;
+	</li><li>
+		Powered by a (reasonably sized) battery.<br>&nbsp;
+	</li><li> 
+		Portable (including an antenna).<br>&nbsp;
+	</li><li>
+		Constructed using components and facilities that are either in the
+		labs or are readily obtainable at reasonable expense.<br>&nbsp;
+	</li>
+</ul>
+
+
+<p>
+[<a href="#top"><big>&uarr;</big> Top</a>]
+</p>
+<hr>
+<p>
+<br><br>
+</p>
+<!-- end Design brief ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+
+
+
+
+
+<h2 id="dsn"> Reference design</h2>
+<p>
+For about ten years after the introduction of the transistor into
+domestic radio receivers in the late 1950s, the circuit design of such
+radios followed that of the preceding era when thermionic valves were
+used in a standard pattern of
+</p>
+<ul>
+	<li>
+		RF '<a href=
+			"http://en.wikipedia.org/wiki/RF_front_end" 
+			title="The front end defined at Wikipedia">front end</a>' 
+		gain block.<br>&nbsp;
+	</li><li>
+		<a href=
+			"http://en.wikipedia.org/wiki/Local_oscillator" 
+			title="The local oscillator described at Wikipedia">
+			Local oscillator</a><br>&nbsp;
+	</li><li>
+		<a href="http://en.wikipedia.org/wiki/Frequency_mixer" 
+			title="The mixer described at Wikipedia"> Mixer</a><br>&nbsp;
+	</li><li>
+		<a href="http://en.wikipedia.org/wiki/Intermediate_frequency" 
+			title="The intermediate frequency stage described at Wikpedia">
+			IF Filter</a><br>&nbsp;
+	</li><li>
+		<a href=
+			"http://en.wikipedia.org/wiki/Foster-Seeley_discriminator" 
+			title="The Foster discriminator described at Wikipedia">
+			Foster-Seeley discriminator</a><br>&nbsp;
+	</li><li>
+		<a href="http://en.wikipedia.org/wiki/Audio_amplifier" 
+			title="The audio PA described at Wikipedia">
+			Audio power amplifier</a><br>&nbsp;
+	</li>
+</ul>
+
+<p>
+A student might reasonably meet the specification with such a design.
+However, the required variable capacitors and 'IF transformers' are now 
+expensive and hard to obtain.
+</p><p>
+The first use of integrated circuits was to implement the same<a href=
+"http://en.wikipedia.org/wiki/Superheterodyne_receiver" title=
+"The superhet described at Wikipedia"> superheterodyne</a> 
+method.  The old discriminator, however, was replaced by a<a href=
+"http://en.wikipedia.org/wiki/Phase_lock_loop" title=
+"The PLL described at Wikipedia"> phase lock loop</a>.  Tuning 
+was achieved by a variable capacitance diode. A student trying to
+pursue a design using these ICs will discover that they are largely
+obsolete.
+</p><p>
+The next step in the evolution of the FM receiver was to implement
+the local oscillator using a digitally programmable<a href=
+"http://en.wikipedia.org/wiki/Frequency_synthesizer" title=
+"The frequency synthesizer described at Wikipedia"> frequency synthesizer</a>.
+This mandated digital control of tuning and then also other functions
+such as volume control
+</p><p>
+Today, portability in radio receivers has become a primary requirement.
+They tend to be integrated within mobile phones and MP3 players as
+'add-on' features. The Airoha chip exemplifies this philosophy, having
+very low battery drain (10 mA) and a very small package (4 mm square).
+</p><p>
+To assist groups having no clear idea how the objectives are to be
+achieved there exists a suggested reference design.  This is
+</p>
+<ul>
+	<li>
+		Based on the<a href=
+		"http://www.softembed.com/attachments/054_AR1010.pdf" 
+		title="Data sheet for the AR1010"> AR1010</a> receiver IC from<a
+		href="http://www.airoha.com.tw/AR1000.htm" 
+		title="Airoha semiconductors"> Airoa</a>.<br>&nbsp;
+	</li><li>
+		Controlled by a<a href="http://www.microchip.com/" title=
+		"Manufs web site for the PIC series of microcontrollers"> 
+		PIC microcontroller</a>: PIC18LF6490.  The LF version of this
+		controller will function with supplies as low as 2.0 volts.
+		<br>&nbsp;
+	</li><li>
+		Designed to allow the PIC and the AR1010 to communicate using the<a 
+			href=
+			"http://www.nxp.com/acrobat_download2/literature/9398/39340011.pdf" 
+			title="The I2C interface defined"> 
+			I<sup>2</sup>C interface</a> -<br>&nbsp;
+	</li><li>
+ 		Able to accept user input from pushbuton switches.<br>&nbsp;
+	</li><li>
+		Able to show frequency on a<a href=
+		"http://www.varitronix.uk.com/?pid=2" title="Info on the LCD"> 
+		Varitronix LCD display</a><br>&nbsp;
+	</li><li>
+		Boosted to headphone power levels by a<a href=
+		"http://www.unisonic.com.tw/datasheet/TDA2822.pdf" 
+		title="Data sheet for the TDA2822"> TDA2822</a>.<br>&nbsp;
+	</li>
+</ul>
+
+
+
+
+
+<h2 id="ckt"> Circuits</h2>
+<div class="rfbox" style="width: 20em;">
+	Fig. 8: AR1010 adaptor board
+	<a href="figs.pdf" title=
+		"AR1010 adaptor board as a pdf document.">
+		<img src="adaptorBd.png" alt=
+		"AR1010 adaptor board.">
+	</a>
+</div>
+
+<p>
+The AR1010 uses a 24-lead QFN package.  Until it becomes possible within
+FEPS to mount QFN packages on a PCB, a commercially made 'breakout
+board' with an AR1010 ready soldered is chosen.  This has,
+unfortunately, a connection spacing of 2 mm that is inconvenient when
+2.54 mm pitch prototype matrix board is used.  To circumvent this
+problem, an adaptor board has been designed to convert the spacing.  In
+addition a few components have been added to assist with integration
+into the rest of the radio.<br class="clear">
+
+
+
+</p><p>
+<a href="figs.pdf" title="This figure as a pdf document"><img src=
+"reg.png" class="ralign" alt=
+"Circuit diagram of regulator circuit"></a>
+A problem with the overall receiver design is that the LCD prefers a
+high drive voltage (e.g. 5V) to achieve best contrast.  The AR1010, on
+the other hand, is happiest with with 3.3 volts.  Although the data
+sheet mentions an absolute maximum Vdd of 5.5 volts, the bus interface
+is specified no higher than 3.6 volts.  If the AR1010 is powered at 5
+volts it will get hot, and may die.  A 3.3 volt regulator is
+highly recommended.  The<a href=
+"http://www.rapidonline.com/Electronic-Components/Integrated-Circuits/Voltage-Regulators-LDO/100mA-Very-low-drop-out-voltage-regulators/34960" 
+title="Source for the LE33 regulator"> LE33CZ</a> regulator IC is
+suitable, as is the discrete circuit shown in Fig. 3.
+<br class="clear">
+</p><p>
+<a href="figs.pdf" title="This figure as a pdf document"><img src=
+"PIC2I2CYear14.png" class="mrgn" alt="Circuit diagram of I2C bus">
+</a><br class="clear">
+Figure 5 shows one arrangement of the I<sup>2</sup>C interconnections betwen
+the three main functional blocks.  Using a five way connector the AR1010
+can be commanded either from the USB to I<sup>2</sup>C converter or
+from the PIC, depending on which set of header pins is chosen.
+D3 and D4 prevent the 4.5 volt I<sup>2</sup>C signals from the PIC driving the 
+AR1010 above its limit.  Unfortunately, the PIC then sees signals
+only 73% of its Vdd.  This should still be a valid logic '1'.
+</p><p>
+<a href="figs.pdf" title="This figure as a pdf document"><img src=
+"PIC2LCD.png" class="ralign" alt=
+"Diagram showing connection of LCD module."></a> The particular
+microcontroller chosen for the reference design, the PIC18LF6490,
+includes hardware support for liquid crystal displays. In fact, it can
+drive LCDs that are more sophisticated ('multiplexed') than the 3.5
+digit x 7-segment Varitronix display.
+</p><p>
+About all you need for a working display is to connect the 'backplane'
+electrode to the COM0 drive from the PIC, and then connect the separate
+segment electrodes to a sub-set of the 32 SEGnn drives. On the
+prototype, the assigment of display segments to drive lines from the PIC
+proved awkward in software.  It would be more convenient to map all
+seven segments plus the DP from one digit to one 8-bit register in the
+PIC, and to maintain the same mapping for the other digits also. 
+Connect the LCDbias3 pin to Vdd.
+<br class="clear">
+</p><p>
+<a href="figs.pdf" title="This figure as a pdf document"><img src=
+"audioYear14.png" class="ralign" alt=
+"Diagram showing audio amplifier stage."></a> The audio amplifier /
+headphone driver stage is trivial.  The only point to note is that the
+outputs from the AR1010 have DC bias which must be removed with coupling
+capacitors. The internal volume adjustment in the AR1010 has been found
+to be capable of adequate performance, and may be used in place of a
+dual potentiometer.
+<br class="clear">
+</p><p>
+<a href="figs.pdf" title="This figure as a pdf document"><img src=
+"PIC2pbutton.png" class="ralign" alt=
+"Diagram showing pushbutton switch input."></a> Pushbutton switch input
+is quite trivial.  It would be possible to save a couple of I/O pins by 
+using a 3 x 3 switch matrix, but that's really more trouble than it's worth.
+Some of the ports may be configured to operate pull-up resistors internal
+to the PIC, but this was not attempted on the prototype. 
+<br class="clear">&nbsp;
+</p>
+
+
+<p>
+[<a href="#top"><big>&uarr;</big> Top</a>]
+</p>
+<hr>
+<p>
+<br><br>
+</p>
+<!-- end Reference design  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+
+
+
+<h2 id="fct"> Facilities</h2>
+<p>
+To assist development of the project, groups have access to -
+</p>
+<ul>
+	<li>
+		A PC with C language development tools:<a href=
+		"http://msdn.microsoft.com/visualc/" title=
+		"Home page of the Visual C compiler"> Microsoft Visual C++</a>,
+		and the<a href=
+		"http://www.microchip.com/stellent/idcplg?IdcService=SS_GET_PAGE&amp;nodeId=1406&amp;dDocName=en019469&amp;part=SW007002" 
+		title="Information on the MPLAB system"> MPLAB</a> embedded 
+		microcontroller development tools with C18 compiler.<br>&nbsp;
+	</li><li>
+		A<a href="http://www.robot-electronics.co.uk/htm/usb_i2c_tech.htm" 
+		title="The converter module described at Robot Electronics"> 
+		USB to I2C converter</a>.<br>&nbsp;
+	</li><li>
+		A<a href=
+		"http://www.microchip.com/stellent/idcplg?IdcService=SS_GET_PAGE&amp;nodeId=1406&amp;dDocName=en538340" 
+		title="Information on the PICkit 3 debugger"> Pickit3</a>.
+		This useful device connects to a PC, via the USB interface, and
+		then to the target microcontroller via a six-pin inline header
+		connector. It functions both as a programmer, capable of
+		transfering code generated by the PC to the microcontroller, and
+		also as a debugger which can initiate, control and monitor the
+		execution of that code as it runs on the target.<br>&nbsp;
+	</li><li>
+		A PIC18LF6490 microcontroller soldered to an adaptor board
+		with 0.1 inch pitch pads making manual connection very 
+		easy.<br>&nbsp;
+	</li><li>
+		A demo board for PIC18F4XK20, driveable from the Pickit3.<br>&nbsp;
+	</li><li>
+		An FM signal generator and an 'off air' signal feed.<br>&nbsp;
+	</li><li>
+		The Technical Services Unit<a href=
+		"http://info.ee.surrey.ac.uk/Workshop/PCB/index.html" title=
+		"How to use the PCB facility"> PCB fabrication</a> service.<br>&nbsp;
+	</li><li>
+		A plastic enclosure with TSU<a href=
+		"http://info.ee.surrey.ac.uk/Workshop/advice/protosys/index.html" title=
+		"The Electronics Prototyping System"> EPS chassis rails</a>
+		to keep everything tied together.<br>&nbsp;
+ 	</li><li>
+		A selection of frequently required tools and components; e.g.
+		crimp pliers, resistors, transistors, sockets etc.<br>&nbsp;
+  	</li>
+</ul>
+
+<p>
+[<a href="#top"><big>&uarr;</big> Top</a>]
+</p>
+<hr>
+<p>
+<br><br>
+</p>
+<!-- end Facilities ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+
+
+
+<h2 id="cst"> Construction</h2>
+<!-- 
+<div class="rfbox" style="width: 15em;">
+	Fig. 1: Component overlay for adaptor PC board
+	<a href="figs.pdf" title=
+		"Component overlay for adaptor PC board as a pdf document.">
+		<img src="overlay2.png" alt=
+		"Component overlay for adaptor PC board.">
+	</a>
+</div>
+ -->
+<div class="rfbox" style="width: 15em;">
+	Fig. 1: Component overlay for adaptor PC board
+	<a href="figs.pdf" title=
+		"Component overlay for adaptor PC board as a pdf document.">
+		<img src="adapt.png" alt=
+		"Component overlay for adaptor PC board.">
+	</a>
+</div>
+<p>
+It is not expected that the circuit be 'fully
+engineered'.  Instead, 'prototype' construction methods are acceptable. 
+The PIC18LF6490 is available surface mounted on an adaptor for 0.1 inch
+pitch pin spacing. The adaptor board may be 'old style' (produced
+in-house) or bought in. Tracks on the latter will be similar to those
+shown at Fig. 1.  This version has provision for a connection directly
+to the PICkit 3 debugger.
+<br class="clear">
+</p><p>
+<a href="figs.pdf" title="This figure as a pdf document"><img src=
+"PIC2PICkit.png" class="mrgn" alt=
+"Connections from microcontroller to debugger."></a>
+<br class="clear">
+Pin 6 of the debugger is not used.  By default, however, it may be
+connected to port RB5 onthe PIC.  Break the track if you wish to make
+use of RB5.
+</p><p>
+The AR1010 comes ready surface-mounted on a<a href=
+"http://www.sparkfun.com/commerce/product_info.php?products_id=8770"
+title="The adaptor board described"> 'breakout board'</a>.  Bizarrely,
+this uses 2 millimetre pitch pads.  Groups choosing to mount this onto
+0.1 inch pitch stripboard or 'breadboard' can still do so via<b>
+short</b> lengths of tinned copper wire.  Groups in years past tended to
+perch the AR1010 three inches up in the air.  The electrical performance
+of that arrangement was as wobbly as its mechanical.
+</p><p>
+The '<a href=
+"http://info.ee.surrey.ac.uk/Workshop/advice/protosys/index.html"
+title="How to use the Electronics Prototype System"> Electronics
+Prototype System</a>' may be used if groups wish to 'package' the
+circuit with its I/O sub-assemblies.
+</p><p>
+Groups may make use of the '<a href=
+"http://info.ee.surrey.ac.uk/Workshop/advice/grotwire/index.html"
+title="How to use the Grot Pen">enamel wiring pen</a>' method as a
+speedier or more flexible alternative to PCB production.<br>
+</p>   
+<p>
+<br class="clear">
+</p>
+
+<p>
+[<a href="#top"><big>&uarr;</big> Top</a>]
+</p>
+<hr>
+<p>
+<br><br>
+</p>
+<!-- end Construction ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+
+
+
+<h2 id="pbc"> Pushbutton Connections</h2> 
+<p>
+The pushbutons are used in a conventional arrangement whereby PIC inputs
+are pulled up to Vcc via a 10k resistor and pulled down to Vss via a
+button whilst it is pushed.  Debounce is done in the firmware.
+</p>
+
+
+<table class="ordnry">
+	<caption> Connections from PIC to Pushbutton switches</caption>
+	<tr>
+		<th> PIC<br> name</th>
+			<th> PIC<br> pin</th>
+				<th> Pull-up<br> pin</th>
+					<th> IDC<br>pin</th>
+						<th> Button</th>
+	</tr><tr>
+		<td> RB0</td><td> 48</td><td> 2</td><td> 10</td><td> Chan+</td>
+	</tr><tr>
+		<td> RB5</td><td> 43</td><td> 3</td><td> 7</td><td> Chan-</td>
+	</tr><tr>
+		<td> RA0</td><td> 24</td><td> 4</td><td> 12</td><td> PreSet+</td>
+	</tr><tr>
+		<td> RA1</td><td> 23</td><td> 5</td><td> 5</td><td> PreSet-</td>
+	</tr><tr>
+		<td> RG0</td><td> 3</td><td> 6</td><td> 14</td><td> Vol+</td>
+	</tr><tr>
+		<td> RG1</td><td> 4</td><td> 7</td><td> 3</td><td> Vol-</td>
+	</tr><tr>
+		<td> RG2</td><td> 5</td><td> 8</td><td> 16</td><td> SegTest</td>
+	</tr><tr>
+		<td> RG3</td><td> 6</td><td> 9</td><td> 2</td><td> Error</td>
+	</tr><tr>
+		<td> Vss</td><td> 9</td><td> -</td><td> 1, 4, 6, 8,<br> 
+				9, 11, 13, 15</td><td> Switch<br> return</td>
+<!-- 
+	</tr><tr>
+		<td> R_SEG</td><td> Ppin</td><td> HPin</td><td> LPin</td><td> Vname</td>
+ -->
+	</tr>
+</table>
+
+
+<p>
+[<a href="#top"><big>&uarr;</big> Top</a>]
+</p>
+<hr>
+<p>
+<br><br>
+</p>
+<!-- end Pushbutton Connections  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+
+
+<h2 id="lcn"> LCD Connections</h2> 
+<p>
+Note on LCD function: The PIC is capable of driving more sophisticated
+displays with more segments than the simple 'seven-segment' variety
+available in the lab.  For the latter type you should wire the PIC
+for a 'static' biasing arrangement.
+</p><p>
+The table below shows the originally chosen mapping between the PIC's
+segment driver pins and the LCD. This proved awkward to implement in 
+firmware.  You should consider a simpler scheme.
+</p>
+
+
+<table class="ordnry">
+	<caption> Connections from PIC to LCD</caption>
+	<tr>
+		<th> PIC name </th><th> PIC<br> pin</th>
+									   <th> IDC<br>pin</th>
+												   <th> LCD <br>pin</th>
+															   <th> Varitronix<br> name</th>
+	</tr><tr>
+		<td>  RD0_SEG0</td><td> 58</td><td> 35</td><td> 21</td><td>  3A</td>
+	</tr><tr>
+		<td>  RD1_SEG1</td><td> 55</td><td> 37</td><td> 20</td><td>  3B</td>
+	</tr><tr>
+		<td>  RD2_SEG2</td><td> 54</td><td> 39</td><td> 19</td><td>  3C</td>
+	</tr><tr>
+		<td>  RD3_SEG3</td><td> 53</td><td> 40</td><td> 18</td><td>  3D</td>
+	</tr><tr>
+		<td>  RD4_SEG4</td><td> 52</td><td> 38</td><td> 17</td><td>  3E</td>
+	</tr><tr>
+		<td>  RD5_SEG5</td><td> 51</td><td> 33</td><td> 22</td><td>  3F</td>
+	</tr><tr>
+		<td>  RD6_SEG6</td><td> 50</td><td> 31</td><td> 23</td><td>  3G</td>
+	</tr><tr>
+		<td>  RD7_SEG7</td><td> 49</td><td> 27</td><td> 25</td><td>  2A</td>
+	</tr><tr>
+		<td>  RB1_SEG8</td><td> 47</td><td> 29</td><td> 24</td><td>  2B</td>
+	</tr><tr>
+		<td>  RB2_SEG9</td><td> 46</td><td> 34</td><td> 15</td><td>  2C</td>
+	</tr><tr>
+		<td> RB3_SEG10</td><td> 45</td><td> 32</td><td> 14</td><td>  2D</td>
+	</tr><tr>
+		<td> RB4_SEG11</td><td> 44</td><td> 30</td><td> 13</td><td>  2E</td>
+	</tr><tr>
+		<td> RC5_SEG12</td><td> 36</td><td> 25</td><td> 26</td><td>  2F</td>
+	</tr><tr>
+		<td> RC2_SEG13</td><td> 33</td><td> 18</td><td> 27</td><td>  2G</td>
+	</tr><tr>
+		<td> RA4_SEG14</td><td> 28</td><td> 17</td><td> 30</td><td>  1A</td>
+	</tr><tr>
+		<td> RA5_SEG15</td><td> 27</td><td> 19</td><td> 29</td><td>  1B</td>
+	</tr><tr>
+		<td> RA2_SEG16</td><td> 22</td><td> 26</td><td> 11</td><td>  1C</td>
+	</tr><tr>
+		<td> RA3_SEG17</td><td> 21</td><td> 24</td><td> 10</td><td>  1D</td>
+	</tr><tr>
+		<td> RF0_SEG18</td><td> 18</td><td> 22</td><td> 09</td><td>  1E</td>
+	</tr><tr>
+		<td> RF1_SEG19</td><td> 17</td><td> 15</td><td> 31</td><td>  1F</td>
+	</tr><tr>
+		<td> RF2_SEG20</td><td> 16</td><td> 13</td><td> 32</td><td>  1G</td>
+	</tr><tr>
+		<td> RF3_SEG21</td><td> 15</td><td> 10</td><td> 03</td><td>   K</td>
+	</tr><tr>
+		<td> RF4_SEG22</td><td> 14</td><td> 36</td><td> 16</td><td> DP3</td>
+	</tr><tr>
+		<td> RF4_SEG23</td><td> 13</td><td> 01</td><td> 38</td><td>   Z</td>
+	</tr><tr>
+		<td>      COM0</td><td> 63</td><td> 28</td><td> 12</td><td> DP2</td>
+	</tr><tr>
+		<td>      COM0</td><td> 63</td><td> 21</td><td> 08</td><td> DP1</td>
+	</tr><tr>
+		<td>      COM0</td><td> 63</td><td> 20</td><td> 28</td><td> COL</td>
+	</tr><tr>
+		<td>      COM0</td><td> 63</td><td> 02</td><td> 39</td><td>   X</td>
+	</tr><tr>
+		<td>      COM0</td><td> 63</td><td> 08</td><td> 02</td><td>   Y</td>
+	</tr><tr>
+		<td>      COM0</td><td> 63</td><td> 06</td><td> 01</td><td> COM</td>
+	</tr><tr>
+		<td>      COM0</td><td> 63</td><td> 04</td><td> 40</td><td> COM</td>
+
+<!-- 
+	</tr><tr>
+		<td> R_SEG</td><td> Ppin</td><td> HPin</td><td> LPin</td><td> Vname</td>
+ -->
+	</tr>
+</table>
+
+
+<p>
+[<a href="#top"><big>&uarr;</big> Top</a>]
+</p>
+<hr>
+<p>
+<br><br>
+</p>
+<!-- end LCD Connections ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+
+<h2 id="pts"> Parts list</h2> 
+
+
+<table class="ordnry">
+	<tr>
+		<th> Qty</th> <th> Cost</th> <th> Part desc</th> <th> Distrib</th> <th> Dst. No.</th>
+	</tr><tr>
+		<td> 1</td><td> 23.88</td><td> Pickit3 Debugger</td>
+		<td><a href="http://onecall.jppsg.ac.uk/" title="Onecall home page"> Ocall</a></td>
+		<td> 1771323</td>
+	</tr><tr>
+		<td> 1</td><td> 16.56</td><td> USB-I2C module</td>
+		<td><a href="http://www.robot-electronics.co.uk/htm/usb_i2c_tech.htm" 
+			title="Robot Electronics I2C to USB converter"> Robot Electronics</a></td>
+		<td> USB to I2C Interface</td>
+	</tr><tr>
+		<td> 1</td><td> 3.48</td><td> Microcontroller, PIC18LF6490</td><td> Ocall</td><td> 1579638</td>
+	</tr><tr>
+		<td> 1</td><td> 5.98</td><td> FM Receiver Module</td>
+		<td><a href="http://www.SparkFun.com/" title="SparkFun home page"> SparkFun</a>
+		</td><td> WRL-08770</td>
+	</tr><tr>
+		<td> 1</td><td> 0.47</td><td> Headphones</td><td> Ocall</td><td> AV18777</td>
+	</tr><tr>
+		<td> 1</td><td> 0.89</td><td> Audio amp</td>
+		<td><a href="http://uk.rs-online.com/web/" 
+		title="Home page of RS components"> RS Comp</a></td><td> 177-5216</td>
+	</tr><tr>
+		<td> 1</td><td> 3.21</td><td> LCD display</td><td> Ocall</td><td> 1183144</td>
+	</tr><tr>
+		<td> 1</td><td> 7.99</td><td> Box</td>
+		<td><a href="http://www.maplin.co.uk/" 
+		title="Home page of Maplin Electronics"> Maplin</a></td><td> BZ77J</td>
+	</tr><tr>
+		<td> 1</td><td> 3.00</td><td> Chassis</td>
+		<td><a href="http://www.smithmetal.co.uk/" 
+		title="Home page of Smiths Metal Centre"> Smiths Metal</a></td><td> -</td>
+	</tr><tr>
+		<td> 1</td><td> 3.64</td><td> Matrix board</td><td> Maplin</td><td> JU37S</td>
+	</tr><tr>
+		<td> 1</td><td> 1.27</td><td> USB lead</td>
+		<td><a href="http://www.rapidonline.com/" 
+		title="Home page of Rapid Electronics"> Rapid</a></td><td> 19-8660</td>
+	</tr><tr>
+		<td> 1</td><td> 4.36</td><td> Wrap wire</td><td> RS</td><td> 209-4827</td>
+	</tr><tr>
+		<td> 1</td><td> 0.05</td><td> Antistatic bag</td><td> Rapid</td><td> 87-1426</td>
+	</tr><tr>
+		<td> 1</td><td> 4.00</td><td> Telescopic antenna</td><td> Maplin</td><td> L28AF</td>
+	</tr><tr>
+		<td> 8</td><td> 0.02</td><td> Washer, M3</td><td> Rapid</td><td> 33-4320</td>
+	</tr><tr>
+		<td> 1</td><td> 20.87</td><td> VHF distribution amplifier</td>
+		<td> Ocall</td><td> 4255811</td>
+<!-- 
+	</tr><tr>
+		<td> Qty</td><td> Cost</td><td> Part desc</td><td> Distrib</td><td> Dst. No.</td>
+ -->
+	</tr>
+</table>
+
+
+<p>
+[<a href="#top"><big>&uarr;</big> Top</a>]
+</p>
+<hr>
+<p>
+<br><br>
+</p>
+<!-- end Parts list ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+
+
+<h2 id="rmp"> Register map</h2> 
+
+
+<table class="rmap">
+	<tr>
+		<th> Address</th><th> Alias</th>
+		<th> D15</th><th> D14</th><th> D13</th><th> D12</th>
+		<th> D11</th><th> D10</th><th> D9</th><th> D8</th>
+		<th> D7</th><th> D6</th><th> D5</th><th> D4</th>
+		<th> D3</th><th> D2</th><th> D1</th><th> D0</th>
+	</tr><tr>
+		<td> 00H</td><td> R0</td>
+		<td colspan="8"> &nbsp;</td><td> x0_en</td><td colspan="6"> &nbsp;</td><td> ENABLE</td>
+	</tr><tr>
+		<td> 01H</td><td> R1</td>
+		<td colspan="2"> &nbsp;</td><td> rds_en</td><td colspan="6"> &nbsp;</td>
+		<td> rds_int_en</td><td> stc_int_en</td><td> deemp</td><td> mono</td>
+		<td> smute</td><td> hmute</td><td> &nbsp;</td>
+	</tr><tr>
+		<td> 02H</td><td> R2</td>
+		<td colspan="6"> &nbsp;</td><td> TUNE</td><td colspan="9"> CHAN&lt;8:0&gt;</td>
+	</tr><tr>
+		<td> 03H</td><td> R3</td>
+		<td> SEEKUP</td><td> SEEK</td><td> SPACE</td><td colspan="2"> BAND&lt;1:0&gt;</td>
+		<td colspan="4"> VOLUME&lt;3:0&gt;</td><td colspan="7"> SEEKTH&lt;6:0&gt;</td>
+	</tr><tr>
+		<td> 04H</td><td> R4</td>
+		<td colspan="16"> &nbsp;</td>
+	</tr><tr>
+		<td> 05H</td><td> R5</td>
+		<td colspan="16"> &nbsp;</td>
+	</tr><tr>
+		<td> 06H</td><td> R6</td>
+		<td colspan="16"> &nbsp;</td>
+	</tr><tr>
+		<td> 07H</td><td> R7</td>
+		<td colspan="16"> &nbsp;</td>
+	</tr><tr>
+		<td> 08H</td><td> R8</td>
+		<td colspan="16"> &nbsp;</td>
+	</tr><tr>
+		<td> 09H</td><td> R9</td>
+		<td colspan="16"> &nbsp;</td>
+	</tr><tr>
+		<td> 0AH</td><td> R10</td>
+		<td colspan="12"> &nbsp;</td><td> seek_wrap</td><td colspan="3"> &nbsp;</td>
+	</tr><tr>
+		<td> 0BH</td><td> R11</td>
+		<td> hilo_side</td><td colspan="12"> &nbsp;</td><td> hiloctrl_b1</td>
+		<td> &nbsp;</td><td> hiloctrl_b2</td>
+	</tr><tr>
+		<td> 0CH</td><td> R12</td>
+		<td colspan="16"> &nbsp;</td>
+	</tr><tr>
+		<td> 0DH</td><td> R13</td>
+		<td colspan="10"> &nbsp;</td><td colspan="2"> GPIO3&lt;1:0&gt;</td>
+		<td colspan="2"> GPIO2&lt;1:0&gt;</td><td colspan="2"> GPIO1&lt;1:0&gt;</td>
+	</tr><tr>
+		<td> 0EH</td><td> R14</td>
+		<td colspan="4"> VOLUME2&lt;3:0&gt;</td><td colspan="12"> &nbsp;</td>
+	</tr><tr>
+		<td> 0FH</td><td> R15</td>
+		<td colspan="10"> &nbsp;</td><td> rds_sta_en</td>
+		<td colspan="2"> rds_mecc&lt;1:0&gt;</td><td colspan="2"> &nbsp;</td>
+		<td> rds_ctrl</td>
+	</tr><tr>
+		<td> 10H</td><td> R16</td>
+		<td colspan="16"> &nbsp;</td>
+	</tr><tr>
+		<td> 11H</td><td> R17</td>
+		<td colspan="16"> &nbsp;</td>
+	</tr><tr>
+		<td> 12H</td><td> RSSI</td>
+		<td colspan="7"> RSSI&lt;6:0&gt;</td><td colspan="9"> IF_CNT&lt;8:0&gt;</td>
+	</tr><tr>
+		<td> 13H</td><td> STATUS</td>
+		<td colspan="9"> READCHAN&lt;8:0&gt;</td>
+		<td> RDSR</td><td> STC</td><td> SF</td><td> ST</td>
+		<td colspan="3"> &nbsp;</td>
+	</tr><tr>
+		<td> 14H</td><td> RBS</td>
+		<td colspan="2"> RBS1&lt;1:0&gt;</td><td colspan="2"> RBS2&lt;1:0&gt;</td>
+		<td colspan="2"> RBS3&lt;1:0&gt;</td><td colspan="2"> RBS1&lt;4:0&gt;</td>
+		<td colspan="8"> &nbsp;</td>
+	</tr><tr>
+		<td> 15H</td><td> RDS1</td>
+		<td colspan="16"> RDS1&lt;15:0&gt;</td>
+	</tr><tr>
+		<td> 16H</td><td> RDS2</td>
+		<td colspan="16"> RDS2&lt;15:0&gt;</td>
+	</tr><tr>
+		<td> 17H</td><td> RDS3</td>
+		<td colspan="16"> RDS3&lt;15:0&gt;</td>
+	</tr><tr>
+		<td> 18H</td><td> RDS4</td>
+		<td colspan="16"> RDS4&lt;15:0&gt;</td>
+	</tr><tr>
+		<td> 19H</td><td> RDS5</td>
+		<td colspan="16"> rds_dsc&lt;15:0&gt;</td>
+	</tr><tr>
+		<td> 1AH</td><td> RDS6</td>
+		<td colspan="16"> rds_dfc&lt;15:0&gt;</td>
+	</tr><tr>
+		<td> 1BH</td><td> DEVID</td>
+		<td colspan="4"> VERSION&lt;3:0&gt;</td>
+		<td colspan="12"> MFID&lt;3:0&gt;</td>
+	</tr><tr>
+		<td> 1CH</td><td> CHIPID</td>
+		<td colspan="16"> CHIPNO&lt;15:0&gt;</td>
+
+<!-- 
+	</tr><tr>
+		<td> </td><td> </td>
+		<td> </td><td> </td><td> </td><td> </td>
+ -->
+	</tr>
+</table>
+
+
+<p>
+[<a href="#top"><big>&uarr;</big> Top</a>]
+</p>
+<hr>
+<p>
+<br><br>
+</p>
+<!-- end Register map ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+
+
+
+<h2 id="fwr"> Firmware</h2> 
+<p>
+Firmware for the PIC18F6490 may be derived from the Visual C software
+supplied to run as a console mode application under Windows. 
+The crucial section which initialises the AR1010 register set
+can be left largely intact.
+However, some modifications must be made to the code:
+</p>
+<ul>
+	<li> 
+		The PIC needs several statements to initialise it ready for
+		processing and I/O operations.  For example -
+		<div class="code">
+		#pragma config OSC = INTIO7
+		</div>
+		<br>
+		will set up the PIC to use an internal 8 MHz clock oscillator.
+		<br>&nbsp;
+	</li><li> 
+		Input from <span class="code"> stdin</span> (the keyboard) is
+		not available. Instead user input comes from the pushbutton
+		set.<br>&nbsp;
+	</li><li> 
+		Serial communications via the USB to I2C converter must
+		be replaced by calls to the PIC's built-in I2C peripheral.<br>&nbsp;
+	</li><li> 
+		Output to<span class="code"> stdout</span>(the monitor screen)
+		is not available. User output is sent instead to the LCD
+		display.<br>&nbsp;
+	</li><li> 
+		A few differences between the compilers must be taken into
+		consideration.  Visual C treats literal numeric strings as
+		<code> signed int</code>s (16 bits).  The Microchip C18 compiler
+		may treat the same strings as <code> char</code>acters  (8
+		bits).  For example -
+		<div class="code">
+		#define FMASKTUNE		(1&lt;&lt;9)
+		</div>
+		will not work if ported to the PIC direct.<br>&nbsp;
+	</li>
+</ul>
+<p>
+Partly complete firmware is available<a href="skeletal.zip" title=
+"Firmware for the FM tuner experiment"> here</a> for MPLAB (updated
+20100310), or <a href="skelX.zip" title= 
+"Firmware for the FM tuner experiment"> here</a> for MPLABX (updated
+20140128) This requires routines to be added for reading the pushbuttons
+and writing to the LCD. It does not, at present, attempt to save power
+by putting the PIC to 'sleep' mode. There is no 'autorepeat' on button
+pushes.  There is no station autotune. There is no readout of volume
+level.
+</p>
+<p>
+[<a href="#top"><big>&uarr;</big> Top</a>]
+</p>
+<hr>
+<p>
+<br><br>
+</p>
+<!-- end Firmware ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+
+
+
+
+<h2 id="mpx"> Development with MPLABX IDE</h2> 
+<p>
+For 2013, the IDE is being switched from MPLAB to the newer MPLABX on
+all labs machines.  If you must use the previous MPLAB then please<a
+href="#mpl" title="Instructions for development under MPLAB."> see
+below</a>.
+</p><p>
+MPLABX and the XC8 C-compiler should be installed by lab staff prior to
+the project time.  Unless you have previous experience of development
+under MPLABX then you may wish to build at least one of the sample
+programs for the PIC18F45K20 demo board supplied by Microchip. Known
+good hardware and firmware gives your first code its best chance of
+running straight away.  The original MPLAB C source code needs minor
+changes to allow it to run under MPLABX :
+</p>
+<dl>
+	<dt> Processor selection</dt>
+	<dd> 
+		Do not explicitly include a header file for the processor used, eg -
+		<div class="code">
+			#include "p18f45k20.h"
+		</div>
+		The exact processor type is now set as an option in the compiler
+		environment (File: Project Properties: Categories: Conf: Device:
+		PIC18F45K20).
+		<br>&nbsp;
+	</dd>
+	<dt> Compiler selection</dt>
+	<dd> 
+		Include a header file for the compiler used, viz -
+		<div class="code">  
+			#include &lt;xc.h&gt;
+		</div>
+		Or do this in an included header -
+		<div class="code">  
+			#ifndef PWM_H<br>
+			#define PWM_H
+			<p>
+			#include &lt;xc.h&gt;
+			</p><p>
+			#endif
+			</p>
+		</div>
+		<br>&nbsp;
+	</dd>
+	<dt> Program sections</dt>
+	<dd> 
+	Do not include block instructions to identify the psect -
+	<div class="code">  
+		#pragma code<br>
+		#pragma romdata Lesson3_Table = 0x180 
+	</div>
+	Neither should the psect be set by storage modifiers:
+	<div class="code">  
+		const<b> rom</b> unsigned char LED_LookupTable[8] =<br>
+		&nbsp;	&nbsp; {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80};	
+	</div>
+	The XC8 compiler is able to assign an appropriate psect
+	automatically.
+	</dd>
+</dl>
+
+<p>
+MPLABX project files are given for the updated versions of the C source
+code examples.  See directory XC8Lessons.  You should try building at
+least one project using <span class="code"> File: New Project
+...</span><br>
+Follow the sequence of dialogs presented to specify <span class="code">
+Standalone Project</span>, <span class="code"> Advanced 8-bit
+MCUs</span>, <span class="code"> Device: PIC18F45K20</span>,  <span
+class="code"> Compiler: XC8</span>.  Give your project a name and
+location on E:.
+</p><p>
+Once you have a new, empty project appearing under the <span
+class="code"> Projects</span> tab, find its <span class="code"> Source
+Files</span> section and add to that your <span class="code"> *.c</span>
+source(s).  You should not need to explicitly specify the locations of
+<span class="code"> *.h</span> headers <span class="code">
+#included</span> by your code.  MPLABX should find them on its own.
+</p><p>
+Go to <span class="code"> File: Project Properties</span> and select
+<span class="code"> Option Categories: Power</span>.  Check the box to
+<span class="code"> Power target circuit from PICKit3</span> at 3.25 volts.
+Note: you are limited to a supply draw of 30 mA or less when using the
+PICKit3 to power your target board.
+</p><p>
+Connect the demo board to the PICKit3 either directly, or (preferably)
+using the 6-way lead, taking care to align pin 1 at each end.  You can
+then try to <span class="code"> Run: Run Main Project</span>.  If the
+project build succeeds then, in the<span class="code"> Output</span>
+window you should now see the message<span class="code"> Device ID
+Revision = 00000018</span> or similar. This is confirmation that
+communication with the PIC has been established. It is unlikely that a
+<span class="code"> Run</span> will succeed without that response.
+</p><p>
+It is advisable to turn the debugger power off before (dis)connecting
+the target board or the debugger.
+<br class="clear">
+</p>
+<p>
+[<a href="#top"><big>&uarr;</big> Top</a>]
+</p>
+<hr>
+<p>
+<br><br>
+</p>
+<!-- end Development with MPLABX ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+
+
+
+
+
+
+<h2 id="mpl"> Development with MPLAB IDE</h2> 
+<p>
+MPLAB has been superseeded as the current Microchip IDE by MPLABX (<a
+href= "#mpx" title="Instructions for development under MPLABX.">see
+above</a>). 
+</p><p>
+If you have a ready made 'project file', e.g. <span class="code">
+pic2fm.mcp</span>, then you may be able to use that with the particular
+version of MPLAB and directory structure of the PC you are now using. If
+not, then it is best to create a project from scratch, for which some
+configuration is required before successful code can be executed.
+</p><p>
+It's probably best to start with the PICKit3 disconnected.  Start MPLAB
+using the desktop icon <img src="iconMPLAB.png" alt="Icon for MPLAB
+application">. Then choose menu<span class="code"> Project : Project
+Wizard</span>. Select<span class="code"> PIC18F6490</span> from the
+drop-down list. <img src="butnNext.png" alt="Icon for the Next button"> 
+the<span class="code"> Active Toolsuite</span> should be set to the
+mplabc18 toolsuite,<span class="code"> Microchip C18 Toolsuite</span> in
+the drop-down.  It will reference a file such as<span class="code"> 
+C:\Program&nbsp;Files\Microchip\mplabc18\v3.40\mpasm\mpasmwin.exe</span> 
+or similar.  If any component of mplabc18 cannot be found then it will
+be marked with a <img src="iconBadPath.png" alt="Icon for bad path">. 
+Fix each one by browsing to the corresponding file in the mplabc18
+directory.
+</p><p>
+<img src="butnNext.png" alt="Icon for the Next button"> name your new
+project file in a suitable directory (perhaps somewhere within<span
+class="code"> MyDocuments\...</span>) where you have already placed
+a<span class="code"> main.c</span> source file (together with other
+source or header files only) which you <img src= "butnAdd.png" alt="Icon
+for the Add button"> to the project. You do not need to have a
+processor-specific header file (e.g. <span class="code">
+PIC18F6490.h</span>) in your project directory; it will be obtained from
+the built-in library once the path for that is set up.  Header files in
+the project directory should not need to be added explicitly. <img
+src="butnNext.png" alt="Icon for the Next button"> you now <img
+src="butnFinish.png" alt="Icon for the Finish button"> with the Wizard.
+</p><p>
+If you cannot at this stage see separate windows titled<span
+class="code"> Project</span> and<span class="code"> Output</span> then
+Choose menu<span class="code"> View : Project</span> and<span
+class="code"> Output</span>
+</p><p>
+Choose menu<span class="code"> Debugger : Select Tool : PICKit3</span>
+</p><p>
+If the large button in the toolbar shows <img src="butnRelease.png" 
+alt="Button giving Release builds">
+then change that to <img src="butnDebug.png" 
+alt="Button giving Debug builds"> .
+</p><p>
+Choose menu<span class="code"> Debugger : Settings ...</span> and select
+the <img src="tabPower.png" alt="Tab for Power settings"> tab. Adjust
+the slider to<span class="code"> 3.25</span> volts and check the <img
+src="chkbxPower.png" alt="Check box for power from PICKit"> box.
+<img src="butnOK.png" alt="Icon for the OK button"> Note:
+you are limited to a supply draw of 30 mA or less when using the PICKit3
+to power your target board.
+</p><p>
+Choose menu<span class="code"> Project : Build Options : Project</span>
+Then hit the tab for<span class="code"> Directories</span>,  and select
+<span class="code"> Assemble/Compile/Link in the Project
+Directory</span>. In the<span class="code"> Show Directories for:</span>
+drop down pick <span class="code"> Include Search Path</span>. Browse
+to<span class="code">
+C:\Program&nbsp;Files\Microchip\mplabc18\v3.40\h</span>.<br> Pick<span
+class="code"> Library Search Path</span> and browse to<span
+class="code"> C:\Program&nbsp;Files\Microchip\mplabc18\v3.40\lib</span>.
+<img src="butnOK.png" alt="Icon for the OK button">
+</p><p>
+Now you can menu<span class="code"> Project : Save
+Project</span>, and then in the project directory you should see files 
+<span class="code"> pic2fm.mcp</span>,
+<span class="code"> pic2fm.mcw</span> and
+<span class="code"> pic2fm.mcs</span>.
+</p><p>
+You should now be able to<span class="code"> Project : Build All</span>.  
+After a successful compile and link
+you should see
+<span class="code"> main.o</span>,
+<span class="code"> pic2fm.cof</span>,
+<span class="code"> pic2fm.hex</span> and 
+<span class="code"> pic2fm.map</span>.
+files in your project directory.
+</p><p>
+Connect your target board to the debugger using the six-way cable,
+taking care to align the connector correctly. Now connect the debugger
+onto the USB bus.  In the<span class="code"> Output</span> window you
+should see a message appear <span class="code"> PICKit3 Connected</span>
+- <img src="outWin.png" class="ralign" alt="Output window message.">
+</p><p>
+If, in the toolbar, the Power button <img src="butnDimPower.png" 
+alt="Power button in dimmed state"> is still 'grayed' then hit it
+whereupon it should turn green:
+<img src="butnPower.png" alt="Power button in powered state">
+</p><p>
+In the<span class="code"> Output</span> window you should now see the
+<span class="code"> Device ID Revision = 00000018</span> or similar.
+This message is confirmation that you have succeeded in establishing
+communication with the PIC. Hit the Program button <img
+src="butnProg.png" alt="The Program button"> to transfer code into your
+microcontroller chip. Then click the Run button<img src="butnRun.png"
+alt="Icon for the Run command"> to begin code execution or debug.
+</p><p>
+It is advisable to turn the debugger power off before disconnecting the
+target board or the debugger.
+<br class="clear">
+</p>
+<p>
+[<a href="#top"><big>&uarr;</big> Top</a>]
+</p>
+<hr>
+<p>
+<br><br>
+</p>
+<!-- end Development with MPLAB ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+
+
+
+
+<h2 id="tbs"> Troubleshooting</h2> 
+
+<p>
+These tips apply to the reference design.  Customised designs may need
+different procedures.  Don't assume that anything is correct;<b> measure
+it</b>, preferably using an oscilloscope with a high impedance probe.
+</p>
+<ul>
+	<li> 
+		It shouldn't need saying but - check the power supply.  Measure
+		this at the header pins on the adapter board.  Even if AVdd or
+		AVss are not used they must also be connected to Vdd and Vss.
+		respectively.<br>&nbsp;
+	</li><li> 
+		Check the PIC internal clock oscillator.  This should be
+		2.0 MHz measured at OSCO (pin 40).<br>&nbsp;
+	</li>
+</ul>
+
+<p>
+[<a href="#top"><big>&uarr;</big> Top</a>]
+</p>
+<hr>
+<p>
+<br><br>
+</p>
+<!-- end Troubleshooting ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+
+
+
+<h2 id="lks"> Links</h2> 
+<dl>
+	<dd>
+		<a href="http://www.docin.com/p-34190202.html">
+		<b>*</b></a> Programming guide for the AR1000.  Needs
+			installed Flash player.
+	</dd><dd>
+		<a href="http://rtr.ca/fmradio/">
+		<b>*</b></a> Data sheet for the AR1000.  Also example code.
+	</dd><dd>
+		<a href="http://www.microchip.com/">
+		<b>*</b></a> Microchip Technology Inc
+	</dd><dd>
+		<a href="http://www.youtube.com/watch?v=_B1_2AMKkxE">
+		<b>*</b></a> YouTube video introduction.
+	</dd>
+<!--
+	</dd><dd>
+		<a href="">
+		<b>*</b></a> 
+-->
+</dl>
+
+<p>
+
+</p>
+<p>
+[<a href="#top"><big>&uarr;</big> Top</a>]
+</p>
+<hr>
+<p>
+<br><br>
+</p>
+<!-- end Links ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
+
+
+<hr>
+<p>
+E-mail:<a href="mailto:R.Clarke@surrey.ac.uk">R.Clarke@surrey.ac.uk</a>
+<br>Last modified: 2014 February 13<sup>th</sup>.
+</p>
+</body>
+</html>

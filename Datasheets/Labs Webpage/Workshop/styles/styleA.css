@@ -1,0 +1,255 @@
+@charset "utf-8";
+/*
+ * Style sheet for Workshop pages
+ * RAC 130419
+ *
+ *   
+ *
+ */
+
+body {
+	background: #F3F3F3;
+	color: black;
+	border-width: 0px;
+}
+
+br.ClrImg {
+	clear: both
+}
+
+br.clear {
+	clear: both
+}
+
+
+br.lclear {
+	clear: left;
+}
+
+p.test {
+	color: red;
+	background: white
+}
+
+
+p.emph {
+    margin-left: 2em;
+    margin-right: 2em;
+    font-size: 120% ;
+	color: black;
+	background: #FFFFE0;
+	padding: 2em;
+}
+
+p.quotation {
+	color: black;
+	background: #FFFFE0;
+    margin-left: 2em;
+    margin-right: 2em;
+	padding: 1em;
+}
+
+p.maths {
+	height: 8ex;
+    margin-left: 10%;
+    margin-right: 10%;
+/*
+	border-style: solid;
+	border-width: 1px;
+	border-color: red;
+*/
+}
+
+div.maths {
+/*
+	background: red;
+ */
+	height: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1ex;
+    margin-bottom: 1ex;
+}
+
+
+div.EqnRelation {
+	float: left;
+    margin-right: 1em;
+	white-space: nowrap
+}
+
+
+div.EqnRef {
+	color: black;
+	float: right;
+	white-space: nowrap;
+    padding: 3px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: silver;
+    margin-bottom: 1ex;
+    margin-right: 1em;
+}
+
+div.EqnRefKey {
+	color: black;
+	background: #FFFFC0;
+	float: right;
+	white-space: nowrap;
+    padding: 3px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: silver;
+    margin-bottom: 1ex;
+    margin-right: 1em;
+}
+
+div.code {
+    margin-left: 2em;
+    margin-right: 2em;
+	background: #FFFFE0;
+	padding: 2em;
+	font-family: monospace;
+}
+
+
+div.emph {
+/*
+	float: left;
+*/
+    margin-top: 1ex;
+    margin-bottom: 1ex;
+    margin-left: 2em;
+	width: 90%;
+    font-size: 120% ;
+	color: black;
+	background: #FFFFE0;
+	padding: 1em;
+}
+
+div.rfbox {
+	float: right;  
+	border: solid silver; 
+	border-width: thin; 
+	margin-left: 1em;  
+	padding: 1em;
+	width: 22em;
+	clear: right;
+}
+
+h1.centre {
+	text-align: center
+}
+
+img.ralign {
+	float: right;
+	border-style: none;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 1ex;
+    margin-bottom: 1ex;
+}
+
+img.mrgn {
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 1ex;
+    margin-bottom: 1ex;
+}
+
+img.tnail {
+	float: left;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 0ex;
+}
+
+span.code {
+	background: #FFFFE0;
+	font-family: "andale mono", monospace;
+}
+
+
+table.eqn {
+	border-style: hidden;
+    margin-left: 2em;
+	width: 80%
+}
+
+
+
+table.ordnry {
+	caption-side: bottom;    
+    margin: 1em;
+	border-collapse: collapse;
+    border: 0.2em solid silver;
+}
+
+
+
+table.ordnry td {
+	 border: 0.1em solid gray;
+}
+
+
+
+table.ordnry th {
+	 border: 0.1em solid gray;
+}
+
+
+
+table.ralign {
+	float: right;
+	caption-side: bottom;    
+    margin: 1em;
+	border-collapse: collapse;
+    border: 0.2em solid silver;
+}
+
+
+table.ralign td {
+	 border: 0.1em solid gray;
+}
+
+
+table.ralign th {
+	 border: 0.1em solid gray;
+}
+
+
+td.EqnRelation {
+    text-align: left;
+	border-style: hidden;
+	width: 100%;
+	white-space: nowrap
+}
+
+
+td.EqnRef {
+	border-style: hidden;
+	width: auto;
+    text-align: right;
+	white-space: nowrap;
+	color: black;
+	background: #FFFFC0
+}
+
+
+td.nwrap { 
+	white-space: nowrap 
+}
+
+
+ol.nobulls {
+	list-style: none;
+}
+
+
+ul.nobulls {
+	list-style: none;
+}
+
+span.bigtxt {
+	font-size: 1.5em;
+}
