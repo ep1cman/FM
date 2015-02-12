@@ -1,0 +1,27 @@
+Discussion between Seb + Phil:
+
+PCB from electrodragon ~$25 for 10x 10x10cm
+DIY PCB stencil
+ - Vinyl laser cut
+ - soda can
+ - We may come into resolution issues with PIC
+IR reflow the pic due to lack of resolution and pick and place
+Reflow oven rest of board
+
+I2C display backpack
+ - more elegant solution compaire dto 4bit parralel interface
+
+VS1053 - To record radio to SD card
+ - potential for web radio using ESP8266
+
+Keypad to make more elegant UI
+
+For meeting:
+ - road map
+ - stuart do i2c display?
+ - code structure
+
+parts ordered:
+ - AR1010 (10/02/2015) $3.80 5pcs
+ - I2C display backpack £2.20 1pc
+ - VS1053 dev board $7.03 1pc
