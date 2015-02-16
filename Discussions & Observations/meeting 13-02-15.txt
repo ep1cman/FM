@@ -1,0 +1,26 @@
+Super Awesome FM Project Team Meeting Minutes
+---------------------------------------------
+
+Present: Seb, Stuart, Phil
+Random AC03 Room. 
+
+
+Decided to implement alphanumeric display first cuz that will hopefully lead to us only having to code for one display. 
+
+PCB + stencil/reflow soldering plan confirmed with everyone.
+
+Check with John about reflow oven. Check with Julian about vinyl + laser cutter pitch.
+
+Agreed re adding stereo speakers and replacing front panel/casing sides with laser cut acrylic. 
+
+
+Hardware block diagram agreed. 
+
+Week by week time plan agreed.
+
+First hour of week 2 everyone to  work on testing volume control with amp. 
+
+Does PIC RTC need an external xtal? 
+
+HARDWARE DEBOUNCE!!
+
