@@ -1,0 +1,10 @@
+The PICkit 3 refused to enable its power supply.
+ - Switching to MPLAB IPE and enabling it fixed it
+ - Switching back to MPLAB IDE and it works now
+
+The debug express board lacks a pull up resistor or MCLR
+ - A 10K was added to solve this
+
+PICs only have pullups on PORTB
+ - They are set using the WPUB register
+ - bit 7 in INTCON2 then needs to be cleared to update the pullups
