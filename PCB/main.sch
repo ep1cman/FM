@@ -61,21 +61,21 @@
 <library name="ar1010">
 <packages>
 <package name="AR1010">
-<smd name="P$1" x="-29.21" y="-0.508" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$2" x="-29.21" y="-2.54" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$3" x="-29.21" y="-4.572" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$4" x="-29.21" y="-6.604" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$5" x="-29.21" y="-8.636" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$6" x="-18.034" y="-0.508" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$7" x="-18.034" y="-2.54" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$8" x="-18.034" y="-4.572" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$9" x="-18.034" y="-6.604" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$10" x="-18.034" y="-8.636" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$1" x="-18.034" y="-0.508" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$2" x="-18.034" y="-2.54" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$3" x="-18.034" y="-4.572" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$4" x="-18.034" y="-6.604" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$5" x="-18.034" y="-8.636" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$6" x="-29.21" y="-0.508" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$7" x="-29.21" y="-2.54" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$8" x="-29.21" y="-4.572" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$9" x="-29.21" y="-6.604" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$10" x="-29.21" y="-8.636" dx="1.27" dy="1.016" layer="1"/>
 <wire x1="-29.21" y1="1.016" x2="-29.21" y2="-10.16" width="0.127" layer="51"/>
 <wire x1="-29.21" y1="-10.16" x2="-18.034" y2="-10.16" width="0.127" layer="51"/>
 <wire x1="-18.034" y1="-10.16" x2="-18.034" y2="1.016" width="0.127" layer="51"/>
 <wire x1="-18.034" y1="1.016" x2="-29.21" y2="1.016" width="0.127" layer="51"/>
-<circle x="-27.686" y="-0.508" radius="0.359209375" width="0.127" layer="51"/>
+<circle x="-19.558" y="-0.508" radius="0.359209375" width="0.127" layer="51"/>
 <text x="-26.924" y="-4.826" size="1.27" layer="51">AR1010</text>
 </package>
 </packages>
@@ -107,14 +107,14 @@
 <connects>
 <connect gate="G$1" pin="ANT" pad="P$1"/>
 <connect gate="G$1" pin="BUSMODE" pad="P$8"/>
-<connect gate="G$1" pin="CLOCK" pad="P$7"/>
-<connect gate="G$1" pin="DATA" pad="P$6"/>
+<connect gate="G$1" pin="CLOCK" pad="P$9"/>
+<connect gate="G$1" pin="DATA" pad="P$10"/>
 <connect gate="G$1" pin="GND" pad="P$5"/>
 <connect gate="G$1" pin="L-OUT" pad="P$3"/>
 <connect gate="G$1" pin="N.C" pad="P$2"/>
 <connect gate="G$1" pin="R-OUT" pad="P$4"/>
-<connect gate="G$1" pin="VCC" pad="P$10"/>
-<connect gate="G$1" pin="W/R" pad="P$9"/>
+<connect gate="G$1" pin="VCC" pad="P$6"/>
+<connect gate="G$1" pin="W/R" pad="P$7"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -8326,6 +8326,27 @@ drill 1.0 mm</description>
 <text x="-1.27" y="1.27" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="0" y="0.254" size="0.0254" layer="27">&gt;VALUE</text>
 </package>
+<package name="LSP11">
+<description>&lt;b&gt;SOLDER PAD&lt;/b&gt;&lt;p&gt;
+drill 1.1 mm</description>
+<wire x1="-1.27" y1="0.254" x2="-1.27" y2="-0.254" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="0.254" x2="1.27" y2="-0.254" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="0.254" x2="1.143" y2="0.254" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="-0.254" x2="1.143" y2="-0.254" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="-0.254" x2="-1.143" y2="-0.254" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="0.254" x2="-1.143" y2="0.254" width="0.1524" layer="21"/>
+<wire x1="1.143" y1="0.254" x2="0.635" y2="0.254" width="0.1524" layer="51"/>
+<wire x1="-1.143" y1="-0.254" x2="-0.635" y2="-0.254" width="0.1524" layer="51"/>
+<wire x1="0.635" y1="0.254" x2="0.635" y2="-0.254" width="0.1524" layer="51"/>
+<wire x1="0.635" y1="0.254" x2="-0.635" y2="0.254" width="0.1524" layer="51"/>
+<wire x1="0.635" y1="-0.254" x2="1.143" y2="-0.254" width="0.1524" layer="51"/>
+<wire x1="-0.635" y1="0.254" x2="-0.635" y2="-0.254" width="0.1524" layer="51"/>
+<wire x1="-0.635" y1="0.254" x2="-1.143" y2="0.254" width="0.1524" layer="51"/>
+<wire x1="-0.635" y1="-0.254" x2="0.635" y2="-0.254" width="0.1524" layer="51"/>
+<pad name="MP" x="0" y="0" drill="1.1176" diameter="2.159" shape="octagon"/>
+<text x="-1.27" y="1.27" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="0" y="0.254" size="0.0254" layer="27">&gt;VALUE</text>
+</package>
 </packages>
 <symbols>
 <symbol name="LSP">
@@ -8349,6 +8370,94 @@ drill 1.0 mm</description>
 </connects>
 <technologies>
 <technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="LSP11" prefix="LSP">
+<description>&lt;b&gt;SOLDER PAD&lt;/b&gt;&lt;p&gt;
+drill 1.1 mm</description>
+<gates>
+<gate name="1" symbol="LSP" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="LSP11">
+<connects>
+<connect gate="1" pin="MP" pad="MP"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+<library name="mcp1700t-vreg">
+<packages>
+<package name="SOT95P237X112-3N">
+<smd name="1" x="-0.9398" y="-1.016" dx="0.9906" dy="1.3208" layer="1"/>
+<smd name="2" x="0.9398" y="-1.016" dx="0.9906" dy="1.3208" layer="1"/>
+<smd name="3" x="0" y="1.016" dx="0.9906" dy="1.3208" layer="1"/>
+<wire x1="-0.6604" y1="-0.7112" x2="-1.2192" y2="-0.7112" width="0.1524" layer="51"/>
+<wire x1="-1.2192" y1="-0.7112" x2="-1.2192" y2="-1.3208" width="0.1524" layer="51"/>
+<wire x1="-1.2192" y1="-1.3208" x2="-0.6604" y2="-1.3208" width="0.1524" layer="51"/>
+<wire x1="-0.6604" y1="-1.3208" x2="-0.6604" y2="-0.7112" width="0.1524" layer="51"/>
+<wire x1="1.2192" y1="-0.7112" x2="0.6604" y2="-0.7112" width="0.1524" layer="51"/>
+<wire x1="0.6604" y1="-0.7112" x2="0.6604" y2="-1.3208" width="0.1524" layer="51"/>
+<wire x1="0.6604" y1="-1.3208" x2="1.2192" y2="-1.3208" width="0.1524" layer="51"/>
+<wire x1="1.2192" y1="-1.3208" x2="1.2192" y2="-0.7112" width="0.1524" layer="51"/>
+<wire x1="-0.2794" y1="0.7112" x2="0.2794" y2="0.7112" width="0.1524" layer="51"/>
+<wire x1="0.2794" y1="0.7112" x2="0.2794" y2="1.3208" width="0.1524" layer="51"/>
+<wire x1="0.2794" y1="1.3208" x2="-0.2794" y2="1.3208" width="0.1524" layer="51"/>
+<wire x1="-0.2794" y1="1.3208" x2="-0.2794" y2="0.7112" width="0.1524" layer="51"/>
+<wire x1="-1.524" y1="-0.7112" x2="1.524" y2="-0.7112" width="0.1524" layer="51"/>
+<wire x1="1.524" y1="-0.7112" x2="1.524" y2="0.7112" width="0.1524" layer="51"/>
+<wire x1="1.524" y1="0.7112" x2="-1.524" y2="0.7112" width="0.1524" layer="51"/>
+<wire x1="-1.524" y1="0.7112" x2="-1.524" y2="-0.7112" width="0.1524" layer="51"/>
+<wire x1="-0.635" y1="0.7112" x2="-1.524" y2="0.7112" width="0.1524" layer="21"/>
+<wire x1="-0.3048" y1="-0.7112" x2="0.3048" y2="-0.7112" width="0.1524" layer="21"/>
+<wire x1="1.524" y1="-0.1524" x2="1.524" y2="0.7112" width="0.1524" layer="21"/>
+<wire x1="1.524" y1="0.7112" x2="0.635" y2="0.7112" width="0.1524" layer="21"/>
+<wire x1="-1.524" y1="0.7112" x2="-1.524" y2="-0.1524" width="0.1524" layer="21"/>
+<text x="-4.9784" y="2.1082" size="2.0828" layer="25" ratio="10" rot="SR0">&gt;NAME</text>
+<text x="-5.588" y="-4.191" size="2.0828" layer="27" ratio="10" rot="SR0">&gt;VALUE</text>
+</package>
+</packages>
+<symbols>
+<symbol name="MCP1700T-1802E/TT">
+<pin name="VIN" x="-17.78" y="0" length="middle" direction="in"/>
+<pin name="GND" x="-17.78" y="-5.08" length="middle" direction="pas"/>
+<pin name="VOUT" x="17.78" y="0" length="middle" direction="out" rot="R180"/>
+<wire x1="-12.7" y1="5.08" x2="-12.7" y2="-10.16" width="0.4064" layer="94"/>
+<wire x1="-12.7" y1="-10.16" x2="12.7" y2="-10.16" width="0.4064" layer="94"/>
+<wire x1="12.7" y1="-10.16" x2="12.7" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="12.7" y1="5.08" x2="-12.7" y2="5.08" width="0.4064" layer="94"/>
+<text x="-4.7244" y="9.1186" size="2.0828" layer="95" ratio="10" rot="SR0">&gt;NAME</text>
+<text x="-5.7912" y="-14.097" size="2.0828" layer="96" ratio="10" rot="SR0">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="MCP1700T-1802E/TT">
+<description>Low Quiescent Current LDO</description>
+<gates>
+<gate name="A" symbol="MCP1700T-1802E/TT" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SOT95P237X112-3N">
+<connects>
+<connect gate="A" pin="GND" pad="1"/>
+<connect gate="A" pin="VIN" pad="3"/>
+<connect gate="A" pin="VOUT" pad="2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="MPN" value="MCP1700T-1802E/TT" constant="no"/>
+<attribute name="OC_FARNELL" value="1296591" constant="no"/>
+<attribute name="OC_NEWARK" value="84R5175" constant="no"/>
+<attribute name="PACKAGE" value="SOT23-3" constant="no"/>
+<attribute name="SUPPLIER" value="Microchip" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -8393,6 +8502,14 @@ drill 1.0 mm</description>
 <part name="JP7" library="pinhead" deviceset="PINHD-1X8" device=""/>
 <part name="JP8" library="pinhead" deviceset="PINHD-1X8" device=""/>
 <part name="JP9" library="pinhead" deviceset="PINHD-1X8" device=""/>
+<part name="U$3" library="mcp1700t-vreg" deviceset="MCP1700T-1802E/TT" device=""/>
+<part name="+3V3" library="supply1" deviceset="+3V3" device=""/>
+<part name="LSP4" library="solpad" deviceset="LSP11" device=""/>
+<part name="LSP5" library="solpad" deviceset="LSP11" device=""/>
+<part name="C3" library="rcl" deviceset="C-EU" device="C0805" value="1u"/>
+<part name="GND7" library="supply1" deviceset="GND" device=""/>
+<part name="GND8" library="supply1" deviceset="GND" device=""/>
+<part name="C4" library="rcl" deviceset="C-EU" device="C0805" value="1u"/>
 </parts>
 <sheets>
 <sheet>
@@ -8430,6 +8547,14 @@ drill 1.0 mm</description>
 <instance part="JP7" gate="A" x="215.9" y="114.3"/>
 <instance part="JP8" gate="A" x="81.28" y="96.52" rot="R180"/>
 <instance part="JP9" gate="A" x="215.9" y="40.64"/>
+<instance part="U$3" gate="A" x="165.1" y="-10.16"/>
+<instance part="+3V3" gate="G$1" x="218.44" y="-10.16" rot="R270"/>
+<instance part="LSP4" gate="1" x="124.46" y="-10.16" rot="R90"/>
+<instance part="LSP5" gate="1" x="124.46" y="-15.24" rot="R90"/>
+<instance part="C3" gate="G$1" x="195.58" y="-12.7"/>
+<instance part="GND7" gate="1" x="195.58" y="-20.32"/>
+<instance part="GND8" gate="1" x="137.16" y="-20.32"/>
+<instance part="C4" gate="G$1" x="137.16" y="-12.7"/>
 </instances>
 <busses>
 </busses>
@@ -8538,6 +8663,14 @@ drill 1.0 mm</description>
 <wire x1="45.72" y1="116.84" x2="99.06" y2="116.84" width="0.1524" layer="91"/>
 <junction x="99.06" y="127"/>
 </segment>
+<segment>
+<pinref part="U$3" gate="A" pin="VOUT"/>
+<pinref part="+3V3" gate="G$1" pin="+3V3"/>
+<wire x1="215.9" y1="-10.16" x2="195.58" y2="-10.16" width="0.1524" layer="91"/>
+<pinref part="C3" gate="G$1" pin="1"/>
+<wire x1="195.58" y1="-10.16" x2="182.88" y2="-10.16" width="0.1524" layer="91"/>
+<junction x="195.58" y="-10.16"/>
+</segment>
 </net>
 <net name="GND" class="0">
 <segment>
@@ -8607,6 +8740,14 @@ drill 1.0 mm</description>
 <segment>
 <pinref part="LSP3" gate="1" pin="MP"/>
 <pinref part="GND6" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="C3" gate="G$1" pin="2"/>
+<pinref part="GND7" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="C4" gate="G$1" pin="2"/>
+<pinref part="GND8" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -9079,9 +9220,25 @@ drill 1.0 mm</description>
 <pinref part="U$2" gate="A" pin="COM0"/>
 <wire x1="101.6" y1="109.22" x2="101.6" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="111.76" x2="149.86" y2="111.76" width="0.1524" layer="91"/>
-<pinref part="JP9" gate="A" pin="5"/>
-<wire x1="149.86" y1="111.76" x2="149.86" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="149.86" y1="40.64" x2="213.36" y2="40.64" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$55" class="0">
+<segment>
+<pinref part="U$3" gate="A" pin="VIN"/>
+<wire x1="147.32" y1="-10.16" x2="137.16" y2="-10.16" width="0.1524" layer="91"/>
+<pinref part="C4" gate="G$1" pin="1"/>
+<pinref part="LSP4" gate="1" pin="MP"/>
+<wire x1="137.16" y1="-10.16" x2="127" y2="-10.16" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$56" class="0">
+<segment>
+<pinref part="LSP5" gate="1" pin="MP"/>
+<wire x1="127" y1="-15.24" x2="127" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="127" y1="-25.4" x2="144.78" y2="-25.4" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="A" pin="GND"/>
+<wire x1="144.78" y1="-25.4" x2="144.78" y2="-15.24" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="-15.24" x2="147.32" y2="-15.24" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
