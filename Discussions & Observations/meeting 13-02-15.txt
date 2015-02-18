@@ -21,6 +21,8 @@ Week by week time plan agreed.
 First hour of week 2 everyone to  work on testing volume control with amp. 
 
 Does PIC RTC need an external xtal? 
+Answer: YES but would need an battery backup powering the whole PIC.
+        Use I2C RTC module instead: DS3231
 
 HARDWARE DEBOUNCE!!
 
