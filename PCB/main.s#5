@@ -7849,10 +7849,6 @@ at 30/07/2012 11:22:31</description>
 <part name="+3V2" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="JP3" library="pinhead" deviceset="PINHD-1X6" device=""/>
-<<<<<<< HEAD
-=======
-<part name="GND5" library="supply1" deviceset="GND" device=""/>
->>>>>>> 13e4176ad19b5c012e73f13dee94c48c931e499e
 </parts>
 <sheets>
 <sheet>
@@ -7875,12 +7871,7 @@ at 30/07/2012 11:22:31</description>
 <instance part="U$2" gate="A" x="144.78" y="76.2"/>
 <instance part="+3V2" gate="G$1" x="99.06" y="132.08"/>
 <instance part="GND4" gate="1" x="96.52" y="15.24"/>
-<<<<<<< HEAD
 <instance part="JP3" gate="A" x="172.72" y="147.32" rot="R90"/>
-=======
-<instance part="JP3" gate="A" x="172.72" y="157.48" rot="R90"/>
-<instance part="GND5" gate="1" x="170.18" y="134.62"/>
->>>>>>> 13e4176ad19b5c012e73f13dee94c48c931e499e
 </instances>
 <busses>
 </busses>
@@ -7950,14 +7941,8 @@ at 30/07/2012 11:22:31</description>
 </segment>
 <segment>
 <pinref part="+3V2" gate="G$1" pin="+3V3"/>
-<<<<<<< HEAD
 <wire x1="99.06" y1="129.54" x2="99.06" y2="124.46" width="0.1524" layer="91"/>
 <pinref part="U$2" gate="A" pin="VDD"/>
-=======
-<wire x1="99.06" y1="129.54" x2="99.06" y2="127" width="0.1524" layer="91"/>
-<pinref part="U$2" gate="A" pin="VDD"/>
-<wire x1="99.06" y1="127" x2="99.06" y2="124.46" width="0.1524" layer="91"/>
->>>>>>> 13e4176ad19b5c012e73f13dee94c48c931e499e
 <wire x1="99.06" y1="124.46" x2="99.06" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="121.92" x2="99.06" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="119.38" x2="99.06" y2="116.84" width="0.1524" layer="91"/>
@@ -7975,14 +7960,6 @@ at 30/07/2012 11:22:31</description>
 <wire x1="101.6" y1="114.3" x2="99.06" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="114.3" x2="99.06" y2="116.84" width="0.1524" layer="91"/>
 <junction x="99.06" y="116.84"/>
-<<<<<<< HEAD
-=======
-<pinref part="JP3" gate="A" pin="2"/>
-<wire x1="167.64" y1="154.94" x2="167.64" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="167.64" y1="132.08" x2="104.14" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="132.08" x2="104.14" y2="127" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="127" x2="99.06" y2="127" width="0.1524" layer="91"/>
->>>>>>> 13e4176ad19b5c012e73f13dee94c48c931e499e
 </segment>
 </net>
 <net name="GND" class="0">
@@ -8042,14 +8019,6 @@ at 30/07/2012 11:22:31</description>
 <wire x1="101.6" y1="20.32" x2="96.52" y2="20.32" width="0.1524" layer="91"/>
 <junction x="96.52" y="20.32"/>
 </segment>
-<<<<<<< HEAD
-=======
-<segment>
-<pinref part="JP3" gate="A" pin="3"/>
-<wire x1="170.18" y1="154.94" x2="170.18" y2="137.16" width="0.1524" layer="91"/>
-<pinref part="GND5" gate="1" pin="GND"/>
-</segment>
->>>>>>> 13e4176ad19b5c012e73f13dee94c48c931e499e
 </net>
 <net name="N$4" class="0">
 <segment>
@@ -8083,7 +8052,6 @@ at 30/07/2012 11:22:31</description>
 <label x="0" y="66.04" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
-<<<<<<< HEAD
 <net name="N$1" class="0">
 <segment>
 <pinref part="JP3" gate="A" pin="1"/>
@@ -8120,8 +8088,6 @@ at 30/07/2012 11:22:31</description>
 <wire x1="177.8" y1="144.78" x2="177.8" y2="137.16" width="0.1524" layer="91"/>
 </segment>
 </net>
-=======
->>>>>>> 13e4176ad19b5c012e73f13dee94c48c931e499e
 <net name="N$9" class="0">
 <segment>
 <pinref part="U$2" gate="A" pin="RB5/KBI1"/>
@@ -8131,21 +8097,12 @@ at 30/07/2012 11:22:31</description>
 <net name="N$10" class="0">
 <segment>
 <pinref part="U$2" gate="A" pin="RB6/KBI2/PGC"/>
-<<<<<<< HEAD
 <wire x1="187.96" y1="63.5" x2="198.12" y2="63.5" width="0.1524" layer="91"/>
-=======
-<wire x1="187.96" y1="63.5" x2="205.74" y2="63.5" width="0.1524" layer="91"/>
-<wire x1="205.74" y1="63.5" x2="205.74" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="205.74" y1="137.16" x2="175.26" y2="137.16" width="0.1524" layer="91"/>
-<pinref part="JP3" gate="A" pin="5"/>
-<wire x1="175.26" y1="154.94" x2="175.26" y2="137.16" width="0.1524" layer="91"/>
->>>>>>> 13e4176ad19b5c012e73f13dee94c48c931e499e
 </segment>
 </net>
 <net name="N$11" class="0">
 <segment>
 <pinref part="U$2" gate="A" pin="RB7/KBI3/PGD"/>
-<<<<<<< HEAD
 <wire x1="187.96" y1="60.96" x2="198.12" y2="60.96" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -8153,23 +8110,6 @@ at 30/07/2012 11:22:31</description>
 <segment>
 <pinref part="U$2" gate="A" pin="RG5/~MCLR/VPP"/>
 <wire x1="101.6" y1="83.82" x2="93.98" y2="83.82" width="0.1524" layer="91"/>
-=======
-<wire x1="187.96" y1="60.96" x2="203.2" y2="60.96" width="0.1524" layer="91"/>
-<wire x1="203.2" y1="60.96" x2="203.2" y2="134.62" width="0.1524" layer="91"/>
-<pinref part="JP3" gate="A" pin="4"/>
-<wire x1="172.72" y1="154.94" x2="172.72" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="203.2" y1="134.62" x2="172.72" y2="134.62" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$1" class="0">
-<segment>
-<pinref part="U$2" gate="A" pin="RG5/~MCLR/VPP"/>
-<wire x1="101.6" y1="83.82" x2="91.44" y2="83.82" width="0.1524" layer="91"/>
-<wire x1="91.44" y1="83.82" x2="91.44" y2="137.16" width="0.1524" layer="91"/>
-<pinref part="JP3" gate="A" pin="1"/>
-<wire x1="165.1" y1="154.94" x2="165.1" y2="137.16" width="0.1524" layer="91"/>
-<wire x1="91.44" y1="137.16" x2="165.1" y2="137.16" width="0.1524" layer="91"/>
->>>>>>> 13e4176ad19b5c012e73f13dee94c48c931e499e
 </segment>
 </net>
 </nets>
