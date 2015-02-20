@@ -8781,6 +8781,7 @@ NS Package M08A</description>
 <part name="U$4" library="MAX4586" deviceset="MAX4586" device=""/>
 <part name="+3V7" library="supply1" deviceset="+3V3" device=""/>
 <part name="+3V8" library="supply1" deviceset="+3V3" device=""/>
+<part name="GND18" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8867,6 +8868,7 @@ NS Package M08A</description>
 <instance part="+3V8" gate="G$1" x="348.615" y="6.35" smashed="yes" rot="R270">
 <attribute name="VALUE" x="348.615" y="5.08" size="1.778" layer="96"/>
 </instance>
+<instance part="GND18" gate="1" x="288.925" y="-5.715"/>
 </instances>
 <busses>
 <bus name="D[0..7]">
@@ -9148,6 +9150,12 @@ NS Package M08A</description>
 <wire x1="90.805" y1="50.165" x2="90.805" y2="40.005" width="0.1524" layer="91"/>
 <junction x="90.805" y="40.005"/>
 </segment>
+<segment>
+<pinref part="U$4" gate="G$1" pin="GND"/>
+<pinref part="GND18" gate="1" pin="GND"/>
+<wire x1="288.925" y1="-3.175" x2="288.925" y2="1.27" width="0.1524" layer="91"/>
+<wire x1="288.925" y1="1.27" x2="298.45" y2="1.27" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="N$4" class="0">
 <segment>
@@ -9165,26 +9173,17 @@ NS Package M08A</description>
 </net>
 <net name="L-OUT" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="L-OUT"/>
-<pinref part="JP2" gate="A" pin="3"/>
-<wire x1="250.19" y1="70.485" x2="234.95" y2="70.485" width="0.1524" layer="91"/>
-<label x="229.87" y="70.485" size="1.778" layer="95" rot="R180"/>
-</segment>
-<segment>
 <pinref part="R7" gate="G$1" pin="1"/>
 <wire x1="239.395" y1="-11.43" x2="235.585" y2="-11.43" width="0.1524" layer="91"/>
 <label x="227.965" y="-11.43" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$4" gate="G$1" pin="COM"/>
+<wire x1="341.63" y1="11.43" x2="347.98" y2="11.43" width="0.1524" layer="91"/>
+<label x="348.615" y="10.795" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="R-OUT" class="0">
-<segment>
-<pinref part="U$1" gate="G$1" pin="R-OUT"/>
-<wire x1="250.19" y1="65.405" x2="247.65" y2="65.405" width="0.1524" layer="91"/>
-<wire x1="247.65" y1="65.405" x2="247.65" y2="67.945" width="0.1524" layer="91"/>
-<pinref part="JP2" gate="A" pin="2"/>
-<label x="229.87" y="67.945" size="1.778" layer="95" rot="R180"/>
-<wire x1="247.65" y1="67.945" x2="234.95" y2="67.945" width="0.1524" layer="91"/>
-</segment>
 <segment>
 <pinref part="R4" gate="G$1" pin="2"/>
 <wire x1="236.855" y1="19.05" x2="239.395" y2="19.05" width="0.1524" layer="91"/>
@@ -9675,6 +9674,43 @@ NS Package M08A</description>
 <wire x1="69.85" y1="45.085" x2="79.375" y2="45.085" width="0.1524" layer="91"/>
 <wire x1="79.375" y1="45.085" x2="79.375" y2="30.48" width="0.1524" layer="91"/>
 <junction x="79.375" y="30.48"/>
+</segment>
+</net>
+<net name="REC-L" class="0">
+<segment>
+<pinref part="U$4" gate="G$1" pin="NO2"/>
+<wire x1="298.45" y1="-3.81" x2="294.005" y2="-3.81" width="0.1524" layer="91"/>
+<label x="294.005" y="-3.175" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="AUX-L" class="0">
+<segment>
+<pinref part="U$4" gate="G$1" pin="NO3"/>
+<wire x1="298.45" y1="6.35" x2="294.005" y2="6.35" width="0.1524" layer="91"/>
+<label x="294.005" y="6.985" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="FM-R" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="R-OUT"/>
+<wire x1="250.19" y1="65.405" x2="247.65" y2="65.405" width="0.1524" layer="91"/>
+<wire x1="247.65" y1="65.405" x2="247.65" y2="67.945" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="A" pin="2"/>
+<label x="229.87" y="67.945" size="1.778" layer="95" rot="R180"/>
+<wire x1="247.65" y1="67.945" x2="234.95" y2="67.945" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="FM-L" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="L-OUT"/>
+<pinref part="JP2" gate="A" pin="3"/>
+<wire x1="250.19" y1="70.485" x2="234.95" y2="70.485" width="0.1524" layer="91"/>
+<label x="229.87" y="70.485" size="1.778" layer="95" rot="R180"/>
+</segment>
+<segment>
+<pinref part="U$4" gate="G$1" pin="NO1"/>
+<wire x1="298.45" y1="-8.89" x2="294.005" y2="-8.89" width="0.1524" layer="91"/>
+<label x="294.005" y="-8.255" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>

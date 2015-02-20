@@ -79,7 +79,7 @@
 <symbol name="MAX4568">
 <pin name="COM" x="-20.32" y="20.32" visible="pin" length="middle"/>
 <pin name="A" x="-20.32" y="15.24" visible="pin" length="middle"/>
-<pin name="SDA" x="-20.32" y="10.16" length="middle"/>
+<pin name="SDA" x="-20.32" y="10.16" visible="pin" length="middle"/>
 <pin name="V+" x="-20.32" y="5.08" visible="pin" length="middle"/>
 <pin name="SCL" x="-20.32" y="0" visible="pin" length="middle"/>
 <pin name="NO1" x="22.86" y="0" visible="pin" length="middle" rot="R180"/>

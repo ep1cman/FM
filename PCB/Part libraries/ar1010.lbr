@@ -58,16 +58,16 @@
 <library>
 <packages>
 <package name="AR1010">
-<smd name="P$1" x="-18.034" y="-0.508" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$2" x="-18.034" y="-2.54" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$3" x="-18.034" y="-4.572" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$4" x="-18.034" y="-6.604" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$5" x="-18.034" y="-8.636" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$6" x="-29.21" y="-0.508" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$7" x="-29.21" y="-2.54" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$8" x="-29.21" y="-4.572" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$9" x="-29.21" y="-6.604" dx="1.27" dy="1.016" layer="1"/>
-<smd name="P$10" x="-29.21" y="-8.636" dx="1.27" dy="1.016" layer="1"/>
+<smd name="1" x="-18.034" y="-0.508" dx="1.27" dy="1.016" layer="1"/>
+<smd name="2" x="-18.034" y="-2.54" dx="1.27" dy="1.016" layer="1"/>
+<smd name="3" x="-18.034" y="-4.572" dx="1.27" dy="1.016" layer="1"/>
+<smd name="4" x="-18.034" y="-6.604" dx="1.27" dy="1.016" layer="1"/>
+<smd name="5" x="-18.034" y="-8.636" dx="1.27" dy="1.016" layer="1"/>
+<smd name="6" x="-29.21" y="-0.508" dx="1.27" dy="1.016" layer="1"/>
+<smd name="7" x="-29.21" y="-2.54" dx="1.27" dy="1.016" layer="1"/>
+<smd name="8" x="-29.21" y="-4.572" dx="1.27" dy="1.016" layer="1"/>
+<smd name="9" x="-29.21" y="-6.604" dx="1.27" dy="1.016" layer="1"/>
+<smd name="10" x="-29.21" y="-8.636" dx="1.27" dy="1.016" layer="1"/>
 <wire x1="-29.21" y1="1.016" x2="-29.21" y2="-10.16" width="0.127" layer="51"/>
 <wire x1="-29.21" y1="-10.16" x2="-18.034" y2="-10.16" width="0.127" layer="51"/>
 <wire x1="-18.034" y1="-10.16" x2="-18.034" y2="1.016" width="0.127" layer="51"/>
@@ -102,16 +102,16 @@
 <devices>
 <device name="" package="AR1010">
 <connects>
-<connect gate="G$1" pin="ANT" pad="P$1"/>
-<connect gate="G$1" pin="BUSMODE" pad="P$8"/>
-<connect gate="G$1" pin="CLOCK" pad="P$9"/>
-<connect gate="G$1" pin="DATA" pad="P$10"/>
-<connect gate="G$1" pin="GND" pad="P$5"/>
-<connect gate="G$1" pin="L-OUT" pad="P$3"/>
-<connect gate="G$1" pin="N.C" pad="P$2"/>
-<connect gate="G$1" pin="R-OUT" pad="P$4"/>
-<connect gate="G$1" pin="VCC" pad="P$6"/>
-<connect gate="G$1" pin="W/R" pad="P$7"/>
+<connect gate="G$1" pin="ANT" pad="1"/>
+<connect gate="G$1" pin="BUSMODE" pad="8"/>
+<connect gate="G$1" pin="CLOCK" pad="9"/>
+<connect gate="G$1" pin="DATA" pad="10"/>
+<connect gate="G$1" pin="GND" pad="5"/>
+<connect gate="G$1" pin="L-OUT" pad="3"/>
+<connect gate="G$1" pin="N.C" pad="2"/>
+<connect gate="G$1" pin="R-OUT" pad="4"/>
+<connect gate="G$1" pin="VCC" pad="6"/>
+<connect gate="G$1" pin="W/R" pad="7"/>
 </connects>
 <technologies>
 <technology name=""/>

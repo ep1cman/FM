@@ -57,80 +57,61 @@
 </layers>
 <library>
 <packages>
-<package name="UMAX10">
-<smd name="1" x="-6.6" y="4.75" dx="1.4" dy="0.28" layer="1"/>
-<smd name="2" x="-6.6" y="4.25" dx="1.4" dy="0.28" layer="1"/>
-<smd name="3" x="-6.6" y="3.75" dx="1.4" dy="0.28" layer="1"/>
-<smd name="4" x="-6.6" y="3.25" dx="1.4" dy="0.28" layer="1"/>
-<smd name="5" x="-6.6" y="2.75" dx="1.4" dy="0.28" layer="1"/>
-<smd name="6" x="-2.32" y="4.75" dx="1.4" dy="0.28" layer="1"/>
-<smd name="7" x="-2.32" y="4.25" dx="1.4" dy="0.28" layer="1"/>
-<smd name="8" x="-2.32" y="3.75" dx="1.4" dy="0.28" layer="1"/>
-<smd name="9" x="-2.32" y="3.25" dx="1.4" dy="0.28" layer="1"/>
-<smd name="10" x="-2.32" y="2.75" dx="1.4" dy="0.28" layer="1"/>
-<wire x1="-5.7" y1="5.1" x2="-5.7" y2="2.4" width="0.127" layer="51"/>
-<wire x1="-5.7" y1="2.4" x2="-3.2" y2="2.4" width="0.127" layer="51"/>
-<wire x1="-3.2" y1="2.4" x2="-3.2" y2="5.1" width="0.127" layer="51"/>
-<wire x1="-3.2" y1="5.1" x2="-5.7" y2="5.1" width="0.127" layer="51"/>
-<circle x="-5.3" y="4.7" radius="0.14141875" width="0.127" layer="51"/>
+<package name="AR1010">
+<smd name="P$1" x="-29.21" y="-0.508" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$2" x="-29.21" y="-2.54" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$3" x="-29.21" y="-4.572" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$4" x="-29.21" y="-6.604" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$5" x="-29.21" y="-8.636" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$6" x="-18.034" y="-0.508" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$7" x="-18.034" y="-2.54" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$8" x="-18.034" y="-4.572" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$9" x="-18.034" y="-6.604" dx="1.27" dy="1.016" layer="1"/>
+<smd name="P$10" x="-18.034" y="-8.636" dx="1.27" dy="1.016" layer="1"/>
+<wire x1="-29.21" y1="1.016" x2="-29.21" y2="-10.16" width="0.127" layer="51"/>
+<wire x1="-29.21" y1="-10.16" x2="-18.034" y2="-10.16" width="0.127" layer="51"/>
+<wire x1="-18.034" y1="-10.16" x2="-18.034" y2="1.016" width="0.127" layer="51"/>
+<wire x1="-18.034" y1="1.016" x2="-29.21" y2="1.016" width="0.127" layer="51"/>
+<circle x="-27.686" y="-0.508" radius="0.359209375" width="0.127" layer="51"/>
+<text x="-26.924" y="-4.826" size="1.27" layer="51">AR1010</text>
 </package>
 </packages>
 <symbols>
-<symbol name="MAX4568">
-<pin name="COM" x="-20.32" y="20.32" length="middle"/>
-<pin name="A" x="-20.32" y="15.24" length="middle"/>
-<pin name="SDA" x="-20.32" y="10.16" length="middle"/>
-<pin name="V+" x="-20.32" y="5.08" length="middle"/>
-<pin name="SCL" x="-20.32" y="0" length="middle"/>
-<pin name="NO1" x="22.86" y="0" length="middle" rot="R180"/>
-<pin name="NO2" x="22.86" y="5.08" length="middle" rot="R180"/>
-<pin name="GND" x="22.86" y="10.16" length="middle" rot="R180"/>
-<pin name="NO3" x="22.86" y="15.24" length="middle" rot="R180"/>
-<pin name="NO4" x="22.86" y="20.32" length="middle" rot="R180"/>
-<wire x1="-7.62" y1="20.32" x2="-5.08" y2="20.32" width="0.254" layer="94"/>
-<wire x1="-5.08" y1="20.32" x2="-2.54" y2="20.32" width="0.254" layer="94"/>
-<wire x1="-5.08" y1="20.32" x2="-5.08" y2="15.24" width="0.254" layer="94"/>
-<circle x="-1.27" y="20.32" radius="1.27" width="0.254" layer="94"/>
-<circle x="-1.27" y="15.24" radius="1.27" width="0.254" layer="94"/>
-<circle x="-1.27" y="5.08" radius="1.27" width="0.254" layer="94"/>
-<circle x="-1.27" y="0" radius="1.27" width="0.254" layer="94"/>
-<wire x1="-5.08" y1="15.24" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
-<wire x1="-5.08" y1="5.08" x2="-5.08" y2="0" width="0.254" layer="94"/>
-<wire x1="-5.08" y1="0" x2="-2.54" y2="0" width="0.254" layer="94"/>
-<wire x1="-5.08" y1="5.08" x2="-2.54" y2="5.08" width="0.254" layer="94"/>
-<wire x1="-5.08" y1="15.24" x2="-2.54" y2="15.24" width="0.254" layer="94"/>
-<wire x1="0" y1="20.32" x2="6.35" y2="22.86" width="0.254" layer="94"/>
-<wire x1="0" y1="15.24" x2="6.35" y2="17.78" width="0.254" layer="94"/>
-<wire x1="0" y1="5.08" x2="6.35" y2="7.62" width="0.254" layer="94"/>
-<wire x1="0" y1="0" x2="6.35" y2="2.54" width="0.254" layer="94"/>
-<wire x1="6.35" y1="5.08" x2="10.16" y2="5.08" width="0.254" layer="94"/>
-<wire x1="6.35" y1="0" x2="10.16" y2="0" width="0.254" layer="94"/>
-<wire x1="6.35" y1="15.24" x2="10.16" y2="15.24" width="0.254" layer="94"/>
-<wire x1="6.35" y1="20.32" x2="10.16" y2="20.32" width="0.254" layer="94"/>
-<wire x1="-15.24" y1="25.4" x2="-15.24" y2="-3.81" width="0.254" layer="94"/>
-<wire x1="-15.24" y1="-3.81" x2="17.78" y2="-3.81" width="0.254" layer="94"/>
-<wire x1="17.78" y1="-3.81" x2="17.78" y2="25.4" width="0.254" layer="94"/>
-<wire x1="17.78" y1="25.4" x2="-15.24" y2="25.4" width="0.254" layer="94"/>
+<symbol name="AR1010">
+<pin name="ANT" x="0" y="10.16" length="middle"/>
+<pin name="N.C" x="0" y="5.08" length="middle"/>
+<pin name="L-OUT" x="0" y="0" length="middle"/>
+<pin name="R-OUT" x="0" y="-5.08" length="middle"/>
+<pin name="GND" x="0" y="-10.16" length="middle"/>
+<pin name="DATA" x="35.56" y="-10.16" length="middle" rot="R180"/>
+<pin name="CLOCK" x="35.56" y="-5.08" length="middle" rot="R180"/>
+<pin name="BUSMODE" x="35.56" y="0" length="middle" rot="R180"/>
+<pin name="W/R" x="35.56" y="5.08" length="middle" rot="R180"/>
+<pin name="VCC" x="35.56" y="10.16" length="middle" rot="R180"/>
+<wire x1="5.08" y1="12.7" x2="5.08" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-12.7" x2="30.48" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="30.48" y1="-12.7" x2="30.48" y2="12.7" width="0.254" layer="94"/>
+<wire x1="30.48" y1="12.7" x2="5.08" y2="12.7" width="0.254" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="MAX4586">
+<deviceset name="AR1010">
 <gates>
-<gate name="G$1" symbol="MAX4568" x="0" y="-10.16"/>
+<gate name="G$1" symbol="AR1010" x="-17.78" y="0"/>
 </gates>
 <devices>
-<device name="" package="UMAX10">
+<device name="" package="AR1010">
 <connects>
-<connect gate="G$1" pin="A" pad="2"/>
-<connect gate="G$1" pin="COM" pad="1"/>
-<connect gate="G$1" pin="GND" pad="8"/>
-<connect gate="G$1" pin="NO1" pad="6"/>
-<connect gate="G$1" pin="NO2" pad="7"/>
-<connect gate="G$1" pin="NO3" pad="9"/>
-<connect gate="G$1" pin="NO4" pad="10"/>
-<connect gate="G$1" pin="SCL" pad="5"/>
-<connect gate="G$1" pin="SDA" pad="3"/>
-<connect gate="G$1" pin="V+" pad="4"/>
+<connect gate="G$1" pin="ANT" pad="P$1"/>
+<connect gate="G$1" pin="BUSMODE" pad="P$8"/>
+<connect gate="G$1" pin="CLOCK" pad="P$7"/>
+<connect gate="G$1" pin="DATA" pad="P$6"/>
+<connect gate="G$1" pin="GND" pad="P$5"/>
+<connect gate="G$1" pin="L-OUT" pad="P$3"/>
+<connect gate="G$1" pin="N.C" pad="P$2"/>
+<connect gate="G$1" pin="R-OUT" pad="P$4"/>
+<connect gate="G$1" pin="VCC" pad="P$10"/>
+<connect gate="G$1" pin="W/R" pad="P$9"/>
 </connects>
 <technologies>
 <technology name=""/>

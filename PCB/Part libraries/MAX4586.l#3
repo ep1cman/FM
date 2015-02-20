@@ -77,16 +77,16 @@
 </packages>
 <symbols>
 <symbol name="MAX4568">
-<pin name="COM" x="-20.32" y="20.32" length="middle"/>
-<pin name="A" x="-20.32" y="15.24" length="middle"/>
+<pin name="COM" x="-20.32" y="20.32" visible="pin" length="middle"/>
+<pin name="A" x="-20.32" y="15.24" visible="pin" length="middle"/>
 <pin name="SDA" x="-20.32" y="10.16" length="middle"/>
-<pin name="V+" x="-20.32" y="5.08" length="middle"/>
-<pin name="SCL" x="-20.32" y="0" length="middle"/>
-<pin name="NO1" x="22.86" y="0" length="middle" rot="R180"/>
-<pin name="NO2" x="22.86" y="5.08" length="middle" rot="R180"/>
-<pin name="GND" x="22.86" y="10.16" length="middle" rot="R180"/>
-<pin name="NO3" x="22.86" y="15.24" length="middle" rot="R180"/>
-<pin name="NO4" x="22.86" y="20.32" length="middle" rot="R180"/>
+<pin name="V+" x="-20.32" y="5.08" visible="pin" length="middle"/>
+<pin name="SCL" x="-20.32" y="0" visible="pin" length="middle"/>
+<pin name="NO1" x="22.86" y="0" visible="pin" length="middle" rot="R180"/>
+<pin name="NO2" x="22.86" y="5.08" visible="pin" length="middle" rot="R180"/>
+<pin name="GND" x="22.86" y="10.16" visible="pin" length="middle" rot="R180"/>
+<pin name="NO3" x="22.86" y="15.24" visible="pin" length="middle" rot="R180"/>
+<pin name="NO4" x="22.86" y="20.32" visible="pin" length="middle" rot="R180"/>
 <wire x1="-7.62" y1="20.32" x2="-5.08" y2="20.32" width="0.254" layer="94"/>
 <wire x1="-5.08" y1="20.32" x2="-2.54" y2="20.32" width="0.254" layer="94"/>
 <wire x1="-5.08" y1="20.32" x2="-5.08" y2="15.24" width="0.254" layer="94"/>

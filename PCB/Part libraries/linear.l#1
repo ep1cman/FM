@@ -22644,20 +22644,20 @@ Source: http://www.st.com/st-web-ui/static/active/en/resource/technical/document
 <deviceset name="TDA2822">
 <description>Power &lt;b&gt;OP AMP&lt;/b&gt;</description>
 <gates>
-<gate name="R" symbol="OPAMP+-" x="-220.98" y="2.54"/>
-<gate name="L" symbol="OPAMP" x="-220.98" y="-15.24"/>
+<gate name="1" symbol="OPAMP+-" x="-220.98" y="2.54"/>
+<gate name="2" symbol="OPAMP" x="-220.98" y="-15.24"/>
 </gates>
 <devices>
 <device name="D" package="SO08">
 <connects>
-<connect gate="L" pin="+IN" pad="6"/>
-<connect gate="L" pin="-IN" pad="5"/>
-<connect gate="L" pin="OUT" pad="3"/>
-<connect gate="R" pin="+IN" pad="7"/>
-<connect gate="R" pin="-IN" pad="8"/>
-<connect gate="R" pin="OUT" pad="1"/>
-<connect gate="R" pin="V+" pad="2"/>
-<connect gate="R" pin="V-" pad="4"/>
+<connect gate="1" pin="+IN" pad="7"/>
+<connect gate="1" pin="-IN" pad="8"/>
+<connect gate="1" pin="OUT" pad="1"/>
+<connect gate="1" pin="V+" pad="2"/>
+<connect gate="1" pin="V-" pad="4"/>
+<connect gate="2" pin="+IN" pad="6"/>
+<connect gate="2" pin="-IN" pad="5"/>
+<connect gate="2" pin="OUT" pad="3"/>
 </connects>
 <technologies>
 <technology name=""/>
