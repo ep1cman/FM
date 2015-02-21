@@ -9564,7 +9564,7 @@ NS Package M08A</description>
 <segment>
 <pinref part="MICROCONTROLLER" gate="A" pin="RG5/~MCLR/VPP"/>
 <wire x1="15.875" y1="66.04" x2="5.715" y2="66.04" width="0.1524" layer="91"/>
-<label x="5.715" y="63.5" size="1.778" layer="95"/>
+<label x="-1.905" y="66.04" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="H3" gate="A" pin="1"/>
@@ -10151,12 +10151,22 @@ NS Package M08A</description>
 <wire x1="-103.505" y1="57.785" x2="-91.44" y2="57.785" width="0.1524" layer="91"/>
 <label x="-87.63" y="57.785" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="MICROCONTROLLER" gate="A" pin="LCDBIAS3"/>
+<wire x1="15.875" y1="83.82" x2="2.54" y2="83.82" width="0.1524" layer="91"/>
+<label x="-4.445" y="83.82" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="PIC63" class="0">
 <segment>
 <pinref part="JP5" gate="A" pin="15"/>
 <wire x1="-103.505" y1="55.245" x2="-91.44" y2="55.245" width="0.1524" layer="91"/>
 <label x="-87.63" y="55.245" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="MICROCONTROLLER" gate="A" pin="COM0"/>
+<wire x1="15.875" y1="91.44" x2="2.54" y2="91.44" width="0.1524" layer="91"/>
+<label x="-4.445" y="91.44" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PIC62" class="0">
@@ -10165,12 +10175,22 @@ NS Package M08A</description>
 <wire x1="-103.505" y1="52.705" x2="-91.44" y2="52.705" width="0.1524" layer="91"/>
 <label x="-87.63" y="52.705" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="MICROCONTROLLER" gate="A" pin="RE4/COM1"/>
+<wire x1="102.235" y1="38.1" x2="107.315" y2="38.1" width="0.1524" layer="91"/>
+<label x="109.22" y="38.1" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="PIC61" class="0">
 <segment>
 <pinref part="JP5" gate="A" pin="13"/>
 <wire x1="-103.505" y1="50.165" x2="-91.44" y2="50.165" width="0.1524" layer="91"/>
 <label x="-87.63" y="50.165" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="MICROCONTROLLER" gate="A" pin="RE5/COM2"/>
+<wire x1="102.235" y1="35.56" x2="107.315" y2="35.56" width="0.1524" layer="91"/>
+<label x="109.22" y="35.56" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PIC60" class="0">
@@ -10179,12 +10199,22 @@ NS Package M08A</description>
 <wire x1="-103.505" y1="47.625" x2="-91.44" y2="47.625" width="0.1524" layer="91"/>
 <label x="-87.63" y="47.625" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="MICROCONTROLLER" gate="A" pin="RE6/COM3"/>
+<wire x1="102.235" y1="33.02" x2="107.315" y2="33.02" width="0.1524" layer="91"/>
+<label x="109.22" y="33.02" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="PIC59" class="0">
 <segment>
 <pinref part="JP5" gate="A" pin="11"/>
 <wire x1="-103.505" y1="45.085" x2="-91.44" y2="45.085" width="0.1524" layer="91"/>
 <label x="-87.63" y="45.085" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="MICROCONTROLLER" gate="A" pin="RE7/CCP2/SEG31"/>
+<wire x1="102.235" y1="30.48" x2="107.315" y2="30.48" width="0.1524" layer="91"/>
+<label x="109.22" y="30.48" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>

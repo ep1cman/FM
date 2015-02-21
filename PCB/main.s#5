@@ -8624,6 +8624,7 @@ NS Package M08A</description>
 <part name="JP4" library="pinhead" deviceset="PINHD-1X16" device=""/>
 <part name="+3V18" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND24" library="supply1" deviceset="GND" device=""/>
+<part name="JP5" library="pinhead" deviceset="PINHD-1X16" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8890,6 +8891,7 @@ NS Package M08A</description>
 <attribute name="VALUE" x="-72.39" y="84.455" size="1.778" layer="96" rot="R270"/>
 </instance>
 <instance part="GND24" gate="1" x="-76.2" y="86.36"/>
+<instance part="JP5" gate="A" x="-106.045" y="37.465" rot="R180"/>
 </instances>
 <busses>
 <bus name="PORTD[0..7]">
@@ -10085,6 +10087,118 @@ NS Package M08A</description>
 <pinref part="MICROCONTROLLER" gate="A" pin="RB0/INT0"/>
 <wire x1="102.235" y1="60.96" x2="107.95" y2="60.96" width="0.1524" layer="91"/>
 <label x="109.22" y="60.96" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC64" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="16"/>
+<wire x1="-103.505" y1="57.785" x2="-91.44" y2="57.785" width="0.1524" layer="91"/>
+<label x="-87.63" y="57.785" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC63" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="15"/>
+<wire x1="-103.505" y1="55.245" x2="-91.44" y2="55.245" width="0.1524" layer="91"/>
+<label x="-87.63" y="55.245" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC62" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="14"/>
+<wire x1="-103.505" y1="52.705" x2="-91.44" y2="52.705" width="0.1524" layer="91"/>
+<label x="-87.63" y="52.705" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC61" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="13"/>
+<wire x1="-103.505" y1="50.165" x2="-91.44" y2="50.165" width="0.1524" layer="91"/>
+<label x="-87.63" y="50.165" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC60" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="12"/>
+<wire x1="-103.505" y1="47.625" x2="-91.44" y2="47.625" width="0.1524" layer="91"/>
+<label x="-87.63" y="47.625" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC59" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="11"/>
+<wire x1="-103.505" y1="45.085" x2="-91.44" y2="45.085" width="0.1524" layer="91"/>
+<label x="-87.63" y="45.085" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC58" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="10"/>
+<wire x1="-103.505" y1="42.545" x2="-91.44" y2="42.545" width="0.1524" layer="91"/>
+<label x="-87.63" y="42.545" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC57" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="9"/>
+<wire x1="-103.505" y1="40.005" x2="-91.44" y2="40.005" width="0.1524" layer="91"/>
+<label x="-87.63" y="40.005" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC56" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="8"/>
+<wire x1="-103.505" y1="37.465" x2="-91.44" y2="37.465" width="0.1524" layer="91"/>
+<label x="-87.63" y="37.465" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC55" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="7"/>
+<wire x1="-103.505" y1="34.925" x2="-91.44" y2="34.925" width="0.1524" layer="91"/>
+<label x="-87.63" y="34.925" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC54" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="6"/>
+<wire x1="-103.505" y1="32.385" x2="-91.44" y2="32.385" width="0.1524" layer="91"/>
+<label x="-87.63" y="32.385" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC53" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="5"/>
+<wire x1="-103.505" y1="29.845" x2="-91.44" y2="29.845" width="0.1524" layer="91"/>
+<label x="-87.63" y="29.845" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC52" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="4"/>
+<wire x1="-103.505" y1="27.305" x2="-91.44" y2="27.305" width="0.1524" layer="91"/>
+<label x="-87.63" y="27.305" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC51" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="3"/>
+<wire x1="-103.505" y1="24.765" x2="-91.44" y2="24.765" width="0.1524" layer="91"/>
+<label x="-87.63" y="24.765" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC50" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="2"/>
+<wire x1="-103.505" y1="22.225" x2="-91.44" y2="22.225" width="0.1524" layer="91"/>
+<label x="-87.63" y="22.225" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC49" class="0">
+<segment>
+<pinref part="JP5" gate="A" pin="1"/>
+<wire x1="-103.505" y1="19.685" x2="-91.44" y2="19.685" width="0.1524" layer="91"/>
+<label x="-87.63" y="19.685" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>

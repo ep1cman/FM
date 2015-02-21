@@ -8528,7 +8528,6 @@ NS Package M08A</description>
 <part name="C2" library="rcl" deviceset="C-EU" device="C0805" value="10u"/>
 <part name="R3" library="resistor" deviceset="R-EU_" device="M0805" value="10k"/>
 <part name="H9" library="pinhead" deviceset="PINHD-1X3" device=""/>
-<part name="H8" library="pinhead" deviceset="PINHD-1X3" device=""/>
 <part name="MICROCONTROLLER" library="Microchip_By_element14_Batch_1" deviceset="PIC18F6490-I/PT" device=""/>
 <part name="+3V2" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
@@ -8618,6 +8617,7 @@ NS Package M08A</description>
 <part name="JP4" library="pinhead" deviceset="PINHD-1X16" device=""/>
 <part name="JP5" library="pinhead" deviceset="PINHD-1X16" device=""/>
 <part name="JP6" library="pinhead" deviceset="PINHD-1X3" device=""/>
+<part name="JP7" library="pinhead" deviceset="PINHD-1X3" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8627,6 +8627,7 @@ NS Package M08A</description>
 <text x="84.455" y="128.905" size="1.778" layer="91">AUX in</text>
 <text x="-22.86" y="49.53" size="1.778" layer="91" rot="R270">HD44780 LCD</text>
 <text x="107.315" y="128.27" size="1.778" layer="91">REC in</text>
+<text x="125.73" y="128.27" size="1.778" layer="91">FM out</text>
 </plain>
 <instances>
 <instance part="+3V1" gate="G$1" x="228.6" y="146.05" smashed="yes">
@@ -8657,10 +8658,6 @@ NS Package M08A</description>
 <instance part="H9" gate="A" x="66.04" y="133.35" smashed="yes" rot="R270">
 <attribute name="NAME" x="71.755" y="133.35" size="1.778" layer="95"/>
 <attribute name="VALUE" x="58.42" y="139.7" size="1.778" layer="96" rot="R270"/>
-</instance>
-<instance part="H8" gate="A" x="152.4" y="120.65" smashed="yes" rot="R180">
-<attribute name="NAME" x="158.75" y="114.935" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="158.75" y="128.27" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="MICROCONTROLLER" gate="A" x="59.055" y="58.42" smashed="yes">
 <attribute name="NAME" x="20.6756" y="112.6236" size="2.0828" layer="95" ratio="10" rot="SR0"/>
@@ -8871,6 +8868,7 @@ NS Package M08A</description>
 <instance part="JP4" gate="A" x="-106.045" y="86.36" rot="R180"/>
 <instance part="JP5" gate="A" x="-106.045" y="37.465" rot="R180"/>
 <instance part="JP6" gate="A" x="111.125" y="132.715" rot="R270"/>
+<instance part="JP7" gate="A" x="128.905" y="132.715" rot="R270"/>
 </instances>
 <busses>
 <bus name="PORTD[0..7]">
@@ -9099,10 +9097,9 @@ NS Package M08A</description>
 <wire x1="172.72" y1="97.79" x2="162.56" y2="97.79" width="0.1524" layer="91"/>
 <wire x1="185.42" y1="106.68" x2="162.56" y2="106.68" width="0.1524" layer="91"/>
 <junction x="162.56" y="106.68"/>
-<pinref part="H8" gate="A" pin="1"/>
 <wire x1="154.94" y1="118.11" x2="162.56" y2="118.11" width="0.1524" layer="91"/>
 <junction x="162.56" y="118.11"/>
-<label x="149.86" y="118.11" size="1.778" layer="95" rot="R180"/>
+<label x="152.4" y="118.11" size="1.778" layer="95" rot="R180"/>
 <wire x1="172.72" y1="97.79" x2="172.72" y2="95.25" width="0.1524" layer="91"/>
 <junction x="172.72" y="97.79"/>
 <pinref part="U$2" gate="G$1" pin="GND"/>
@@ -9272,6 +9269,11 @@ NS Package M08A</description>
 <wire x1="-61.595" y1="40.005" x2="-55.245" y2="40.005" width="0.1524" layer="91"/>
 <label x="-52.705" y="40.005" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="JP7" gate="A" pin="1"/>
+<wire x1="131.445" y1="135.255" x2="131.445" y2="144.78" width="0.1524" layer="91"/>
+<label x="131.445" y="146.05" size="1.778" layer="95" rot="R90"/>
+</segment>
 </net>
 <net name="N$4" class="0">
 <segment>
@@ -9413,8 +9415,7 @@ NS Package M08A</description>
 <segment>
 <wire x1="170.18" y1="118.11" x2="167.64" y2="118.11" width="0.1524" layer="91"/>
 <wire x1="167.64" y1="118.11" x2="167.64" y2="120.65" width="0.1524" layer="91"/>
-<pinref part="H8" gate="A" pin="2"/>
-<label x="149.86" y="120.65" size="1.778" layer="95" rot="R180"/>
+<label x="152.4" y="120.65" size="1.778" layer="95" rot="R180"/>
 <wire x1="167.64" y1="120.65" x2="154.94" y2="120.65" width="0.1524" layer="91"/>
 <pinref part="U$2" gate="G$1" pin="R-OUT"/>
 </segment>
@@ -9423,18 +9424,27 @@ NS Package M08A</description>
 <label x="152.4" y="49.53" size="1.778" layer="95"/>
 <pinref part="U$3" gate="G$1" pin="SCL"/>
 </segment>
+<segment>
+<pinref part="JP7" gate="A" pin="2"/>
+<wire x1="128.905" y1="135.255" x2="128.905" y2="144.78" width="0.1524" layer="91"/>
+<label x="128.905" y="146.05" size="1.778" layer="95" rot="R90"/>
+</segment>
 </net>
 <net name="FM-L" class="0">
 <segment>
-<pinref part="H8" gate="A" pin="3"/>
 <wire x1="170.18" y1="123.19" x2="154.94" y2="123.19" width="0.1524" layer="91"/>
-<label x="149.86" y="123.825" size="1.778" layer="95" rot="R180"/>
+<label x="152.4" y="123.825" size="1.778" layer="95" rot="R180"/>
 <pinref part="U$2" gate="G$1" pin="L-OUT"/>
 </segment>
 <segment>
 <wire x1="160.655" y1="9.525" x2="153.035" y2="9.525" width="0.1524" layer="91"/>
 <label x="153.035" y="10.16" size="1.778" layer="95"/>
 <pinref part="U$4" gate="G$1" pin="SCL"/>
+</segment>
+<segment>
+<pinref part="JP7" gate="A" pin="3"/>
+<wire x1="126.365" y1="135.255" x2="126.365" y2="144.78" width="0.1524" layer="91"/>
+<label x="126.365" y="146.05" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="REC-R" class="0">
