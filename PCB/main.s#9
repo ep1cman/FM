@@ -9368,14 +9368,6 @@ NS Package M08A</description>
 <wire x1="-85.725" y1="71.12" x2="-79.375" y2="71.12" width="0.1524" layer="91"/>
 <label x="-78.74" y="70.485" size="1.778" layer="95"/>
 </segment>
-<segment>
-<wire x1="109.855" y1="136.525" x2="103.505" y2="136.525" width="0.1524" layer="91"/>
-<label x="102.87" y="137.16" size="1.778" layer="95" rot="R180"/>
-</segment>
-<segment>
-<wire x1="53.34" y1="132.715" x2="53.34" y2="141.605" width="0.1524" layer="91"/>
-<label x="53.975" y="142.24" size="1.778" layer="95" rot="R90"/>
-</segment>
 </net>
 <net name="+3V3" class="0">
 <segment>
@@ -10755,6 +10747,14 @@ NS Package M08A</description>
 <segment>
 <wire x1="109.855" y1="131.445" x2="103.505" y2="131.445" width="0.1524" layer="91"/>
 <label x="102.87" y="132.08" size="1.778" layer="95" rot="R180"/>
+</segment>
+<segment>
+<wire x1="53.34" y1="132.715" x2="53.34" y2="141.605" width="0.1524" layer="91"/>
+<label x="53.975" y="142.24" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<wire x1="109.855" y1="136.525" x2="103.505" y2="136.525" width="0.1524" layer="91"/>
+<label x="102.87" y="137.16" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="4" class="0">

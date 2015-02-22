@@ -8969,7 +8969,7 @@ NS Package M08A</description>
 <part name="R8" library="resistor" deviceset="R-EU_" device="M0805" value="10k"/>
 <part name="AMP-" library="linear" deviceset="TDA2822" device="D"/>
 <part name="U$2" library="ar1010" deviceset="AR1010" device="">
-<attribute name="RADIO_CONROLLER" value=""/>
+<attribute name="FM_RADIO" value=""/>
 <attribute name="VAL" value="AR1010"/>
 </part>
 <part name="GND21" library="supply1" deviceset="GND" device=""/>
@@ -9200,7 +9200,7 @@ NS Package M08A</description>
 <attribute name="VALUE" x="274.955" y="21.59" size="1.778" layer="96"/>
 </instance>
 <instance part="U$2" gate="G$1" x="170.18" y="123.19" smashed="yes">
-<attribute name="RADIO_CONROLLER" x="175.26" y="136.525" size="1.778" layer="96" display="name"/>
+<attribute name="FM_RADIO" x="175.26" y="136.525" size="1.778" layer="96" display="name"/>
 <attribute name="VAL" x="175.26" y="107.95" size="1.778" layer="96"/>
 </instance>
 <instance part="GND21" gate="1" x="255.905" y="45.72" smashed="yes">

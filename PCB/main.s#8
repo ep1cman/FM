@@ -9043,6 +9043,7 @@ NS Package M08A</description>
 <text x="-38.735" y="126.365" size="1.778" layer="91">Voltage test</text>
 <text x="7.62" y="126.365" size="1.778" layer="91">AMP test</text>
 <text x="22.86" y="126.365" size="1.778" layer="91">Output test</text>
+<text x="38.1" y="126.365" size="1.778" layer="91">Recorder test</text>
 </plain>
 <instances>
 <instance part="+3V1" gate="G$1" x="228.6" y="146.05" smashed="yes">

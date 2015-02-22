@@ -9006,23 +9006,24 @@ NS Package M08A</description>
 <part name="H14" library="pinhead" deviceset="PINHD-1X3" device=""/>
 <part name="H15" library="pinhead" deviceset="PINHD-1X3" device=""/>
 <part name="JP1" library="pinhead" deviceset="PINHD-1X4" device="/90"/>
+<part name="H17" library="pinhead" deviceset="PINHD-1X3" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 <text x="-83.185" y="113.665" size="1.778" layer="91">PIC ICSP/Debug</text>
 <text x="-22.86" y="49.53" size="1.778" layer="91" rot="R270">HD44780 LCD</text>
-<text x="-1.905" y="125.73" size="1.778" layer="91">AMP </text>
-<text x="8.89" y="125.73" size="1.778" layer="91">Output</text>
-<text x="-29.845" y="125.73" size="1.778" layer="91">Left</text>
-<text x="-15.24" y="125.73" size="1.778" layer="91">Right</text>
-<text x="-13.97" y="155.575" size="1.778" layer="91">Testing headers</text>
-<text x="38.735" y="154.94" size="1.778" layer="91">Input headers</text>
-<text x="-3.81" y="119.38" size="1.778" layer="91">* These two might need 
+<text x="-19.685" y="126.365" size="1.778" layer="91">AMP </text>
+<text x="-8.89" y="126.365" size="1.778" layer="91">Output</text>
+<text x="-47.625" y="126.365" size="1.778" layer="91">Left</text>
+<text x="-33.02" y="126.365" size="1.778" layer="91">Right</text>
+<text x="-31.75" y="156.21" size="1.778" layer="91">Testing headers</text>
+<text x="20.955" y="155.575" size="1.778" layer="91">Input headers</text>
+<text x="-21.59" y="120.015" size="1.778" layer="91">* These two might need 
    splitting at PCB design</text>
-<text x="26.67" y="125.73" size="1.778" layer="91">REC out</text>
-<text x="41.275" y="125.73" size="1.778" layer="91">REC in</text>
-<text x="55.88" y="125.73" size="1.778" layer="91">AUX</text>
+<text x="8.89" y="126.365" size="1.778" layer="91">REC out</text>
+<text x="23.495" y="126.365" size="1.778" layer="91">REC in</text>
+<text x="38.1" y="126.365" size="1.778" layer="91">AUX</text>
 <text x="81.915" y="154.94" size="1.778" layer="91">Recorder</text>
 <text x="118.11" y="154.94" size="1.778" layer="91">Real Time Clock</text>
 </plain>
@@ -9236,17 +9237,18 @@ NS Package M08A</description>
 </instance>
 <instance part="P+4" gate="1" x="274.32" y="79.375"/>
 <instance part="P+5" gate="1" x="241.935" y="104.775" rot="R90"/>
-<instance part="H13" gate="G$1" x="43.815" y="130.175" rot="R270"/>
-<instance part="H12" gate="A" x="31.75" y="130.175" rot="R270"/>
-<instance part="H6" gate="A" x="-27.305" y="130.175" rot="R270"/>
-<instance part="H7" gate="A" x="-12.7" y="130.175" rot="R270"/>
-<instance part="H8" gate="G$1" x="-0.635" y="130.175" rot="R270"/>
-<instance part="H9" gate="G$1" x="11.43" y="130.175" rot="R270"/>
-<instance part="H10" gate="A" x="58.42" y="130.175" rot="R270"/>
+<instance part="H13" gate="G$1" x="26.035" y="130.81" rot="R270"/>
+<instance part="H12" gate="A" x="13.97" y="130.81" rot="R270"/>
+<instance part="H6" gate="A" x="-45.085" y="130.81" rot="R270"/>
+<instance part="H7" gate="A" x="-30.48" y="130.81" rot="R270"/>
+<instance part="H8" gate="G$1" x="-18.415" y="130.81" rot="R270"/>
+<instance part="H9" gate="G$1" x="-6.35" y="130.81" rot="R270"/>
+<instance part="H10" gate="A" x="40.64" y="130.81" rot="R270"/>
 <instance part="H11" gate="A" x="-7.62" y="114.3" rot="R90"/>
 <instance part="H14" gate="A" x="-7.62" y="86.995" rot="R270"/>
 <instance part="H15" gate="A" x="-7.62" y="72.39" rot="R270"/>
 <instance part="JP1" gate="A" x="125.095" y="127" rot="R270"/>
+<instance part="H17" gate="A" x="54.61" y="130.81" rot="R270"/>
 </instances>
 <busses>
 <bus name="PORTD[0..7]">
@@ -9614,13 +9616,13 @@ NS Package M08A</description>
 </segment>
 <segment>
 <pinref part="H12" gate="A" pin="1"/>
-<wire x1="34.29" y1="132.715" x2="34.29" y2="141.605" width="0.1524" layer="91"/>
-<label x="34.925" y="142.24" size="1.778" layer="95" rot="R90"/>
+<wire x1="16.51" y1="133.35" x2="16.51" y2="142.24" width="0.1524" layer="91"/>
+<label x="17.145" y="142.875" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
 <pinref part="H10" gate="A" pin="1"/>
-<wire x1="60.96" y1="132.715" x2="60.96" y2="141.605" width="0.1524" layer="91"/>
-<label x="61.595" y="142.24" size="1.778" layer="95" rot="R90"/>
+<wire x1="43.18" y1="133.35" x2="43.18" y2="142.24" width="0.1524" layer="91"/>
+<label x="43.815" y="142.875" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
 <pinref part="GND6" gate="1" pin="GND"/>
@@ -9638,6 +9640,11 @@ NS Package M08A</description>
 <pinref part="JP1" gate="A" pin="1"/>
 <wire x1="130.175" y1="129.54" x2="130.175" y2="136.525" width="0.1524" layer="91"/>
 <label x="130.81" y="137.795" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="H17" gate="A" pin="1"/>
+<wire x1="57.15" y1="133.35" x2="57.15" y2="142.24" width="0.1524" layer="91"/>
+<label x="57.785" y="142.875" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -9743,14 +9750,14 @@ NS Package M08A</description>
 <pinref part="U$3" gate="G$1" pin="NO2"/>
 </segment>
 <segment>
-<wire x1="-27.305" y1="132.715" x2="-27.305" y2="141.605" width="0.1524" layer="91"/>
-<label x="-26.67" y="142.875" size="1.778" layer="95" rot="R90"/>
+<wire x1="-45.085" y1="133.35" x2="-45.085" y2="142.24" width="0.1524" layer="91"/>
+<label x="-44.45" y="143.51" size="1.778" layer="95" rot="R90"/>
 <pinref part="H6" gate="A" pin="2"/>
 </segment>
 <segment>
 <pinref part="H12" gate="A" pin="3"/>
-<wire x1="29.21" y1="132.715" x2="29.21" y2="141.605" width="0.1524" layer="91"/>
-<label x="29.845" y="142.24" size="1.778" layer="95" rot="R90"/>
+<wire x1="11.43" y1="133.35" x2="11.43" y2="142.24" width="0.1524" layer="91"/>
+<label x="12.065" y="142.875" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="AUX-L" class="0">
@@ -9760,14 +9767,14 @@ NS Package M08A</description>
 <pinref part="U$3" gate="G$1" pin="NO3"/>
 </segment>
 <segment>
-<wire x1="-24.765" y1="132.715" x2="-24.765" y2="141.605" width="0.1524" layer="91"/>
-<label x="-24.13" y="142.875" size="1.778" layer="95" rot="R90"/>
+<wire x1="-42.545" y1="133.35" x2="-42.545" y2="142.24" width="0.1524" layer="91"/>
+<label x="-41.91" y="143.51" size="1.778" layer="95" rot="R90"/>
 <pinref part="H6" gate="A" pin="1"/>
 </segment>
 <segment>
 <pinref part="H10" gate="A" pin="3"/>
-<wire x1="55.88" y1="132.715" x2="55.88" y2="141.605" width="0.1524" layer="91"/>
-<label x="56.515" y="142.24" size="1.778" layer="95" rot="R90"/>
+<wire x1="38.1" y1="133.35" x2="38.1" y2="142.24" width="0.1524" layer="91"/>
+<label x="38.735" y="142.875" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="FM-R" class="0">
@@ -9782,16 +9789,16 @@ NS Package M08A</description>
 <pinref part="U$1" gate="G$1" pin="NO1"/>
 </segment>
 <segment>
-<wire x1="-15.24" y1="132.715" x2="-15.24" y2="141.605" width="0.1524" layer="91"/>
-<label x="-14.605" y="142.875" size="1.778" layer="95" rot="R90"/>
+<wire x1="-33.02" y1="133.35" x2="-33.02" y2="142.24" width="0.1524" layer="91"/>
+<label x="-32.385" y="143.51" size="1.778" layer="95" rot="R90"/>
 <pinref part="H7" gate="A" pin="3"/>
 </segment>
 <segment>
-<wire x1="45.72" y1="132.715" x2="46.355" y2="132.715" width="0.1524" layer="91"/>
-<wire x1="46.355" y1="132.715" x2="46.355" y2="141.605" width="0.1524" layer="91"/>
-<label x="46.99" y="142.24" size="1.778" layer="95" rot="R90"/>
+<wire x1="27.94" y1="133.35" x2="28.575" y2="133.35" width="0.1524" layer="91"/>
+<wire x1="28.575" y1="133.35" x2="28.575" y2="142.24" width="0.1524" layer="91"/>
+<label x="29.21" y="142.875" size="1.778" layer="95" rot="R90"/>
 <pinref part="H13" gate="G$1" pin="1"/>
-<junction x="46.355" y="132.715"/>
+<junction x="28.575" y="133.35"/>
 </segment>
 </net>
 <net name="FM-L" class="0">
@@ -9806,14 +9813,14 @@ NS Package M08A</description>
 <pinref part="U$3" gate="G$1" pin="NO1"/>
 </segment>
 <segment>
-<wire x1="-29.845" y1="132.715" x2="-29.845" y2="141.605" width="0.1524" layer="91"/>
-<label x="-29.21" y="142.875" size="1.778" layer="95" rot="R90"/>
+<wire x1="-47.625" y1="133.35" x2="-47.625" y2="142.24" width="0.1524" layer="91"/>
+<label x="-46.99" y="143.51" size="1.778" layer="95" rot="R90"/>
 <pinref part="H6" gate="A" pin="3"/>
 </segment>
 <segment>
 <pinref part="H13" gate="G$1" pin="2"/>
-<wire x1="43.815" y1="132.715" x2="43.815" y2="141.605" width="0.1524" layer="91"/>
-<label x="44.45" y="142.24" size="1.778" layer="95" rot="R90"/>
+<wire x1="26.035" y1="133.35" x2="26.035" y2="142.24" width="0.1524" layer="91"/>
+<label x="26.67" y="142.875" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="REC-R" class="0">
@@ -9823,14 +9830,14 @@ NS Package M08A</description>
 <pinref part="U$1" gate="G$1" pin="NO2"/>
 </segment>
 <segment>
-<wire x1="-12.7" y1="132.715" x2="-12.7" y2="141.605" width="0.1524" layer="91"/>
-<label x="-12.065" y="142.875" size="1.778" layer="95" rot="R90"/>
+<wire x1="-30.48" y1="133.35" x2="-30.48" y2="142.24" width="0.1524" layer="91"/>
+<label x="-29.845" y="143.51" size="1.778" layer="95" rot="R90"/>
 <pinref part="H7" gate="A" pin="2"/>
 </segment>
 <segment>
 <pinref part="H12" gate="A" pin="2"/>
-<wire x1="31.75" y1="132.715" x2="31.75" y2="141.605" width="0.1524" layer="91"/>
-<label x="32.385" y="142.24" size="1.778" layer="95" rot="R90"/>
+<wire x1="13.97" y1="133.35" x2="13.97" y2="142.24" width="0.1524" layer="91"/>
+<label x="14.605" y="142.875" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="AUX-R" class="0">
@@ -9840,14 +9847,14 @@ NS Package M08A</description>
 <pinref part="U$1" gate="G$1" pin="NO3"/>
 </segment>
 <segment>
-<wire x1="-10.16" y1="132.715" x2="-10.16" y2="141.605" width="0.1524" layer="91"/>
-<label x="-9.525" y="142.875" size="1.778" layer="95" rot="R90"/>
+<wire x1="-27.94" y1="133.35" x2="-27.94" y2="142.24" width="0.1524" layer="91"/>
+<label x="-27.305" y="143.51" size="1.778" layer="95" rot="R90"/>
 <pinref part="H7" gate="A" pin="1"/>
 </segment>
 <segment>
 <pinref part="H10" gate="A" pin="2"/>
-<wire x1="58.42" y1="132.715" x2="58.42" y2="141.605" width="0.1524" layer="91"/>
-<label x="59.055" y="142.24" size="1.778" layer="95" rot="R90"/>
+<wire x1="40.64" y1="133.35" x2="40.64" y2="142.24" width="0.1524" layer="91"/>
+<label x="41.275" y="142.875" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="AMP-R" class="0">
@@ -9862,8 +9869,8 @@ NS Package M08A</description>
 <label x="241.935" y="69.85" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
-<wire x1="1.905" y1="132.715" x2="1.905" y2="141.605" width="0.1524" layer="91"/>
-<label x="2.54" y="142.24" size="1.778" layer="95" rot="R90"/>
+<wire x1="-15.875" y1="133.35" x2="-15.875" y2="142.24" width="0.1524" layer="91"/>
+<label x="-15.24" y="142.875" size="1.778" layer="95" rot="R90"/>
 <pinref part="H8" gate="G$1" pin="1"/>
 </segment>
 </net>
@@ -9879,8 +9886,8 @@ NS Package M08A</description>
 <label x="241.935" y="29.845" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
-<wire x1="-0.635" y1="132.715" x2="-0.635" y2="141.605" width="0.1524" layer="91"/>
-<label x="0" y="142.24" size="1.778" layer="95" rot="R90"/>
+<wire x1="-18.415" y1="133.35" x2="-18.415" y2="142.24" width="0.1524" layer="91"/>
+<label x="-17.78" y="142.875" size="1.778" layer="95" rot="R90"/>
 <pinref part="H8" gate="G$1" pin="2"/>
 </segment>
 </net>
@@ -10523,8 +10530,8 @@ NS Package M08A</description>
 </net>
 <net name="L-OUT" class="0">
 <segment>
-<wire x1="11.43" y1="132.715" x2="11.43" y2="141.605" width="0.1524" layer="91"/>
-<label x="12.065" y="142.24" size="1.778" layer="95" rot="R90"/>
+<wire x1="-6.35" y1="133.35" x2="-6.35" y2="142.24" width="0.1524" layer="91"/>
+<label x="-5.715" y="142.875" size="1.778" layer="95" rot="R90"/>
 <pinref part="H9" gate="G$1" pin="2"/>
 </segment>
 <segment>
@@ -10539,8 +10546,8 @@ NS Package M08A</description>
 </net>
 <net name="R-OUT" class="0">
 <segment>
-<wire x1="13.97" y1="132.715" x2="13.97" y2="141.605" width="0.1524" layer="91"/>
-<label x="14.605" y="142.24" size="1.778" layer="95" rot="R90"/>
+<wire x1="-3.81" y1="133.35" x2="-3.81" y2="142.24" width="0.1524" layer="91"/>
+<label x="-3.175" y="142.875" size="1.778" layer="95" rot="R90"/>
 <pinref part="H9" gate="G$1" pin="1"/>
 </segment>
 <segment>
@@ -10705,6 +10712,30 @@ NS Package M08A</description>
 <pinref part="H15" gate="A" pin="1"/>
 <wire x1="-5.08" y1="74.93" x2="-5.08" y2="80.01" width="0.1524" layer="91"/>
 <wire x1="-5.08" y1="80.01" x2="-7.62" y2="80.01" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="BT-L" class="0">
+<segment>
+<pinref part="H17" gate="A" pin="3"/>
+<wire x1="52.07" y1="133.35" x2="52.07" y2="142.24" width="0.1524" layer="91"/>
+<label x="52.705" y="142.875" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="U$3" gate="G$1" pin="NO4"/>
+<wire x1="161.29" y1="29.845" x2="156.21" y2="29.845" width="0.1524" layer="91"/>
+<label x="155.575" y="30.48" size="1.778" layer="95" rot="R180"/>
+</segment>
+</net>
+<net name="BT-R" class="0">
+<segment>
+<pinref part="H17" gate="A" pin="2"/>
+<wire x1="54.61" y1="133.35" x2="54.61" y2="142.24" width="0.1524" layer="91"/>
+<label x="55.245" y="142.875" size="1.778" layer="95" rot="R90"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="NO4"/>
+<wire x1="161.29" y1="69.215" x2="156.21" y2="69.215" width="0.1524" layer="91"/>
+<label x="155.575" y="69.85" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 </nets>
