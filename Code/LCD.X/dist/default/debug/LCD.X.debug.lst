@@ -1,0 +1,226 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.33 build 59893 
+                                                                                               Tue Feb 24 16:44:11 2015
+
+Microchip Technology Omniscient Code Generator (Lite mode) build 59893
+     1                           	processor	18F6490
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+     8                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+     9                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    10  0000                     _LATD	set	3980
+    11  0000                     _LATF	set	3982
+    12  0000                     _TRISD	set	3989
+    13  0000                     _TRISF	set	3991
+    14                           
+    15                           ; 0 bytes @ 0x5
+    16 ;;
+    17 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+    18 ;;
+    19 ;; *************** function _main *****************
+    20 ;; Defined at:
+    21 ;;		line 17 in file "main.c"
+    22 ;; Parameters:    Size  Location     Type
+    23 ;;  argc            2    0[COMRAM] int 
+    24 ;;  argv            3    2[COMRAM] PTR PTR unsigned char 
+    25 ;; Auto vars:     Size  Location     Type
+    26 ;;		None
+    27 ;; Return value:  Size  Location     Type
+    28 ;;                  2    0[COMRAM] int 
+    29 ;; Registers used:
+    30 ;;		wreg, status,2, status,0
+    31 ;; Tracked objects:
+    32 ;;		On entry : 0/0
+    33 ;;		On exit  : 0/0
+    34 ;;		Unchanged: 0/0
+    35 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2
+    36 ;;      Params:         5       0       0       0
+    37 ;;      Locals:         0       0       0       0
+    38 ;;      Temps:          0       0       0       0
+    39 ;;      Totals:         5       0       0       0
+    40 ;;Total ram usage:        5 bytes
+    41 ;; This function calls:
+    42 ;;		Nothing
+    43 ;; This function is called by:
+    44 ;;		Startup code after reset
+    45 ;; This function uses a non-reentrant model
+    46 ;;
+    47                           
+    48                           	psect	text0
+    49  003D96                     __ptext0:
+    50                           	opt stack 0
+    51  003D96                     _main:
+    52                           	opt stack 30
+    53                           
+    54                           ;main.c: 20: TRISD = 0x00;
+    55                           
+    56                           ;incstack = 0
+    57  003D96  0E00               	movlw	0
+    58  003D98  6E95               	movwf	3989,c	;volatile
+    59                           
+    60                           ;main.c: 21: TRISF &= 0b11111100;
+    61  003D9A  0EFC               	movlw	252
+    62  003D9C  1697               	andwf	3991,f,c	;volatile
+    63                           
+    64                           ;main.c: 23: LATF &= 0b00000000;
+    65  003D9E  0E00               	movlw	0
+    66  003DA0  6E8E               	movwf	3982,c	;volatile
+    67                           
+    68                           ;main.c: 24: LATD = 0b10000000;
+    69  003DA2  0E80               	movlw	128
+    70  003DA4  6E8C               	movwf	3980,c	;volatile
+    71                           
+    72                           ;main.c: 25: LATF |= 0b00000001;
+    73  003DA6  808E               	bsf	3982,0,c	;volatile
+    74                           
+    75                           ;main.c: 27: LATF &= 0b00000000;
+    76  003DA8  0E00               	movlw	0
+    77  003DAA  6E8E               	movwf	3982,c	;volatile
+    78                           
+    79                           ;main.c: 28: LATD = 0b10000000;
+    80  003DAC  0E80               	movlw	128
+    81  003DAE  6E8C               	movwf	3980,c	;volatile
+    82                           
+    83                           ;main.c: 29: LATF |= 0b00000001;
+    84  003DB0  808E               	bsf	3982,0,c	;volatile
+    85                           
+    86                           ;main.c: 31: LATF |= 0b00000010;
+    87  003DB2  828E               	bsf	3982,1,c	;volatile
+    88                           
+    89                           ;main.c: 32: LATD = 0b00100011;
+    90  003DB4  0E23               	movlw	35
+    91  003DB6  6E8C               	movwf	3980,c	;volatile
+    92                           
+    93                           ;main.c: 33: LATF |= 0b00000011;
+    94  003DB8  0E03               	movlw	3
+    95  003DBA  128E               	iorwf	3982,f,c	;volatile
+    96  003DBC  EF01  F000         	goto	start
+    97  003DC0                     __end_of_main:
+    98                           	opt stack 0
+    99  0000                     
+   100                           	psect	cinit
+   101  003D90                     __pcinit:
+   102                           	opt stack 0
+   103  003D90                     start_initialization:
+   104                           	opt stack 0
+   105  003D90                     __initialization:
+   106                           	opt stack 0
+   107  003D90                     end_of_initialization:
+   108                           	opt stack 0
+   109  003D90                     __end_of__initialization:
+   110                           	opt stack 0
+   111  003D90  0100               	movlb	0
+   112  003D92  EFCB  F01E         	goto	_main	;jump to C main() function
+   113                           
+   114                           	psect	cstackCOMRAM
+   115  000001                     __pcstackCOMRAM:
+   116                           	opt stack 0
+   117  000001                     
+   118                           ; 2 bytes @ 0x0
+   119  000001                     	ds	2
+   120  000003                     
+   121                           ; 3 bytes @ 0x2
+   122  000003                     	ds	3
+   123  000006                     
+   124                           	psect	rparam
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      5       5
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           244      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 5     0      5       0
+                                              0 COMRAM     5     0      5
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      5       5       1        5.3%
+STACK                0      0       0       2        0.0%
+BITBANK0            A0      0       0       3        0.0%
+BANK0               A0      0       0       4        0.0%
+BITBANK1           100      0       0       5        0.0%
+BANK1              100      0       0       6        0.0%
+ABS                  0      0       0       7        0.0%
+BITBANK2            F4      0       0       8        0.0%
+BANK2               F4      0       0       9        0.0%
+BIGRAM             2F3      0       0      10        0.0%
+DATA                 0      0       0      11        0.0%
+BITSFR_6             0      0       0      40        0.0%
+SFR_6                0      0       0      40        0.0%
+BITSFR_5             0      0       0      40        0.0%
+SFR_5                0      0       0      40        0.0%
+BITSFR_4             0      0       0      40        0.0%
+SFR_4                0      0       0      40        0.0%
+BITSFR_3             0      0       0      40        0.0%
+SFR_3                0      0       0      40        0.0%
+BITSFR_2             0      0       0      40        0.0%
+SFR_2                0      0       0      40        0.0%
+BITSFR_1             0      0       0      40        0.0%
+SFR_1                0      0       0      40        0.0%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.33 build 59893 
+Symbol Table                                                                                   Tue Feb 24 16:44:11 2015
+
+                   _LATD 000F8C                     _LATF 000F8E                     _main 3D96  
+                   start 0002                    ?_main 0001                    _TRISD 000F95  
+                  _TRISF 000F97          __initialization 3D90             __end_of_main 3DC0  
+                 ??_main 0006            __activetblptr 000000               __accesstop 0060  
+__end_of__initialization 3D90           __pcstackCOMRAM 0001                  __Hparam 0000  
+                __Lparam 0000                  __pcinit 3D90                  __ramtop 0300  
+                __ptext0 3D96     end_of_initialization 3D90      start_initialization 3D90  
+               __Hrparam 0000                 __Lrparam 0000            __size_of_main 002A  
+               main@argc 0001                 main@argv 0003  

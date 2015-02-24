@@ -1,0 +1,30 @@
+### HEXMate logfile and output summary ###
+### Memory Usage ###
+ Unused memory ranges:
+  6h - 3D8Fh
+  3DC0h - 1FFFFFh
+  200008h - 2FFFFFh
+  30000Ah - 30003Fh
+  
+ dist/default/debug\LCD.X.debug.hex ranges:
+  0h - 5h
+  3D90h - 3DBFh
+  200000h - 200007h
+  300000h - 300009h
+  
+### Hex Memory Map ###
+ Legend:
+  - = Unused memory
+  F = Filled ROM
+  S = Stored serial code
+  A = Stored ASCII string
+  R = Reserved for checksum
+  C = Stored checksum result
+  T = Trailing code
+  & = Find & replace opcode
+  X = Find & delete opcode
+  1 = dist/default/debug\LCD.X.debug.hex
+00000000: 111111----------------------------------------------------------
+00003D80: ----------------111111111111111111111111111111111111111111111111
+00200000: 11111111--------------------------------------------------------
+00300000: 1111111111------------------------------------------------------
