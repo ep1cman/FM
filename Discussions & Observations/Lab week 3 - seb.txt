@@ -1,0 +1,15 @@
+To tune the radio mute does not need to be set the process is:
+
+0. Initialise device (only need to happen once)
+1. Clear tune bit
+2. Clear seek bit
+3. Set BAND and SPACE (If not like default)
+4. Set chan
+
+chan = Frequency(MHz)*10 -690
+
+5. Set tune bit
+6. Wait for STC bit to be set
+
+PIC I2C tutorial:
+http://electronics.stackexchange.com/questions/55545/starting-with-i2c-on-pic18s
