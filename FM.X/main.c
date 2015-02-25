@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   main.c
  * Author: Sebastian Goscik
  * Project: FM Radio
@@ -15,7 +15,7 @@
 // Use project enums instead of #define for ON and OFF.
 
 // CONFIG1H
-#pragma config OSC = RCIO       // Oscillator (External RC oscillator, port function on RA6)
+#pragma config OSC = INTIO67       // Oscillator (External RC oscillator, port function on RA6)
 #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable (Fail-Safe Clock Monitor disabled)
 #pragma config IESO = OFF       // Internal External Switch Over Mode (Oscillator Switchover mode disabled)
 
@@ -46,6 +46,8 @@
 
 #define TUNE 9
 #define SEEK 14
+
+#define _XTAL_FREQ 8000000
 
 unsigned int ar1010_registers[18] = {
   0xFFFB, // R0:  1111 1111 1111 1011
@@ -142,4 +144,3 @@ char tune(int freq)
 int main(int argc, char** argv) {
     return (EXIT_SUCCESS);
 }
-
