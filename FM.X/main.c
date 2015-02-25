@@ -104,6 +104,10 @@ unsigned int readRegister(unsigned char address)
     val &= ReadI2C();
     IdleI2C();
     StopI2C();
+    if (address<18)
+    {
+        ar1010_registers[address] = val;
+    }
     return val;
 }
 
