@@ -15,7 +15,7 @@
 // Use project enums instead of #define for ON and OFF.
 
 // CONFIG1H
-#pragma config OSC = RCIO       // Oscillator (External RC oscillator, port function on RA6)
+#pragma config OSC = INTIO67       // Oscillator (External RC oscillator, port function on RA6)
 #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable (Fail-Safe Clock Monitor disabled)
 #pragma config IESO = OFF       // Internal External Switch Over Mode (Oscillator Switchover mode disabled)
 
@@ -42,6 +42,7 @@
 // CONFIG5L
 #pragma config CP = OFF         // Code Protect 00000-03FFF (Program memory block (000000-003FFFh) not code-protected)
 
+#define _XTAL_FREQ 8000000
 int main(int argc, char** argv) {
 
     TRISD = 0x00;
