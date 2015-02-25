@@ -31,3 +31,27 @@
 # Office temp files
 ~$*.xlsx
 ~$*.docx
+
+# Ignore MPLAB junk
+*.d
+*.pre
+*.p1
+*.lst
+*.sym
+*.obj
+*.o
+*.sdb
+*.obj.dmp
+FM.X/html/
+FM.X/nbproject/private/
+FM.X/nbproject/Package-*.bash
+FM.X/build/
+FM.X/nbbuild/
+FM.X/dist/
+FM.X/nbdist/
+FM.X/nbactions.xml
+FM.X/nb-configuration.xml
+FM.X/funclist
+FM.X/nbproject/Makefile-*
+FM.X/disassembly/
+FM.X/*.map
