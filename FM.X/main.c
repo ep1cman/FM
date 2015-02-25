@@ -127,18 +127,17 @@ void initAR1010()
     }
 }
 
-char tune(int freq)
+void tune(int freq)
 {
    setBit(0x02, TUNE, 0);
    setBit(0x03, SEEK, 0);
    unsigned int chan = freq*10-690;
-   writeRegister(2, ar1010_registers[2]&chan);
+   writeRegister(2, (ar1010_registers[2]&0xFC00) + chan);
    setBit(0x02, TUNE, 1);
 
-   //TODO: delay
+   //Wait for STC flag
+   while(readRegister(0x13)&(1<<5) != 1){};
 
-   //check STC flag
-   return (readRegister(0x13)&(1<<5));
 }
 
 int main(int argc, char** argv) {
