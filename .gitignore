@@ -55,3 +55,4 @@ FM.X/funclist
 FM.X/nbproject/Makefile-*
 FM.X/disassembly/
 FM.X/*.map
+FM.X/debug
