@@ -51,7 +51,7 @@
 
 unsigned int ar1010_registers[18] = {
   0xFFFB, // R0:  1111 1111 1111 1011
-  0x5B15, // R1:  0101 1011 0001 0101 - Mono (D3), Softmute (D2), Hardmute (D1)  !! SOFT-MUTED BY DEFAULT !!
+  0x5B11, // R1:  0101 1011 0001 0001 - Mono (D3), Softmute (D2), Hardmute (D1)
   0xD0B9, // R2:  1101 0000 1011 1001 - Tune/Channel
   0xA010, // R3:  1010 0000 0001 0000 - Seekup (D15), Seek bit (D14), Space 100kHz (D13), Seek threshold: 16 (D6-D0)
   0x0780, // R4:  0000 0111 1000 0000
