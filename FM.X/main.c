@@ -42,6 +42,103 @@
 // CONFIG5L
 #pragma config CP = OFF         // Code Protect 00000-03FFF (Program memory block (000000-003FFFh) not code-protected)
 
+#define AR1010_ADDR 0x20
+
+#define TUNE 9
+#define SEEK 14
+
+unsigned int ar1010_registers[18] = {
+  0xFFFB, // R0:  1111 1111 1111 1011
+  0x5B15, // R1:  0101 1011 0001 0101 - Mono (D3), Softmute (D2), Hardmute (D1)  !! SOFT-MUTED BY DEFAULT !!
+  0xD0B9, // R2:  1101 0000 1011 1001 - Tune/Channel
+  0xA010, // R3:  1010 0000 0001 0000 - Seekup (D15), Seek bit (D14), Space 100kHz (D13), Seek threshold: 16 (D6-D0)
+  0x0780, // R4:  0000 0111 1000 0000
+  0x28AB, // R5:  0010 1000 1010 1011
+  0x6400, // R6:  0110 0100 0000 0000
+  0x1EE7, // R7:  0001 1110 1110 0111
+  0x7141, // R8:  0111 0001 0100 0001
+  0x007D, // R9:  0000 0000 0111 1101
+  0x82C6, // R10: 1000 0010 1100 0110 - Seek wrap (D3)
+  0x4E55, // R11: 0100 1110 0101 0101
+  0x970C, // R12: 1001 0111 0000 1100
+  0xB845, // R13: 1011 1000 0100 0101
+  0xFC2D, // R14: 1111 1100 0010 1101 - Volume control 2 (D12-D15)
+  0x8097, // R15: 1000 0000 1001 0111
+  0x04A1, // R16: 0000 0100 1010 0001
+  0xDF61  // R17: 1101 1111 0110 0001
+};
+
+void writeRegister(unsigned char address, unsigned int data)
+{
+    IdleI2C();               //Wait for I2C bus to be free
+    StartI2C();              //Place a START condition on the bus
+    IdleI2C();               //Wait for START condition to end
+    WriteI2C(AR1010_ADDR);   //Write AR1010 address to the bus
+    IdleI2C();               //Wait for ACK
+    WriteI2C(address);       //Tell the AR1010 what register we are writing to
+    IdleI2C();               //Wait for ACK
+    WriteI2C(data >> 8);     //Write upper byte of register
+    IdleI2C();               //Wait for ACK
+    WriteI2C(data & 0x00FF); //Write lower byte of register
+    IdleI2C();               //Wait for ACK
+    StopI2C();               //Place stop condition on the bus
+    ar1010_registers[address] = data; //Save data written to array
+}
+
+unsigned int readRegister(unsigned char address)
+{
+    IdleI2C();
+    StartI2C();
+    WriteI2C(AR1010_ADDR);
+    IdleI2C();
+    WriteI2C(address);
+    IdleI2C();
+    StartI2C();
+    WriteI2C(AR1010_ADDR+1);
+    IdleI2C();
+
+    unsigned int val = ReadI2C() << 8;
+    IdleI2C();
+    val &= ReadI2C();
+    IdleI2C();
+    StopI2C();
+    return val;
+}
+
+void setBit(unsigned char address, unsigned char bitToSet, unsigned char set)
+{
+    unsigned int val = ar1010_registers[address];
+    if (set)
+    {
+        val |= (1<<bitToSet);
+    } else {
+        val &= ~(1<<bitToSet);
+    }
+    writeRegister(address, val);
+}
+
+void initAR1010()
+{
+    for (int i=0; i<18; i++)
+    {
+        writeRegister(i, ar1010_registers[i]);
+    }
+}
+
+char tune(int freq)
+{
+   setBit(0x02, TUNE, 0);
+   setBit(0x03, SEEK, 0);
+   unsigned int chan = freq*10-690;
+   writeRegister(2, ar1010_registers[2]&chan);
+   setBit(0x02, TUNE, 1);
+
+   //TODO: delay
+
+   //check STC flag
+   return (readRegister(0x13)&(1<<5));
+}
+
 int main(int argc, char** argv) {
     return (EXIT_SUCCESS);
 }
