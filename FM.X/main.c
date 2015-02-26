@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 #include <xc.h>
-
+#include <i2c.h>
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
@@ -146,6 +146,7 @@ void tune(int freq)
 unsigned char VOLUME[19] = {0xF, 0xF, 0xF, 0xF, 0xB, 0xB, 0xB, 0xA, 0x9, 0x8, 0x7, 0x6, 0x6, 0x6, 0x3, 0x3, 0x2, 0x1, 0x0};
 unsigned char VOLUME2[19] = {0x0, 0xC, 0xD, 0xF, 0xC, 0xD, 0xF, 0xF, 0xF, 0xF, 0xF, 0xD, 0xE, 0xF, 0xE, 0xF, 0xF, 0xF, 0xF};
 unsigned char currentVolume = 0;
+
 void setVolume(char volume)
 {
     writeRegister(3, (ar1010_registers[3]&0xF87F)&VOLUME[volume]);
@@ -163,6 +164,26 @@ void volumeDown()
 {
     if (currentVolume==0) return;
     setVolume(--currentVolume);
+}
+
+void setHMute()
+{
+    setBit(1, 1, 1);
+}
+
+void clearHMute()
+{
+    setBit(1,1,0);
+}
+
+void setSMute()
+{
+    setBit(1,2,1);
+}
+
+void clearSMute()
+{
+    setBit(1,2,0);
 }
 
 int main(int argc, char** argv) {
