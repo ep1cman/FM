@@ -56,3 +56,6 @@ FM.X/nbproject/Makefile-*
 FM.X/disassembly/
 FM.X/*.map
 FM.X/debug
+
+# Windows junk
+thumbs.db
