@@ -163,7 +163,9 @@ void Address_Select(int line)
 
 void Data_Select()
 {
-    line = 1;
+    line = 1; /* temp for testing, line to be determined by menu structure */
+    if (line == 1)
+    {
     Address_Select(line);
     for (int x = 0; x < 16; x++)
         {
@@ -171,8 +173,11 @@ void Data_Select()
         Write_LCD(DATA); /* Write data */
         Segment = Segment + 1; /* Go to next segment */
         }
+    }
     
-    line = 2;
+    line = 2; /* temp for testing, line to be determined by menu structure */
+    if (line == 2)
+    {
     Address_Select(line);
     for (int x = 0; x < 16; x++)
         {
@@ -180,6 +185,7 @@ void Data_Select()
         Write_LCD(DATA); /* Write data */
         Segment = Segment + 1; /* Go to next segment */
         }
+    }
 }
 
 void Load_Data()
