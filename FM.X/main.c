@@ -21,11 +21,10 @@ int main(int argc, char** argv)
 
 int LCD()
 {   
- 
     int ADD = 0b10000000;  /* Intial Segment Address */
     int DATA[] = {/* load output data here */};
-    int LCD_Address(int sn , int *ADD);
-    int LCD_Data(int sn , int *DATA);
+    int LCD_Address(int sn);
+    int LCD_Data(int sn);
 
     /* Initialise Ports */
     TRISD = 0x00;
@@ -48,19 +47,19 @@ int LCD()
     }
 
 }
-int LCD_Address(int sn , int *ADD)
+int LCD_Address(int sn)
 {
     /*Set DDRAM Address*/
     LATF &= 0b00000000;
-    if (sn >= 16) *ADD |= 0b01000000; /* Start new line if top line full */
-    LATD = *ADD;
+    if (sn >= 16) ADD |= 0b01000000; /* Start new line if top line full */
+    LATD = ADD;
     LATF |= 0b00000001;
-    *ADD++; /* Set next adress */
+    ADD++; /* Set next adress */
     return 0;
 }
-int LCD_Data(int sn , int *DATA)
+int LCD_Data(int sn)
 {
-    /*Set Output data*/
+    /* Output data */
     LATF |= 0b00000010;
     LATD = DATA[sn];
     LATF |= 0b00000011;
