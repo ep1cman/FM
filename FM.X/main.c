@@ -9,7 +9,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
