@@ -4531,9 +4531,15 @@ design rules under a new name.</description>
 <via x="75.438" y="73.152" extent="1-16" drill="0.6" shape="square"/>
 <wire x1="75.438" y1="73.152" x2="78.486" y2="76.2" width="0.3048" layer="1"/>
 <wire x1="78.486" y1="76.2" x2="80.4857" y2="76.2" width="0.3048" layer="1"/>
+<contactref element="C4" pad="1"/>
+<contactref element="+5V" pad="MP"/>
+<contactref element="VOLTAGE_REGULATOR" pad="3"/>
 <wire x1="31.75" y1="55.5625" x2="51.8175" y2="73.2325" width="0" layer="19" extent="1-1"/>
 <wire x1="29.21" y1="55.5625" x2="31.75" y2="55.5625" width="0" layer="19" extent="1-1"/>
 <wire x1="26.67" y1="55.5625" x2="29.21" y2="55.5625" width="0" layer="19" extent="1-1"/>
+<wire x1="4.699" y1="50.8" x2="26.67" y2="55.5625" width="0" layer="19" extent="1-1"/>
+<wire x1="2.8575" y1="48.2575" x2="4.699" y2="50.8" width="0" layer="19" extent="1-1"/>
+<wire x1="2.6025" y1="57.122" x2="4.699" y2="50.8" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="BT-L">
 <contactref element="H12" pad="3"/>
@@ -4824,15 +4830,6 @@ design rules under a new name.</description>
 <wire x1="48.6875" y1="71.9625" x2="49.2125" y2="71.4375" width="0.3048" layer="1"/>
 <wire x1="49.2125" y1="71.4375" x2="49.2125" y2="68.3975" width="0.3048" layer="1"/>
 <wire x1="49.2125" y1="68.3975" x2="49.3775" y2="68.2325" width="0.3048" layer="1"/>
-</signal>
-<signal name="N$2">
-<contactref element="VOLTAGE_REGULATOR" pad="3"/>
-<contactref element="C4" pad="1"/>
-<contactref element="+5V" pad="MP"/>
-<wire x1="4.699" y1="50.8" x2="2.6025" y2="52.8965" width="0.762" layer="1"/>
-<wire x1="2.6025" y1="52.8965" x2="2.6025" y2="57.122" width="0.762" layer="1"/>
-<wire x1="4.699" y1="50.8" x2="2.8575" y2="48.9585" width="0.762" layer="1"/>
-<wire x1="2.8575" y1="48.9585" x2="2.8575" y2="48.2575" width="0.762" layer="1"/>
 </signal>
 <signal name="N$10">
 <contactref element="C10" pad="2"/>
