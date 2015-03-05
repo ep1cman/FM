@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.025" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.025" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -10961,14 +10961,14 @@ EIA Code 3216, Size A, 3.2 mm x 1.6 mm, grid 0.0125 inch</description>
 <pinref part="GND8" gate="1" pin="GND"/>
 <pinref part="C4" gate="G$1" pin="2"/>
 <wire x1="255.905" y1="93.345" x2="255.905" y2="94.615" width="0.1524" layer="91"/>
-<pinref part="0V" gate="1" pin="MP"/>
 <pinref part="VOLTAGE_REGULATOR" gate="A" pin="GND"/>
 <wire x1="263.525" y1="99.695" x2="266.065" y2="99.695" width="0.1524" layer="91"/>
 <wire x1="263.525" y1="99.695" x2="263.525" y2="94.615" width="0.1524" layer="91"/>
-<wire x1="246.38" y1="94.615" x2="255.905" y2="94.615" width="0.1524" layer="91"/>
 <wire x1="255.905" y1="94.615" x2="263.525" y2="94.615" width="0.1524" layer="91"/>
 <wire x1="255.905" y1="96.52" x2="255.905" y2="94.615" width="0.1524" layer="91"/>
 <junction x="255.905" y="94.615"/>
+<pinref part="0V" gate="1" pin="MP"/>
+<wire x1="246.38" y1="94.615" x2="255.905" y2="94.615" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="H5" gate="A" pin="3"/>
@@ -11810,30 +11810,6 @@ EIA Code 3216, Size A, 3.2 mm x 1.6 mm, grid 0.0125 inch</description>
 <label x="12.7" y="92.075" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
-<net name="PIC62" class="0">
-<segment>
-<pinref part="H1" gate="A" pin="14"/>
-<wire x1="-85.725" y1="52.705" x2="-79.375" y2="52.705" width="0.1524" layer="91"/>
-<label x="-78.74" y="52.07" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="MICROCONTROLLER" gate="A" pin="RE4/COM1"/>
-<wire x1="102.235" y1="38.1" x2="104.775" y2="38.1" width="0.1524" layer="91"/>
-<label x="105.41" y="37.465" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="PIC61" class="0">
-<segment>
-<pinref part="H1" gate="A" pin="13"/>
-<wire x1="-85.725" y1="50.165" x2="-79.375" y2="50.165" width="0.1524" layer="91"/>
-<label x="-78.74" y="49.53" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="MICROCONTROLLER" gate="A" pin="RE5/COM2"/>
-<wire x1="102.235" y1="35.56" x2="104.775" y2="35.56" width="0.1524" layer="91"/>
-<label x="105.41" y="34.925" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="PIC60" class="0">
 <segment>
 <pinref part="H1" gate="A" pin="12"/>
@@ -12131,8 +12107,6 @@ EIA Code 3216, Size A, 3.2 mm x 1.6 mm, grid 0.0125 inch</description>
 <wire x1="161.29" y1="69.215" x2="156.21" y2="69.215" width="0.1524" layer="91"/>
 <label x="155.575" y="69.85" size="1.778" layer="95" rot="R180"/>
 </segment>
-</net>
-<net name="BR-R" class="0">
 <segment>
 <pinref part="H7" gate="A" pin="1"/>
 <wire x1="-29.845" y1="135.89" x2="-29.845" y2="144.78" width="0.1524" layer="91"/>
@@ -12311,36 +12285,35 @@ EIA Code 3216, Size A, 3.2 mm x 1.6 mm, grid 0.0125 inch</description>
 </net>
 <net name="E-PIC" class="0">
 <segment>
-<pinref part="MICROCONTROLLER" gate="A" pin="RB0/INT0"/>
-<wire x1="102.235" y1="60.96" x2="104.775" y2="60.96" width="0.1524" layer="91"/>
-<label x="105.41" y="60.325" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="H2" gate="A" pin="16"/>
-<wire x1="-85.725" y1="106.68" x2="-79.375" y2="106.68" width="0.1524" layer="91"/>
-<label x="-78.74" y="106.045" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="Q1" gate="G$1" pin="G"/>
 <wire x1="-86.995" y1="-38.1" x2="-88.265" y2="-38.1" width="0.1524" layer="91"/>
 <label x="-95.885" y="-38.735" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="H1" gate="A" pin="13"/>
+<wire x1="-85.725" y1="50.165" x2="-79.375" y2="50.165" width="0.1524" layer="91"/>
+<label x="-78.74" y="49.53" size="1.778" layer="95"/>
+</segment>
+<segment>
+<wire x1="102.235" y1="35.56" x2="104.775" y2="35.56" width="0.1524" layer="91"/>
+<label x="105.41" y="34.925" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="RS-PIC" class="0">
-<segment>
-<pinref part="MICROCONTROLLER" gate="A" pin="RB1/INT1/SEG8"/>
-<wire x1="102.235" y1="58.42" x2="104.775" y2="58.42" width="0.1524" layer="91"/>
-<label x="105.41" y="57.785" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="H2" gate="A" pin="15"/>
-<wire x1="-85.725" y1="104.14" x2="-79.375" y2="104.14" width="0.1524" layer="91"/>
-<label x="-78.74" y="103.505" size="1.778" layer="95"/>
-</segment>
 <segment>
 <pinref part="Q2" gate="G$1" pin="G"/>
 <wire x1="-57.785" y1="-38.1" x2="-59.055" y2="-38.1" width="0.1524" layer="91"/>
 <label x="-66.675" y="-38.735" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="MICROCONTROLLER" gate="A" pin="RE4/COM1"/>
+<wire x1="102.235" y1="38.1" x2="104.775" y2="38.1" width="0.1524" layer="91"/>
+<label x="105.41" y="37.465" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="H1" gate="A" pin="14"/>
+<wire x1="-85.725" y1="52.705" x2="-79.375" y2="52.705" width="0.1524" layer="91"/>
+<label x="-78.74" y="52.07" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="D0-PIC" class="0">
@@ -12498,6 +12471,30 @@ EIA Code 3216, Size A, 3.2 mm x 1.6 mm, grid 0.0125 inch</description>
 <wire x1="297.18" y1="17.78" x2="297.18" y2="18.415" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="PIC47" class="0">
+<segment>
+<pinref part="MICROCONTROLLER" gate="A" pin="RB1/INT1/SEG8"/>
+<wire x1="102.235" y1="58.42" x2="104.775" y2="58.42" width="0.1524" layer="91"/>
+<label x="105.41" y="57.785" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="H2" gate="A" pin="15"/>
+<wire x1="-85.725" y1="104.14" x2="-79.375" y2="104.14" width="0.1524" layer="91"/>
+<label x="-78.74" y="103.505" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PIC48" class="0">
+<segment>
+<pinref part="MICROCONTROLLER" gate="A" pin="RB0/INT0"/>
+<wire x1="102.235" y1="60.96" x2="104.775" y2="60.96" width="0.1524" layer="91"/>
+<label x="105.41" y="60.325" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="H2" gate="A" pin="16"/>
+<wire x1="-85.725" y1="106.68" x2="-79.375" y2="106.68" width="0.1524" layer="91"/>
+<label x="-78.74" y="106.045" size="1.778" layer="95"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
@@ -12514,7 +12511,15 @@ EIA Code 3216, Size A, 3.2 mm x 1.6 mm, grid 0.0125 inch</description>
 <approved hash="104,1,15.875,2.54,MICROCONTROLLER,AVSS,GND,,,"/>
 <approved hash="104,1,274.32,74.295,AMP-R,V+,+5V,,,"/>
 <approved hash="104,1,274.32,59.055,AMP-R,V-,GND,,,"/>
-<approved hash="106,1,-29.845,135.89,BR-R,,,,,"/>
+<approved hash="208,1,228.6,143.51,+3V3,sup,,,,"/>
+<approved hash="208,1,13.335,107.315,+3V3,sup,,,,"/>
+<approved hash="208,1,233.045,14.605,+3V3,sup,,,,"/>
+<approved hash="208,1,207.01,24.765,+3V3,sup,,,,"/>
+<approved hash="208,1,233.045,53.975,+3V3,sup,,,,"/>
+<approved hash="208,1,301.625,104.775,+3V3,out,,,,"/>
+<approved hash="208,1,307.975,104.775,+3V3,sup,,,,"/>
+<approved hash="208,1,-15.875,97.155,+3V3,sup,,,,"/>
+<approved hash="208,1,120.65,88.9,+3V3,sup,,,,"/>
 <approved hash="106,1,-77.7875,135.89,N$18,,,,,"/>
 <approved hash="108,1,181.61,-47.625,D7,,,,,"/>
 <approved hash="108,1,152.4,-47.625,D6,,,,,"/>
@@ -12540,16 +12545,16 @@ EIA Code 3216, Size A, 3.2 mm x 1.6 mm, grid 0.0125 inch</description>
 <approved hash="113,1,33.1512,135.653,H12,,,,,"/>
 <approved hash="113,1,-32.2538,135.653,H7,,,,,"/>
 <approved hash="113,1,-48.1288,135.653,H6,,,,,"/>
-<approved hash="113,1,-78.7753,-35.56,Q1,,,,,"/>
-<approved hash="113,1,-49.5653,-35.56,Q2,,,,,"/>
-<approved hash="113,1,-20.3553,-35.56,Q3,,,,,"/>
-<approved hash="113,1,8.85471,-35.56,Q4,,,,,"/>
-<approved hash="113,1,38.0647,-35.56,Q5,,,,,"/>
-<approved hash="113,1,67.2747,-35.56,Q6,,,,,"/>
-<approved hash="113,1,96.4847,-35.56,Q7,,,,,"/>
-<approved hash="113,1,125.695,-35.56,Q8,,,,,"/>
-<approved hash="113,1,150.46,-36.195,Q9,,,,,"/>
-<approved hash="113,1,180.379,-36.195,Q10,,,,,"/>
+<approved hash="113,1,-78.7307,-35.56,Q1,,,,,"/>
+<approved hash="113,1,-49.5207,-35.56,Q2,,,,,"/>
+<approved hash="113,1,-20.3107,-35.56,Q3,,,,,"/>
+<approved hash="113,1,8.89934,-35.56,Q4,,,,,"/>
+<approved hash="113,1,38.1093,-35.56,Q5,,,,,"/>
+<approved hash="113,1,67.3193,-35.56,Q6,,,,,"/>
+<approved hash="113,1,96.5293,-35.56,Q7,,,,,"/>
+<approved hash="113,1,125.739,-35.56,Q8,,,,,"/>
+<approved hash="113,1,150.504,-36.195,Q9,,,,,"/>
+<approved hash="113,1,180.424,-36.195,Q10,,,,,"/>
 </errors>
 </schematic>
 </drawing>
