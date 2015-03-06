@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.025" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -12293,6 +12293,7 @@ EIA Code 3216, Size A, 3.2 mm x 1.6 mm, grid 0.0125 inch</description>
 <label x="-78.74" y="49.53" size="1.778" layer="95"/>
 </segment>
 <segment>
+<pinref part="MICROCONTROLLER" gate="A" pin="RE5/COM2"/>
 <wire x1="102.235" y1="35.56" x2="104.775" y2="35.56" width="0.1524" layer="91"/>
 <label x="105.41" y="34.925" size="1.778" layer="95"/>
 </segment>
@@ -12519,10 +12520,7 @@ EIA Code 3216, Size A, 3.2 mm x 1.6 mm, grid 0.0125 inch</description>
 <approved hash="208,1,-15.875,97.155,+3V3,sup,,,,"/>
 <approved hash="208,1,120.65,88.9,+3V3,sup,,,,"/>
 <approved hash="106,1,-77.7875,135.89,N$18,,,,,"/>
-<approved hash="108,1,181.61,-47.625,D7,,,,,"/>
-<approved hash="108,1,152.4,-47.625,D6,,,,,"/>
 <approved hash="108,1,-76.835,-45.72,E,,,,,"/>
-<approved hash="111,1,102.235,35.56,E-PIC,,,,,"/>
 <approved hash="113,1,-70.0363,135.653,H5,,,,,"/>
 <approved hash="113,1,-31.3521,36.6988,H19,,,,,"/>
 <approved hash="113,1,-31.115,11.7052,R11,,,,,"/>

@@ -4830,6 +4830,10 @@ design rules under a new name.</description>
 <wire x1="82.6548" y1="12.01105" x2="82.6548" y2="13.5486" width="0.3048" layer="1"/>
 <wire x1="82.39125" y1="11.7475" x2="86.4725" y2="15.82875" width="0.3048" layer="16"/>
 <wire x1="86.4725" y1="15.82875" x2="86.4725" y2="19.2275" width="0.3048" layer="16"/>
+<contactref element="MICROCONTROLLER" pad="61"/>
+<wire x1="77.4881" y1="35.4146" x2="77.4881" y2="34.3081" width="0.3048" layer="1"/>
+<wire x1="77.4881" y1="34.3081" x2="77.47" y2="34.29" width="0.3048" layer="1"/>
+<wire x1="77.47" y1="34.29" x2="86.4725" y2="19.2275" width="0.3048" layer="1"/>
 </signal>
 <signal name="RS-PIC">
 <contactref element="Q2" pad="1"/>
