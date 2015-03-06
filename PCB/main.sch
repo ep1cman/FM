@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.025" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -12121,7 +12121,6 @@ EIA Code 3216, Size A, 3.2 mm x 1.6 mm, grid 0.0125 inch</description>
 </segment>
 <segment>
 <pinref part="Q10" gate="G$1" pin="S"/>
-<wire x1="181.61" y1="-47.625" x2="181.61" y2="-46.99" width="0.1524" layer="91"/>
 <wire x1="181.61" y1="-46.99" x2="169.545" y2="-46.99" width="0.1524" layer="91"/>
 <pinref part="R23" gate="G$1" pin="1"/>
 <label x="168.91" y="-45.72" size="1.778" layer="95" rot="R180"/>
@@ -12138,7 +12137,6 @@ EIA Code 3216, Size A, 3.2 mm x 1.6 mm, grid 0.0125 inch</description>
 </segment>
 <segment>
 <pinref part="Q9" gate="G$1" pin="S"/>
-<wire x1="152.4" y1="-47.625" x2="152.4" y2="-46.99" width="0.1524" layer="91"/>
 <wire x1="152.4" y1="-46.99" x2="140.335" y2="-46.99" width="0.1524" layer="91"/>
 <pinref part="R22" gate="G$1" pin="1"/>
 <label x="139.7" y="-45.72" size="1.778" layer="95" rot="R180"/>
@@ -12524,6 +12522,7 @@ EIA Code 3216, Size A, 3.2 mm x 1.6 mm, grid 0.0125 inch</description>
 <approved hash="108,1,181.61,-47.625,D7,,,,,"/>
 <approved hash="108,1,152.4,-47.625,D6,,,,,"/>
 <approved hash="108,1,-76.835,-45.72,E,,,,,"/>
+<approved hash="111,1,102.235,35.56,E-PIC,,,,,"/>
 <approved hash="113,1,-70.0363,135.653,H5,,,,,"/>
 <approved hash="113,1,-31.3521,36.6988,H19,,,,,"/>
 <approved hash="113,1,-31.115,11.7052,R11,,,,,"/>
@@ -12545,16 +12544,16 @@ EIA Code 3216, Size A, 3.2 mm x 1.6 mm, grid 0.0125 inch</description>
 <approved hash="113,1,33.1512,135.653,H12,,,,,"/>
 <approved hash="113,1,-32.2538,135.653,H7,,,,,"/>
 <approved hash="113,1,-48.1288,135.653,H6,,,,,"/>
-<approved hash="113,1,-78.7307,-35.56,Q1,,,,,"/>
-<approved hash="113,1,-49.5207,-35.56,Q2,,,,,"/>
-<approved hash="113,1,-20.3107,-35.56,Q3,,,,,"/>
-<approved hash="113,1,8.89934,-35.56,Q4,,,,,"/>
-<approved hash="113,1,38.1093,-35.56,Q5,,,,,"/>
-<approved hash="113,1,67.3193,-35.56,Q6,,,,,"/>
-<approved hash="113,1,96.5293,-35.56,Q7,,,,,"/>
-<approved hash="113,1,125.739,-35.56,Q8,,,,,"/>
-<approved hash="113,1,150.504,-36.195,Q9,,,,,"/>
-<approved hash="113,1,180.424,-36.195,Q10,,,,,"/>
+<approved hash="113,1,-78.7753,-35.56,Q1,,,,,"/>
+<approved hash="113,1,-49.5653,-35.56,Q2,,,,,"/>
+<approved hash="113,1,-20.3553,-35.56,Q3,,,,,"/>
+<approved hash="113,1,8.85471,-35.56,Q4,,,,,"/>
+<approved hash="113,1,38.0647,-35.56,Q5,,,,,"/>
+<approved hash="113,1,67.2747,-35.56,Q6,,,,,"/>
+<approved hash="113,1,96.4847,-35.56,Q7,,,,,"/>
+<approved hash="113,1,125.695,-35.56,Q8,,,,,"/>
+<approved hash="113,1,150.46,-36.195,Q9,,,,,"/>
+<approved hash="113,1,180.379,-36.195,Q10,,,,,"/>
 </errors>
 </schematic>
 </drawing>
