@@ -1,0 +1,21 @@
+PCB Stencil Laser Cutting 06/03/2015
+-----------------------
+Phil, Seb
+
+First materiel was clear mylar 0.125mm thickness.
+
+First attempts using two layers, bottom layer to hold/remove the cutouts from the top layer. Attempted 4 different powers around 7% - mylar at this thickness and pin pitch is a bit too delicate to survive the peeling process of removing the cutouts/bottom layer.
+
+Second materiel was self adhesive kapton tape stuck on a glass sheet. At this thickness it ripped whilst trying to remove from the glass pane, also a slightly burny cut.
+
+Third attempt was single layer mylar at 7% power. Cut much better, but left "tags" in the corners wihch were hard to remove.
+
+Fourth attempt single layer mylar with sellotape underneath the cut at 7.5%. Peeling sellotape off the back removed the cutouts extremely well, but there wa ssome slight melting at the fine pitch PIC pins.
+
+Fifth attempt with single layer mylar with self adhesive kapton tape for cutout removal (used because it was wider than the sticky tape). 7.25% power. Left large amount of burning residue on mylar, kapton absorbed a lot of heat and a couple of holes didn't fully cut. 
+
+Sixth attempt with single layer mylar, sellotape, 7.25% power single pass. Comes out pretty well with minimal hanging cutouts in the PIC pins, which are very fixable under a microscope with fine pitch tweezers.
+
+Seventh attempts by using raster images and engraving it off, but heat warped the mylar and became useless for stencil. 
+
+Eighth attempt, 7% power, 0.25% speed, 20,000hz, 3 passes on single layer mylar with sellotape backing. A bit all over the place, melting some and not cutting fully others. 
