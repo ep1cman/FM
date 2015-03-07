@@ -120,8 +120,8 @@
 <text x="90.4875" y="7.3025" size="1.27" layer="100" rot="MR270">GND</text>
 <text x="87.9475" y="7.3025" size="1.27" layer="100" rot="MR270">RS</text>
 <text x="85.24875" y="7.14375" size="1.27" layer="100" rot="MR270">R/W</text>
-<text x="93.0275" y="7.3025" size="1.27" layer="100" rot="MR270">5v</text>
-<text x="94.77375" y="7.77875" size="1.27" layer="100" rot="MR270">CNTRST</text>
+<text x="92.86875" y="7.3025" size="1.27" layer="100" rot="MR270">5v</text>
+<text x="94.615" y="7.3025" size="1.27" layer="100" rot="MR270">CTR</text>
 <text x="40.48125" y="63.02375" size="1.27" layer="100" rot="MR0">5v</text>
 <text x="46.99" y="63.02375" size="1.27" layer="100" rot="MR0">5v</text>
 <text x="40.48125" y="60.325" size="1.27" layer="100" rot="MR0">GND</text>
@@ -143,6 +143,63 @@ Phil Handley
 Stuart Rayner</text>
 <text x="6.985" y="34.6075" size="1.27" layer="101" rot="R90">EEE2037 LDPS IV
 FM Receiver Project</text>
+<polygon width="0.3048" layer="41">
+<vertex x="53.49875" y="23.8125"/>
+<vertex x="53.18125" y="23.8125"/>
+<vertex x="53.18125" y="53.0225"/>
+<vertex x="55.40375" y="53.0225"/>
+<vertex x="68.10375" y="40.3225"/>
+<vertex x="68.10375" y="37.30625"/>
+<vertex x="54.9275" y="24.13"/>
+<vertex x="53.49875" y="24.13"/>
+<vertex x="53.34" y="23.97125"/>
+</polygon>
+<polygon width="0.3048" layer="41">
+<vertex x="67.46875" y="62.07125"/>
+<vertex x="67.46875" y="59.53125"/>
+<vertex x="78.58125" y="48.41875"/>
+<vertex x="79.53375" y="48.41875"/>
+<vertex x="93.18625" y="62.07125"/>
+<vertex x="67.6275" y="62.07125"/>
+</polygon>
+<polygon width="0.3048" layer="41">
+<vertex x="96.52" y="60.325"/>
+<vertex x="96.52" y="24.4475"/>
+<vertex x="96.2025" y="24.13"/>
+<vertex x="95.25" y="24.13"/>
+<vertex x="81.915" y="37.465"/>
+<vertex x="81.915" y="44.92625"/>
+<vertex x="96.8375" y="59.84875"/>
+<vertex x="96.8375" y="60.0075"/>
+</polygon>
+<polygon width="0.3048" layer="41">
+<vertex x="66.19875" y="19.3675"/>
+<vertex x="71.12" y="19.3675"/>
+<vertex x="71.59625" y="19.84375"/>
+<vertex x="73.3425" y="29.05125"/>
+<vertex x="69.37375" y="27.94"/>
+<vertex x="66.19875" y="19.20875"/>
+</polygon>
+<polygon width="0.3048" layer="41">
+<vertex x="74.13625" y="21.2725"/>
+<vertex x="76.67625" y="21.2725"/>
+<vertex x="77.1525" y="28.8925"/>
+<vertex x="80.3275" y="27.78125"/>
+<vertex x="84.29625" y="19.52625"/>
+<vertex x="73.9775" y="19.685"/>
+</polygon>
+<polygon width="0.3048" layer="41">
+<vertex x="72.54875" y="24.765"/>
+<vertex x="77.1525" y="24.92375"/>
+<vertex x="77.1525" y="28.8925"/>
+<vertex x="73.18375" y="29.05125"/>
+</polygon>
+<polygon width="0.3048" layer="41">
+<vertex x="67.46875" y="66.3575"/>
+<vertex x="67.945" y="63.5"/>
+<vertex x="76.67625" y="63.1825"/>
+<vertex x="76.04125" y="65.56375"/>
+</polygon>
 </plain>
 <libraries>
 <library name="solpad">
@@ -3812,10 +3869,10 @@ design rules under a new name.</description>
 <wire x1="42.8625" y1="33.81375" x2="42.8625" y2="41.345" width="0.3048" layer="1"/>
 <wire x1="42.8625" y1="41.345" x2="41.23625" y2="42.97125" width="0.3048" layer="1"/>
 <wire x1="41.43375" y1="27.305" x2="46.0375" y2="27.305" width="0.3048" layer="1"/>
-<wire x1="46.0375" y1="27.305" x2="50.95875" y2="22.38375" width="0.3048" layer="1"/>
-<via x="50.95875" y="22.38375" extent="1-16" drill="0.6" shape="square"/>
-<wire x1="50.95875" y1="22.38375" x2="50.95875" y2="18.7325" width="0.3048" layer="16"/>
-<wire x1="50.95875" y1="18.7325" x2="52.22875" y2="17.4625" width="0.3048" layer="16"/>
+<wire x1="46.0375" y1="27.305" x2="50.4825" y2="22.38375" width="0.3048" layer="1"/>
+<via x="50.4825" y="22.38375" extent="1-16" drill="0.6" shape="square"/>
+<wire x1="50.4825" y1="22.38375" x2="50.4825" y2="19.52625" width="0.3048" layer="16"/>
+<wire x1="50.4825" y1="19.52625" x2="52.22875" y2="17.4625" width="0.3048" layer="16"/>
 <wire x1="52.22875" y1="17.4625" x2="52.22875" y2="16.35125" width="0.3048" layer="16"/>
 <wire x1="52.22875" y1="16.35125" x2="52.07" y2="16.1925" width="0.3048" layer="16"/>
 <via x="52.07" y="16.1925" extent="1-16" drill="0.6" shape="square"/>
@@ -3994,6 +4051,16 @@ design rules under a new name.</description>
 <wire x1="74.9735" y1="43.90425" x2="74.9735" y2="44.60875" width="0.3048" layer="1"/>
 <wire x1="74.21675" y1="23.8635" x2="74.9735" y2="33.82775" width="0.3048" layer="1"/>
 <wire x1="74.9735" y1="33.82775" x2="74.9735" y2="35.4146" width="0.3048" layer="1"/>
+<via x="9.525" y="35.56" extent="1-16" drill="0.6" shape="square"/>
+<via x="12.7" y="56.1975" extent="1-16" drill="0.6" shape="square"/>
+<via x="28.8925" y="56.35625" extent="1-16" drill="0.6" shape="square"/>
+<via x="46.0375" y="30.48" extent="1-16" drill="0.6" shape="square"/>
+<via x="97.155" y="16.66875" extent="1-16" drill="0.6" shape="square"/>
+<via x="55.08625" y="4.92125" extent="1-16" drill="0.6" shape="square"/>
+<via x="88.5825" y="26.9875" extent="1-16" drill="0.6" shape="square"/>
+<via x="61.595" y="27.305" extent="1-16" drill="0.6" shape="square"/>
+<via x="36.83" y="44.7675" extent="1-16" drill="0.6" shape="square"/>
+<via x="92.23375" y="4.1275" extent="1-16" drill="0.6" shape="square"/>
 <wire x1="44.60875" y1="11.345" x2="45.94" y2="14.06875" width="0" layer="19" extent="1-1"/>
 <wire x1="41.66" y1="14.56875" x2="45.94" y2="14.06875" width="0" layer="19" extent="1-1"/>
 <wire x1="32.41575" y1="9.05775" x2="26.7249" y2="8.2299" width="0" layer="19" extent="1-1"/>
@@ -5030,36 +5097,6 @@ design rules under a new name.</description>
 <wire x1="69.4871" y1="37.3958" x2="69.30455" y2="37.3958" width="0.3048" layer="1"/>
 <wire x1="53.1675" y1="21.825" x2="53.9163" y2="21.825" width="0.3048" layer="1"/>
 <wire x1="53.9163" y1="21.825" x2="69.4871" y2="37.3958" width="0.3048" layer="1"/>
-</signal>
-<signal name="N$2">
-<via x="12.7" y="56.1975" extent="1-16" drill="0.6" shape="square"/>
-</signal>
-<signal name="N$6">
-<via x="28.8925" y="56.35625" extent="1-16" drill="0.6" shape="square"/>
-</signal>
-<signal name="N$9">
-<via x="9.525" y="35.56" extent="1-16" drill="0.6" shape="square"/>
-</signal>
-<signal name="N$11">
-<via x="55.08625" y="4.92125" extent="1-16" drill="0.6" shape="square"/>
-</signal>
-<signal name="N$12">
-<via x="92.23375" y="5.55625" extent="1-16" drill="0.6" shape="square"/>
-</signal>
-<signal name="N$15">
-<via x="97.155" y="16.66875" extent="1-16" drill="0.6" shape="square"/>
-</signal>
-<signal name="N$16">
-<via x="88.5825" y="26.9875" extent="1-16" drill="0.6" shape="square"/>
-</signal>
-<signal name="N$19">
-<via x="61.595" y="27.305" extent="1-16" drill="0.6" shape="square"/>
-</signal>
-<signal name="N$21">
-<via x="46.0375" y="30.48" extent="1-16" drill="0.6" shape="square"/>
-</signal>
-<signal name="N$22">
-<via x="36.83" y="44.7675" extent="1-16" drill="0.6" shape="square"/>
 </signal>
 </signals>
 <errors>
