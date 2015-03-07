@@ -52,7 +52,7 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
@@ -79,9 +79,9 @@
 <wire x1="99.84125" y1="68.40875" x2="1.905" y2="68.40875" width="0" layer="20"/>
 <wire x1="1.905" y1="68.40875" x2="1.905" y2="0" width="0" layer="20"/>
 <hole x="4.7625" y="65.56375" drill="3.2"/>
-<hole x="97.155" y="65.405" drill="3.2"/>
-<hole x="96.8375" y="3.175" drill="3.2"/>
-<hole x="6.35" y="3.4925" drill="3.2"/>
+<hole x="96.99625" y="65.56375" drill="3.2"/>
+<hole x="97.155" y="2.8575" drill="3.2"/>
+<hole x="4.7625" y="2.8575" drill="3.2"/>
 <text x="10.31875" y="32.0675" size="1.27" layer="100" rot="MR0">GND</text>
 <text x="10.31875" y="15.08125" size="1.27" layer="100" rot="MR0">GND</text>
 <text x="9.36625" y="17.62125" size="1.27" layer="100" rot="MR0">3v3</text>
@@ -102,8 +102,8 @@
 <text x="22.5425" y="63.1825" size="1.27" layer="100" rot="MR270">OUT-R</text>
 <text x="44.60875" y="31.4325" size="1.27" layer="100" rot="MR270">3v3</text>
 <text x="34.6075" y="21.11375" size="1.27" layer="100" rot="SMR180">5v</text>
-<text x="43.33875" y="43.815" size="1.27" layer="100" rot="MR270">PICkit</text>
-<text x="43.33875" y="47.9425" size="1.27" layer="100" rot="MR270">^</text>
+<text x="47.9425" y="38.57625" size="1.27" layer="101" rot="R270">PICkit</text>
+<text x="47.625" y="47.9425" size="1.27" layer="101" rot="R270">^</text>
 <text x="43.02125" y="17.4625" size="1.27" layer="100" rot="MR0">FM-L</text>
 <text x="44.29125" y="15.08125" size="1.27" layer="100" rot="MR0">REC-L</text>
 <text x="44.1325" y="12.3825" size="1.27" layer="100" rot="MR0">AUX-L</text>
