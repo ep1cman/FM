@@ -1,0 +1,32 @@
+Front Panel Measurements
+------------------------
+
+
+
+Slider switch (x4): 
+Distace between screwholes: 20.63mm (outside edge to outside edge)
+Width of rectangular hole: 10.30mm
+Height of rectangular hole: 4.57mm
+Bolts: M2. 
+Countersunk
+
+Metal base frame:
+Front bar length: 243mm
+9x M2 threaded screwholes facing front
+25mm spacing between each hole.
+First hole (from left) 10.30mm from edge.
+Last hole 17.50mm from right hand edge.
+
+Current panel:
+Width: 240mm
+Height: 76.0mm
+
+3.5mm jack hole diameter: 5.90mm
+
+RF connector hole diameter: 14.40mm
+RF connector screw size: M3
+Distance between rf connector screw holes: 22mm outside to outside
+
+Screen dimensions: 
+
+
