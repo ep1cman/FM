@@ -51,7 +51,7 @@
 
 unsigned int ar1010_registers[18] = {
   0xFFFB, // R0:  1111 1111 1111 1011
-  0x5B11, // R1:  0101 1011 0001 0001 - Mono (D3), Softmute (D2), Hardmute (D1)
+  0x5B15, // R1:  0101 1011 0001 0101 - Mono (D3), Softmute (D2), Hardmute (D1)
   0xD0B9, // R2:  1101 0000 1011 1001 - Tune/Channel
   0xA010, // R3:  1010 0000 0001 0000 - Seekup (D15), Seek bit (D14), Space 100kHz (D13), Seek threshold: 16 (D6-D0)
   0x0780, // R4:  0000 0111 1000 0000
@@ -125,10 +125,26 @@ void setBit(unsigned char address, unsigned char bitToSet, unsigned char set)
 
 void initAR1010()
 {
-    for (int i=0; i<18; i++)
+    IdleI2C();
+    StartI2C();
+    IdleI2C();
+    WriteI2C(AR1010_ADDR);   //Write AR1010 address to the bus
+    IdleI2C();               //Wait for ACK
+    WriteI2C(0x01);       //Tell the AR1010 what register we are writing to
+    IdleI2C();            
+    
+    for (int i=1; i<18; i++)
     {
-        writeRegister(i, ar1010_registers[i]);
+        
+        WriteI2C(ar1010_registers[i] >> 8);     //Write upper byte of register
+        IdleI2C();               //Wait for ACK
+        WriteI2C(ar1010_registers[i] & 0x00FF); //Write lower byte of register
+        IdleI2C();               //Wait for ACK
     }
+    
+    StopI2C();
+    IdleI2C();
+    writeRegister(0, ar1010_registers[0]);
 }
 
 void tune(int freq)
