@@ -49,25 +49,40 @@
 #define LCD_RS LATF1
 
 /* Variable Declaration */
-int DATA;              /* Data for output */
-int DATA1[16];         /* Display line 1 storage */
-int DATA2[16];         /* Display line 2 storage */
-int line;              /* Display line indicator */
-int Segment;           /* Display segment indicator */
+unsigned int DATA;              /* Data for output */
+unsigned int DATA1[16];         /* Display line 1 storage */
+unsigned int DATA2[16];         /* Display line 2 storage */
+unsigned int line;              /* Display line indicator */
 
 void pause()
 {
-    Delay100TCYx(120);
+    Delay100TCYx(1000);
 }
 
-void enable()
+
+void Config_LCD(unsigned int DATA) /* Write instructions */
 {
+    /* Clear ports */
+    LCD_E = 0;
+    LCD_RS = 0;
+    LATD = 0x00;
+
+    /* Configure outputs */
+    TRISF0 = 0;
+    TRISF1 = 0;
+    TRISD = 0x00;
+
+    /* Write to display */
+    LCD_RS = 0;
     LCD_E = 1;
+    LATD = DATA;
+   
     pause();
     LCD_E = 0;
+
 }
 
-void Config_LCD(int DATA) /* Write instructions */
+void Write_LCD(unsigned int DATA) /* Write data */
 {
     /* Clear ports */
     LCD_E = 0;
@@ -79,117 +94,94 @@ void Config_LCD(int DATA) /* Write instructions */
     TRISF1 = 0;
     TRISD = 0x00;
 
-    /* Write to display */
-    LCD_RS = 0;
-    LATD = DATA;
-    enable();    
-}
-
-void Write_LCD(int DATA) /* Write data */
-{
-    /* Clear ports */
-    LCD_E = 0;
-    LCD_RS = 0;
-    LATD = 0x00;
-
-    /* Configure outputs */
-    TRISF0 = 0;
-    TRISF1 = 0;
-    TRISD = 0x00;
-
-    /* Write to display */
+    /* Write to display */ 
     LCD_RS = 1;
+    LCD_E = 1;
     LATD = DATA;
-    enable();
+    pause();
+    LCD_E = 0;
+
 }
 
 void Init_LCD()
-{
+{  /* wake up */
     pause();
-    LATD = 0b00110000;
+    DATA = 0b00110000;
     Config_LCD(DATA);
 
     pause();
-    LATD = 0b00110000;
+    DATA = 0b00110000;
     Config_LCD(DATA);
 
     pause();
-    LATD = 0b00001000;
+    DATA = 0b00110000;
     Config_LCD(DATA);
 
+    /* Function Set */
     pause();
-    LATD =  0b00000001;
+    DATA = 0b00111000;
     Config_LCD(DATA);
 
+    /* Display Off */
     pause();
-    LATD = 0b00000110;
+    DATA = 0b00001000;
     Config_LCD(DATA);
 
+    /* Display Clear */
     pause();
-    LATD=0b00000110;
+    DATA = 0b00000001;
     Config_LCD(DATA);
 
+    /* Entry Mode Set */
     pause();
-    LATD=0b00111000;
-    Config_LCD(DATA);
-
-    pause();
-    LATD=0b00010100;
-    Config_LCD(DATA);
-
-    pause();
-    LATD=0b00001100;
-    Config_LCD(DATA);
-
-    pause();
-    LATD=0b00000010;
+    DATA = 0b00000110;
     Config_LCD(DATA);
 }
 
-void Address_Select(int line)
-{
-    if (line == 1)
+void ADD_Select(int line)
+{    if(line==1)
     {
-    DATA = 0b10000000; /* Set initial address*/
-    Config_LCD(DATA);  /* Output address to display */
+        DATA = 0x80;
     }
+    else if(line==2)
+    {
+        DATA = 0x80+0x40;
+    }
+    else
+    {
+        DATA = 0x80;
+    }
+
+    pause();
+    Config_LCD(DATA);
+}
+
+void DATA_Select(int line)
+{
+    ADD_Select(line);
+    if(line == 1)
+    {
+    for (int x = 0; x < 15 ; x++)
+    Write_LCD(DATA1[x]);
+    }
+
     else if (line == 2)
     {
-    DATA = 0b11000000; /* Set new address*/
-    Config_LCD(DATA);  /* Output address to display */
+    for (int x = 0; x < 15 ; x++)
+    Write_LCD(DATA2[x]);
     }
 }
 
-void Data_Select()
+void LCD()
 {
-    line = 1; /* temp for testing, line to be determined by menu structure */
-    if (line == 1)
-    {
-    Address_Select(line);
-    for (int x = 0; x < 16; x++)
-        {
-        DATA = DATA1[Segment]; /* Load data */
-        Write_LCD(DATA); /* Write data */
-        Segment = Segment + 1; /* Go to next segment */
-        }
-    }
-    
-    line = 2; /* temp for testing, line to be determined by menu structure */
-    if (line == 2)
-    {
-    Address_Select(line);
-    for (int x = 0; x < 16; x++)
-        {
-        DATA = DATA2[Segment]; /* Load data */
-        Write_LCD(DATA); /* Write data */
-        Segment = Segment + 1; /* Go to next segment */
-        }
-    }
-}
+    /* Initialise LCD */
+    Init_LCD();
 
-void Load_Data()
-{
-    /* Line one data */
+    /* Display On*/
+    pause();
+    DATA = 0b00001100;
+    Config_LCD(DATA);
+
     DATA1[0] = 0b01001000; /* H */
     DATA1[1] = 0b01100101; /* e */
     DATA1[2] = 0b01101100; /* l */
@@ -207,7 +199,6 @@ void Load_Data()
     DATA1[14] = 0b00100001; /* ! */
     DATA1[15] = 0b00100001; /* ! */
 
-    /* Line two data */
     DATA2[0] = 0b01001010; /* * */
     DATA2[1] = 0b01001010; /* * */
     DATA2[2] = 0b01001010; /* * */
@@ -224,42 +215,10 @@ void Load_Data()
     DATA2[13] = 0b01001010; /* * */
     DATA2[14] = 0b01001010; /* * */
     DATA2[15] = 0b01001010; /* * */
-}
 
-void LCD()
-{
-    /* Initialise LCD */
-    Init_LCD();
-
-    /* Function set */
-    LCD_E = 0;
-    LCD_RS = 0;
-    LATD = 0b00111000;
-    enable();
-
-    /* Turn on display */
-    LCD_E = 0;
-    LCD_RS = 0;
-    LATD = 0b00001100;
-    enable();
-
-    /* Entry mode set */
-    LCD_E = 0;
-    LCD_RS = 0;
-    LATD = 0b00000110;
-    enable();
-
-    /* Load data to be output */
-    Load_Data();
-
-    /* Select data to be output */
-    Data_Select();
-
-    /* Return home */
-    LCD_E = 0;
-    LCD_RS = 0;
-    LATD = 0b00000010;
-    enable();
+    DATA_Select(1);
+    DATA_Select(2);
+    while(1);
 }
 
 int main(int argc, char** argv)
