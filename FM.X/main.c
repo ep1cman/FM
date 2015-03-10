@@ -151,7 +151,7 @@ void tune(int freq)
 {
    setBit(0x02, TUNE, 0);
    setBit(0x03, SEEK, 0);
-   unsigned int chan = freq*10-690;
+   unsigned int chan = freq-690;
    writeRegister(2, (ar1010_registers[2]&0xFC00) + chan);
    setBit(0x02, TUNE, 1);
 
@@ -166,20 +166,24 @@ unsigned char currentVolume = 0;
 
 void setVolume(char volume)
 {
-    writeRegister(3, (ar1010_registers[3]&0xF87F)&VOLUME[volume]);
-    writeRegister(3, (ar1010_registers[0xE]&0x0FFF)&VOLUME2[volume]);
+    if (volume<0 ) 
+        volume = 0;
+    if (volume>18) 
+        volume = 18;
+    unsigned int vol = (ar1010_registers[0x03]&0xF87F) | (VOLUME[volume]<<7);
+    unsigned int vol2 = (ar1010_registers[0x0E]&0x0FFF) | (VOLUME2[volume]<<12);
+    writeRegister(0x03, vol);
+    writeRegister(0x0E, vol2);
     currentVolume = volume;
 }
 
 void volumeUp()
 {
-    if (currentVolume==18) return;
     setVolume(++currentVolume);
 }
 
 void volumeDown()
 {
-    if (currentVolume==0) return;
     setVolume(--currentVolume);
 }
 
