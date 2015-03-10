@@ -208,5 +208,11 @@ void clearSMute()
 }
 
 int main(int argc, char** argv) {
+    OpenI2C(MASTER, SLEW_OFF);
+    TRISC = 0b00011000;
+    initAR1010();
+    for(int i=0; i<3000; i++){};
+    tune(964);
+    while(1);
     return (EXIT_SUCCESS);
 }
