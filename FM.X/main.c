@@ -43,186 +43,72 @@
 // CONFIG7L#
 
 #include <xc.h>
-#include <delays.h>
-#define F_CPU 8E6
-#define LCD_E LATF0
-#define LCD_RS LATF1
 
-/* Variable Declaration */
-unsigned int DATA;              /* Data for output */
-unsigned int DATA1[16];         /* Display line 1 storage */
-unsigned int DATA2[16];         /* Display line 2 storage */
-unsigned int line;              /* Display line indicator */
+#define _XTAL_FREQ 1000000
 
-void pause()
+#define LCD_RS LATB1
+#define LCD_E LATB0
+#define LCD_DATA LATD
+#define CLEAR_LCD 0x01
+
+void writeToLCD(unsigned char data, char commandOrData)
 {
-    Delay100TCYx(1000);
-}
-
-
-void Config_LCD(unsigned int DATA) /* Write instructions */
-{
-    /* Clear ports */
-    LCD_E = 0;
-    LCD_RS = 0;
-    LATD = 0x00;
-
-    /* Configure outputs */
-    TRISF0 = 0;
-    TRISF1 = 0;
-    TRISD = 0x00;
-
-    /* Write to display */
-    LCD_RS = 0;
+    LCD_DATA = data;
+    
+    if(commandOrData == 'c') 
+        LCD_RS = 0;
+    else 
+        LCD_RS = 1;
+    
     LCD_E = 1;
-    LATD = DATA;
-   
-    pause();
     LCD_E = 0;
-
+    if(commandOrData == 'c') 
+        __delay_ms(20);
 }
 
-void Write_LCD(unsigned int DATA) /* Write data */
+void initLCD()
 {
-    /* Clear ports */
-    LCD_E = 0;
-    LCD_RS = 0;
-    LATD = 0x00;
-
-    /* Configure outputs */
-    TRISF0 = 0;
-    TRISF1 = 0;
-    TRISD = 0x00;
-
-    /* Write to display */ 
-    LCD_RS = 1;
-    LCD_E = 1;
-    LATD = DATA;
-    pause();
-    LCD_E = 0;
-
+    TRISB &= 0b11111100; // Set LCD_E and LCD_RS as outputs
+    TRISD =  0b00000000; // Set LCD_DATA as outputs
+    
+    //Reset LCD
+    writeToLCD(0x30, 'c');
+    writeToLCD(0x30, 'c');
+    writeToLCD(0x30, 'c');
+    
+    //8-Bit Mode, 2 Lines and 5x7 Dot font
+    writeToLCD(0x38, 'c');
+    
+    //Display ON, cursor OFF, blink OFF
+    writeToLCD(0x0C, 'c');
+    
+    //Display Clear
+    writeToLCD(CLEAR_LCD, 'c');
+    
+    //Entry Mode, Increment cursor, Don't shift display
+    writeToLCD(0x06, 'c'); 
 }
 
-void Init_LCD()
-{  /* wake up */
-    pause();
-    DATA = 0b00110000;
-    Config_LCD(DATA);
-
-    pause();
-    DATA = 0b00110000;
-    Config_LCD(DATA);
-
-    pause();
-    DATA = 0b00110000;
-    Config_LCD(DATA);
-
-    /* Function Set */
-    pause();
-    DATA = 0b00111000;
-    Config_LCD(DATA);
-
-    /* Display Off */
-    pause();
-    DATA = 0b00001000;
-    Config_LCD(DATA);
-
-    /* Display Clear */
-    pause();
-    DATA = 0b00000001;
-    Config_LCD(DATA);
-
-    /* Entry Mode Set */
-    pause();
-    DATA = 0b00000110;
-    Config_LCD(DATA);
-}
-
-void ADD_Select(int line)
-{    if(line==1)
-    {
-        DATA = 0x80;
-    }
-    else if(line==2)
-    {
-        DATA = 0x80+0x40;
-    }
-    else
-    {
-        DATA = 0x80;
-    }
-
-    pause();
-    Config_LCD(DATA);
-}
-
-void DATA_Select(int line)
+void printLCD(unsigned char *string)
 {
-    ADD_Select(line);
-    if(line == 1)
-    {
-    for (int x = 0; x < 15 ; x++)
-    Write_LCD(DATA1[x]);
-    }
-
-    else if (line == 2)
-    {
-    for (int x = 0; x < 15 ; x++)
-    Write_LCD(DATA2[x]);
-    }
+    while(*string)
+       writeToLCD(*string++, 'd');
 }
 
-void LCD()
+void setCursorLocation(unsigned char position, unsigned char line)
 {
-    /* Initialise LCD */
-    Init_LCD();
-
-    /* Display On*/
-    pause();
-    DATA = 0b00001100;
-    Config_LCD(DATA);
-
-    DATA1[0] = 0b01001000; /* H */
-    DATA1[1] = 0b01100101; /* e */
-    DATA1[2] = 0b01101100; /* l */
-    DATA1[3] = 0b01101100; /* l */
-    DATA1[4] = 0b01101111; /* o */
-    DATA1[5] = 0b00100000; /*   */
-    DATA1[6] = 0b01010111; /* W */
-    DATA1[7] = 0b01101111; /* o */
-    DATA1[8] = 0b01110010; /* r */
-    DATA1[9] = 0b01101100; /* l */
-    DATA1[10] = 0b01100100; /* d */
-    DATA1[11] = 0b00100001; /* ! */
-    DATA1[12] = 0b00100001; /* ! */
-    DATA1[13] = 0b00100001; /* ! */
-    DATA1[14] = 0b00100001; /* ! */
-    DATA1[15] = 0b00100001; /* ! */
-
-    DATA2[0] = 0b01001010; /* * */
-    DATA2[1] = 0b01001010; /* * */
-    DATA2[2] = 0b01001010; /* * */
-    DATA2[3] = 0b01001010; /* * */
-    DATA2[4] = 0b01001010; /* * */
-    DATA2[5] = 0b01001010; /* * */
-    DATA2[6] = 0b01001010; /* * */
-    DATA2[7] = 0b01001010; /* * */
-    DATA2[8] = 0b01001010; /* * */
-    DATA2[9] = 0b01001010; /* * */
-    DATA2[10] = 0b01001010; /* * */
-    DATA2[11] = 0b01001010; /* * */
-    DATA2[12] = 0b01001010; /* * */
-    DATA2[13] = 0b01001010; /* * */
-    DATA2[14] = 0b01001010; /* * */
-    DATA2[15] = 0b01001010; /* * */
-
-    DATA_Select(1);
-    DATA_Select(2);
-    while(1);
+    if (line == 2)
+        position += 0x40;
+    writeToLCD(0x80 + position, 'c');
 }
 
-int main(int argc, char** argv)
-{
-    LCD();
+int main(int argc, char** argv) {
+
+    initLCD();
+    printLCD("Hello");
+    setCursorLocation(3,2);
+    printLCD("World!");
+
+    while(1){};
     return (EXIT_SUCCESS);
 }
