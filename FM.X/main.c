@@ -197,6 +197,30 @@ void clearHMute()
     setBit(1,1,0);
 }
 
+void seek(char direction)
+{
+	setHMute();
+	setBit(0x02, TUNE, 0);
+    setBit(0x03, SEEK, 0);
+
+    //Set seek direction
+    if (direction == 'u')
+    	setBit(0x03, 15, 1);
+    if (direction == 'd')
+		setBit(0x03, 15, 0);
+
+    setBit(0x03, SEEK, 1);
+
+    //Wait for STC flag
+	while(readRegister(0x13)&(1<<5) != 1){};
+
+    clearHMute();
+
+    //Update CHAN with value from READCHAN
+    unsigned int chan = readRegister(0x13) >> 7;
+    writeRegister(2, (ar1010_registers[2]&0xFC00) + chan);
+
+}
 int main(int argc, char** argv) {
     OpenI2C(MASTER, SLEW_OFF);
     TRISC = 0b00011000;
