@@ -226,6 +226,20 @@ unsigned int getFrequency()
 {
 	return (readRegister(0x13) >> 7) + 690;
 }
+
+void powerDown()
+{
+	setBit(0x00, ENABLE, 0);
+}
+
+void powerUp()
+{
+	setBit(0x00, ENABLE, 1);
+
+	//Wait for STC flag
+	while(readRegister(0x13)&(1<<5) != 1){};
+}
+
 int main(int argc, char** argv) {
     OpenI2C(MASTER, SLEW_OFF);
     TRISC = 0b00011000;
