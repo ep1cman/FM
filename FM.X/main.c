@@ -197,16 +197,6 @@ void clearHMute()
     setBit(1,1,0);
 }
 
-void setSMute()
-{
-    setBit(1,2,1);
-}
-
-void clearSMute()
-{
-    setBit(1,2,0);
-}
-
 int main(int argc, char** argv) {
     OpenI2C(MASTER, SLEW_OFF);
     TRISC = 0b00011000;
