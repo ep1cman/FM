@@ -15,6 +15,8 @@
       <itemPath>main.c</itemPath>
       <itemPath>AR1010.h</itemPath>
       <itemPath>AR1010.c</itemPath>
+      <itemPath>DS3231.h</itemPath>
+      <itemPath>DS3231.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -33,7 +35,7 @@
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion></languageToolchainVersion>
-        <platform>3</platform>
+        <platform>2</platform>
       </toolsSet>
       <compileType>
         <linkerTool>
