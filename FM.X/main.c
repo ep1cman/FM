@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   main.c
  * Author: Sebastian Goscik
  * Project: FM Radio
@@ -10,7 +10,6 @@
 #include <stdlib.h>
 
 #include <xc.h>
-
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
@@ -43,7 +42,15 @@
 #pragma config CP = OFF         // Code Protect 00000-03FFF (Program memory block (000000-003FFFh) not code-protected)
 
 #define _XTAL_FREQ 8000000
+
+#include "AR1010.h"
+
 int main(int argc, char** argv) {
+    OpenI2C(MASTER, SLEW_OFF);
+    TRISC = 0b00011000;
+    initAR1010();
+    for(int i=0; i<3000; i++){};
+    tune(964);
+    while(1);
     return (EXIT_SUCCESS);
 }
-

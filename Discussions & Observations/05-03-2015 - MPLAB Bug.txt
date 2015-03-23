@@ -1,0 +1,25 @@
+Latest MPLABX (v3 BETA) and XC8 (v1.34) do not fix it
+(although mplab v3 has native git support)
+
+issue persists in linux too
+
+i can confirm the issue is arising from the setBit function being called in the tune function
+you have to close and reopen mplab to clear the error
+
+its the WriteRegister function in setbit thats causing it (oddly the one in initAR1010 isnt causing an issue)
+
+fter removing all the code and adding in part by part what was necessary for it to work i discovered everything was fine.
+Only part left was volume. 
+uncommenting the volume arrays causes the error to return
+
+CAUSE:
+There is a bug in the complier meaning it is unable to make arrays of unsigned chars. The following code will trigger it:
+
+unsigned char bugHere[1] = {0xF};
+
+int main(int argc, char** argv) {
+    return (1);
+}
+
+SOLUTION:
+Since we dont actually need to change the values we can make the array const and this fixes the issue
