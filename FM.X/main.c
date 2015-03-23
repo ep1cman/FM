@@ -44,8 +44,11 @@
 
 #define AR1010_ADDR 0x20
 
-#define TUNE 9
-#define SEEK 14
+#define ENABLE 0x00, 0
+#define HMUTE 0x01, 1
+#define SEEKUP 0x02, 15
+#define TUNE 0x02, 9
+#define SEEK 0x03, 14
 
 #define _XTAL_FREQ 8000000
 
@@ -149,11 +152,11 @@ void initAR1010()
 
 void tune(unsigned int freq)
 {
-   setBit(0x02, TUNE, 0);
-   setBit(0x03, SEEK, 0);
+   setBit(TUNE, 0);
+   setBit(SEEK, 0);
    unsigned int chan = freq-690;
    writeRegister(2, (ar1010_registers[2]&0xFC00) + chan);
-   setBit(0x02, TUNE, 1);
+   setBit(TUNE, 1);
 
    //Wait for STC flag
    while(readRegister(0x13)&(1<<5) != 1){};
@@ -166,7 +169,7 @@ unsigned char currentVolume = 0;
 
 void setVolume(char volume)
 {
-    if (volume<0 ) 
+    if (volume<0) 
         volume = 0;
     if (volume>18) 
         volume = 18;
@@ -189,27 +192,27 @@ void volumeDown()
 
 void setHMute()
 {
-    setBit(1, 1, 1);
+    setBit(HMUTE, 1);
 }
 
 void clearHMute()
 {
-    setBit(1,1,0);
+    setBit(HMUTE, 0);
 }
 
 void seek(char direction)
 {
 	setHMute();
-	setBit(0x02, TUNE, 0);
-    setBit(0x03, SEEK, 0);
+	setBit(TUNE, 0);
+    setBit(SEEK, 0);
 
     //Set seek direction
     if (direction == 'u')
-    	setBit(0x03, 15, 1);
+    	setBit(SEEKUP, 1);
     if (direction == 'd')
-		setBit(0x03, 15, 0);
+		setBit(SEEKUP, 0);
 
-    setBit(0x03, SEEK, 1);
+    setBit(SEEK, 1);
 
     //Wait for STC flag
 	while(readRegister(0x13)&(1<<5) != 1){};
@@ -229,12 +232,12 @@ unsigned int getFrequency()
 
 void powerDown()
 {
-	setBit(0x00, ENABLE, 0);
+	setBit(ENABLE, 0);
 }
 
 void powerUp()
 {
-	setBit(0x00, ENABLE, 1);
+	setBit(ENABLE, 1);
 
 	//Wait for STC flag
 	while(readRegister(0x13)&(1<<5) != 1){};
