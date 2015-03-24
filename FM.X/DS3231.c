@@ -10,7 +10,7 @@
 
 unsigned char BCD2Dec(unsigned char value)
 {
-    return ((value & 0x0F) + (value & 0xF0)*10);
+    return ((value & 0x0F) + ((value & 0xF0)>>4)*10);
 }
 
 unsigned char DS3231ReadRegister(unsigned char address)
@@ -21,12 +21,12 @@ unsigned char DS3231ReadRegister(unsigned char address)
     IdleI2C();
     WriteI2C(address);
     IdleI2C();
-    StartI2C();
+    RestartI2C();
     WriteI2C(DS3231_ADDR+1);
     IdleI2C();
-
-    unsigned int val = ReadI2C();
+    unsigned char val = ReadI2C();
     IdleI2C();
+    NotAckI2C();
     StopI2C();
     return val;
 }
@@ -37,10 +37,10 @@ void getDateTime(struct dateTime* currentDateTime)
     currentDateTime->sec = BCD2Dec(DS3231ReadRegister(SECONDS));
     currentDateTime->min = BCD2Dec(DS3231ReadRegister(MINUTES));
     //Masks out unwanted 24h bits
-    currentDateTime->min = BCD2Dec(DS3231ReadRegister(MINUTES) & 0x3F);
+    currentDateTime->hour = BCD2Dec(DS3231ReadRegister(HOURS));
 
     currentDateTime->day = BCD2Dec(DS3231ReadRegister(DAY));
     currentDateTime->date = BCD2Dec(DS3231ReadRegister(DATE));
-    currentDateTime->month = BCD2Dec(DS3231ReadRegister(MONTH));
+    currentDateTime->month = BCD2Dec(DS3231ReadRegister(MONTH)&0x7F);
     currentDateTime->year = BCD2Dec(DS3231ReadRegister(YEAR));
 }
