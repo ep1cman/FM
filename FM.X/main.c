@@ -42,86 +42,41 @@
 // CONFIG5L
 #pragma config CP = OFF         // Code Protect 00000-03FFF (Program memory block (000000-003FFFh) not code-protected)
 
-<<<<<<< HEAD
 #define _XTAL_FREQ 8000000
 
 #include "AR1010.h"
-
-// CONFIG7L#
-
-#include <xc.h>
-
-#define _XTAL_FREQ 1000000
+#include "DS3231.h"
 
 #define LCD_RS LATB1
 #define LCD_E LATB0
 #define LCD_DATA LATD
 #define CLEAR_LCD 0x01
 
-void writeToLCD(unsigned char data, char commandOrData)
-{
-    LCD_DATA = data;
-
-    if(commandOrData == 'c')
-        LCD_RS = 0;
-    else
-        LCD_RS = 1;
-
-    LCD_E = 1;
-    LCD_E = 0;
-    if(commandOrData == 'c')
-        __delay_ms(20);
-}
-
-void initLCD()
-{
-    TRISB &= 0b11111100; // Set LCD_E and LCD_RS as outputs
-    TRISD =  0b00000000; // Set LCD_DATA as outputs
-
-    //Reset LCD
-    writeToLCD(0x30, 'c');
-    writeToLCD(0x30, 'c');
-    writeToLCD(0x30, 'c');
-
-    //8-Bit Mode, 2 Lines and 5x7 Dot font
-    writeToLCD(0x38, 'c');
-
-    //Display ON, cursor OFF, blink OFF
-    writeToLCD(0x0C, 'c');
-
-    //Display Clear
-    writeToLCD(CLEAR_LCD, 'c');
-
-    //Entry Mode, Increment cursor, Don't shift display
-    writeToLCD(0x06, 'c');
-}
-
-void printLCD(unsigned char *string)
-{
-    while(*string)
-       writeToLCD(*string++, 'd');
-}
-
-void setCursorLocation(unsigned char position, unsigned char line)
-{
-    if (line == 2)
-        position += 0x40;
-    writeToLCD(0x80 + position, 'c');
-}
-
 int main(int argc, char** argv) {
 
-  OpenI2C(MASTER, SLEW_OFF);
-  TRISC = 0b00011000;
-  initAR1010();
-  for(int i=0; i<3000; i++){};
-  tune(964);
+    //Initialise I2C
+    OpenI2C(MASTER, SLEW_OFF);
+    TRISC = 0b00011000;
+  
+    initAR1010();
+    tune(964);
 
-  initLCD();
-  printLCD("Hello");
-  setCursorLocation(3,2);
-  printLCD("World!");
+    initLCD();
+    
+    char* buffer [10] = {0,0,0,0,0,0,0,0,0,0};
+    struct dateTime currentDateTime;
 
-  while(1){};
-  return (EXIT_SUCCESS);
+    while(1)
+    {
+        getDateTime(&currentDateTime);
+        setCursorLocation(0,1);
+        sprintf(buffer, "%02d %02d/%02d/20%02d", currentDateTime.day, currentDateTime.date, currentDateTime.month, currentDateTime.year);
+        printLCD(buffer);
+        setCursorLocation(0,2);
+        sprintf(buffer, "%02d:%02d:%02d", currentDateTime.hour, currentDateTime.min, currentDateTime.sec);
+        printLCD(buffer);
+        
+        printLCD("FM: 96.4")
+    }
+    return (EXIT_SUCCESS);
 }
