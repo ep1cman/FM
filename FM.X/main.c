@@ -8,7 +8,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
 #include <xc.h>
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
@@ -41,10 +40,12 @@
 // CONFIG5L
 #pragma config CP = OFF         // Code Protect 00000-03FFF (Program memory block (000000-003FFFh) not code-protected)
 
+// CONFIG7L#
 #define _XTAL_FREQ 8000000
 
 #include <plib/timers.h>
 #include "AR1010.h"
+#include "LCD.h"
 
 int i = 0;
 unsigned char Timer0Config;
@@ -81,7 +82,11 @@ void main(int argc, char** argv) {
     INTCONbits.TMR0IF = 0; //reset Interrupt Flag
     ei();     // This is like fliping the master switch to enable interrupt
 
-    while(1){}
+    initLCD();
+
+
+    while(1){};
+    return (EXIT_SUCCESS);
 }
 
 
