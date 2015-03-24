@@ -43,14 +43,61 @@
 
 #define _XTAL_FREQ 8000000
 
+#include <plib/timers.h>
 #include "AR1010.h"
 
-int main(int argc, char** argv) {
-    OpenI2C(MASTER, SLEW_OFF);
-    TRISC = 0b00011000;
-    initAR1010();
-    for(int i=0; i<3000; i++){};
-    tune(964);
-    while(1);
-    return (EXIT_SUCCESS);
+int i = 0;
+unsigned char Timer0Config;
+
+#define MAX_CHECKS 10	// # checks before a switch is debounced
+unsigned char oldDebouncedState;	// Debounced state of the switches
+unsigned char State[MAX_CHECKS];	// Array that maintains bounce status
+unsigned char Index;	// Pointer into State
+
+unsigned char debounce()
+{
+    unsigned char i;    
+    unsigned char newDebouncedState=0xff;
+    for(i=0; i<MAX_CHECKS-newDebouncedState; i++)
+        newDebouncedState &= State[i];
+    unsigned char out = ~newDebouncedState & oldDebouncedState;
+    oldDebouncedState = newDebouncedState;
+    return out;
+}
+
+void main(int argc, char** argv) {
+
+    // Internal Clock to 8MHz
+    OSCCONbits.IRCF0 = 1;
+    OSCCONbits.IRCF1 = 1;
+    OSCCONbits.IRCF2 = 1;
+    
+    TRISF = 0xFF; //set port F as all inputs
+
+    //16bit timer with prescalar=1
+    Timer0Config = TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_1 ;
+    OpenTimer0(Timer0Config);
+    WriteTimer0(0xF800); //Please use HEX. Decimal don't work
+    INTCONbits.TMR0IF = 0; //reset Interrupt Flag
+    ei();     // This is like fliping the master switch to enable interrupt
+
+    while(1){}
+}
+
+
+
+void interrupt TimerOverflow()
+{
+    // If timer interrupt
+    if(INTCONbits.TMR0IF == 1)
+    {
+        //Save button states into circular buffer
+        State[Index++]=PORTF;
+        if(Index>=MAX_CHECKS)Index=0;
+        
+        //Reset Timer
+        INTCONbits.TMR0IF = 0;
+        WriteTimer0(0xFC00); //Please use HEX. Decimal don't work
+    }
+
 }
