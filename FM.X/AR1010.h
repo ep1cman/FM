@@ -18,7 +18,7 @@
 
 // Utility functions
 void writeRegister(unsigned char address, unsigned int data);
-unsigned int readRegister(unsigned char address);
+unsigned int AR1010readRegister(unsigned char address);
 void setBit(unsigned char address, unsigned char bitToSet, unsigned char set);
 
 void initAR1010();

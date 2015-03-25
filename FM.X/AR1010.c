@@ -39,7 +39,7 @@ void writeRegister(unsigned char address, unsigned int data)
     ar1010_registers[address] = data; //Save data written to array
 }
 
-unsigned int readRegister(unsigned char address)
+unsigned int AR1010readRegister(unsigned char address)
 {
     IdleI2C();
     StartI2C();
@@ -108,7 +108,7 @@ void tune(unsigned int freq)
    setBit(TUNE, 1);
 
    //Wait for STC flag
-   while(readRegister(0x13)&(1<<5) != 1){};
+   while(AR1010readRegister(0x13)&(1<<5) != 1){};
 }
 
 const unsigned char VOLUME[19] = {0xF, 0xF, 0xF, 0xF, 0xB, 0xB, 0xB, 0xA, 0x9, 0x8, 0x7, 0x6, 0x6, 0x6, 0x3, 0x3, 0x2, 0x1, 0x0};
@@ -163,19 +163,19 @@ void seek(char direction)
     setBit(SEEK, 1);
 
     //Wait for STC flag
-	while(readRegister(0x13)&(1<<5) != 1){};
+	while(AR1010readRegister(0x13)&(1<<5) != 1){};
 
     clearHMute();
 
     //Update CHAN with value from READCHAN
-    unsigned int chan = readRegister(0x13) >> 7;
+    unsigned int chan = AR1010readRegister(0x13) >> 7;
     writeRegister(2, (ar1010_registers[2]&0xFC00) + chan);
 
 }
 
 unsigned int getFrequency()
 {
-	return (readRegister(0x13) >> 7) + 690;
+	return (AR1010readRegister(0x13) >> 7) + 690;
 }
 
 void powerDown()
@@ -188,5 +188,5 @@ void powerUp()
 	setBit(ENABLE, 1);
 
 	//Wait for STC flag
-	while(readRegister(0x13)&(1<<5) != 1){};
+	while(AR1010readRegister(0x13)&(1<<5) != 1){};
 }

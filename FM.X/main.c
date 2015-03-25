@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <xc.h>
+
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
@@ -41,11 +42,13 @@
 #pragma config CP = OFF         // Code Protect 00000-03FFF (Program memory block (000000-003FFFh) not code-protected)
 
 // CONFIG7L#
+
 #define _XTAL_FREQ 8000000
 
 #include <plib/timers.h>
 #include "AR1010.h"
 #include "LCD.h"
+#include "DS3231.h"
 
 int i = 0;
 unsigned char Timer0Config;
@@ -67,13 +70,10 @@ unsigned char debounce()
 }
 
 void main(int argc, char** argv) {
-
     // Internal Clock to 8MHz
     OSCCONbits.IRCF0 = 1;
     OSCCONbits.IRCF1 = 1;
     OSCCONbits.IRCF2 = 1;
-    
-    TRISF = 0xFF; //set port F as all inputs
 
     //16bit timer with prescalar=1
     Timer0Config = TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_1 ;
@@ -82,14 +82,34 @@ void main(int argc, char** argv) {
     INTCONbits.TMR0IF = 0; //reset Interrupt Flag
     ei();     // This is like fliping the master switch to enable interrupt
 
+    //Initialise I2C
+    OpenI2C(MASTER, SLEW_OFF);
+    TRISC = 0b00011000;
+
+    TRISF = 0xFF; //set port F as all inputs
+  
+    initAR1010();
     initLCD();
 
+    tune(964);
 
-    while(1){};
+    char* buffer [10] = {0,0,0,0,0,0,0,0,0,0};
+    struct dateTime currentDateTime;
+
+    while(1)
+    {
+        getDateTime(&currentDateTime);
+        setCursorLocation(0,1);
+        sprintf(buffer, "%02d %02d/%02d/20%02d", currentDateTime.day, currentDateTime.date, currentDateTime.month, currentDateTime.year);
+        printLCD(buffer);
+        setCursorLocation(0,2);
+        sprintf(buffer, "%02d:%02d:%02d", currentDateTime.hour, currentDateTime.min, currentDateTime.sec);
+        printLCD(buffer);
+        
+        printLCD(" FM: 96.4")
+    }
     return (EXIT_SUCCESS);
 }
-
-
 
 void interrupt TimerOverflow()
 {
@@ -104,5 +124,4 @@ void interrupt TimerOverflow()
         INTCONbits.TMR0IF = 0;
         WriteTimer0(0xFC00); //Please use HEX. Decimal don't work
     }
-
 }
