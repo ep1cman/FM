@@ -19,6 +19,8 @@
       <itemPath>DS3231.c</itemPath>
       <itemPath>LCD.c</itemPath>
       <itemPath>LCD.h</itemPath>
+      <itemPath>MAX4586.c</itemPath>
+      <itemPath>MAX4586.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

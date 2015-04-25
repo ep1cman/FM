@@ -3,7 +3,7 @@
 
 
 //Commands the two MAX4586 mux chips to switch to the desired output (0-3).
-void selectOutput(int outputNumber) {
+void selectOutput(unsigned char outputNumber) {
 	unsigned char command =  1 << outputNumber;
     
 	//Write command to the left mux.
