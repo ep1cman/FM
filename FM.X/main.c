@@ -14,7 +14,7 @@
 // Use project enums instead of #define for ON and OFF.
 
 // CONFIG1H
-#pragma config OSC = INTIO67       // Oscillator (External RC oscillator, port function on RA6)
+#pragma config OSC = INTIO67    // Oscillator (External RC oscillator, port function on RA6)
 #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable (Fail-Safe Clock Monitor disabled)
 #pragma config IESO = OFF       // Internal External Switch Over Mode (Oscillator Switchover mode disabled)
 
@@ -62,9 +62,9 @@ unsigned char debounce()
 {
     unsigned char i;    
     unsigned char newDebouncedState=0xff;
-    for(i=0; i<MAX_CHECKS-newDebouncedState; i++)
+    for(i=0; i<MAX_CHECKS; i++)
         newDebouncedState &= State[i];
-    unsigned char out = ~newDebouncedState & oldDebouncedState;
+    unsigned char out = newDebouncedState & ~oldDebouncedState;
     oldDebouncedState = newDebouncedState;
     return out;
 }
@@ -80,14 +80,15 @@ void main(int argc, char** argv) {
     OpenTimer0(Timer0Config);
     WriteTimer0(0xF800); //Please use HEX. Decimal don't work
     INTCONbits.TMR0IF = 0; //reset Interrupt Flag
+    INTCONbits.TMR0IE =1;
     ei();     // This is like fliping the master switch to enable interrupt
 
     //Initialise I2C
     OpenI2C(MASTER, SLEW_OFF);
     TRISC = 0b00011000;
-
-    TRISF = 0xFF; //set port F as all inputs
-  
+    TRISB = 0xFF;
+    ADCON1 |= 0b1111;
+    
     initAR1010();
     initLCD();
 
@@ -117,7 +118,7 @@ void interrupt TimerOverflow()
     if(INTCONbits.TMR0IF == 1)
     {
         //Save button states into circular buffer
-        State[Index++]=PORTF;
+        State[Index++]=PORTB;
         if(Index>=MAX_CHECKS)Index=0;
         
         //Reset Timer
