@@ -50,6 +50,14 @@
 #include "LCD.h"
 #include "DS3231.h"
 
+#define VOL_DOWN 0x01
+#define VOL_UP 0x02
+#define PRESET_DOWN 0x04
+#define PRESET_UP 0x08
+#define FREQ_DOWN 0x20
+#define FREQ_UP 0x10
+
+
 int i = 0;
 unsigned char Timer0Config;
 
@@ -70,6 +78,10 @@ unsigned char debounce()
 }
 
 
+
+
+
+void main(int argc, char** argv) {
     //16bit timer with prescalar=1
     Timer0Config = TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_1 ;
     OpenTimer0(Timer0Config);
@@ -86,25 +98,68 @@ unsigned char debounce()
     
     initAR1010();
     initLCD();
-
-    tune(964);
-
+    setVolume(12);
+   
     char* buffer [10] = {0,0,0,0,0,0,0,0,0,0};
     struct dateTime currentDateTime;
-
+    unsigned char menuChanged = 1;
+    enum menu menuState = MAIN_MENU;
+    unsigned char preset;
+    
     while(1)
     {
-        getDateTime(&currentDateTime);
-        setCursorLocation(0,1);
-        sprintf(buffer, "%02d %02d/%02d/20%02d", currentDateTime.day, currentDateTime.date, currentDateTime.month, currentDateTime.year);
-        printLCD(buffer);
-        setCursorLocation(0,2);
-        sprintf(buffer, "%02d:%02d:%02d", currentDateTime.hour, currentDateTime.min, currentDateTime.sec);
-        printLCD(buffer);
+        unsigned char buttonState = debounce();
         
-        printLCD(" FM: 96.4")
+        switch(menuState)
+        {
+            case MAIN_MENU:
+                //Redraw the screen edge only if the menu screen has changed
+    			if (menuChanged)
+    			{
+    				setCursorLocation(0, 0);
+    				writeToLCD(0x00, 'd'); //Up arrow
+                    char freqStr[16];
+    				sprintf(freqStr, "   %.1fMhz", ((float)getFrequency())/10);
+                    printLCD(freqStr);
+    				setCursorLocation(0,1);
+    				writeToLCD(0x01, 'd'); //Down arrow
+    				printLCD((char *)"<<  >>  P+  P- ");
+    				menuChanged = 0;
+    			}
+
+			    //Volume buttons
+                if (buttonState & VOL_UP) volumeUp();
+                else if(buttonState & VOL_DOWN) volumeDown();
+
+				//Preset Changed
+				if (buttonState & PRESET_UP || buttonState & PRESET_DOWN)
+				{
+					if (buttonState & PRESET_UP) preset++;
+					else if (buttonState & PRESET_DOWN) preset--;
+					if (preset<1) preset = 9;
+				    if (preset>9) preset = 1;
+
+				    //Display selected preset
+				    setCursorLocation(3,0);
+					char presetStr[16];
+					sprintf(presetStr, "P%d:%.1fMhz", preset, ((float)getFrequency())/10);
+					printLCD(presetStr);
+				}
+
+    			//Print the currently frequency
+    			if (buttonState & FREQ_UP || buttonState & FREQ_DOWN)
+				{
+                    if (buttonState & FREQ_UP) tune(getFrequency()+1);
+                    if (buttonState & FREQ_DOWN) tune(getFrequency()-1);
+                    
+    				char freqStr[16];
+    				sprintf(freqStr, " %.1fMhz   ", ((float)getFrequency())/10);
+                    setCursorLocation(3,0);
+                    printLCD(freqStr);
+    			} 
+                break;
+        }
     }
-    return (EXIT_SUCCESS);
 }
 
 void interrupt TimerOverflow()
