@@ -47,15 +47,17 @@ unsigned int AR1010readRegister(unsigned char address)
     IdleI2C();
     WriteI2C(address);
     IdleI2C();
-    StartI2C();
+    RestartI2C();
+    IdleI2C();
     WriteI2C(AR1010_ADDR+1);
     IdleI2C();
-
     unsigned int val = ReadI2C() << 8;
+    AckI2C();
     IdleI2C();
-    val &= ReadI2C();
-    IdleI2C();
+    val |= ReadI2C();
+    NotAckI2C();
     StopI2C();
+    
     if (address<18)
     {
         ar1010_registers[address] = val;
@@ -117,7 +119,7 @@ unsigned char currentVolume = 0;
 
 void setVolume(unsigned char volume)
 {
-    if (volume<0) 
+    if (volume==255) //Underflow
         volume = 0;
     if (volume>18) 
         volume = 18;
