@@ -49,13 +49,14 @@
 #include "AR1010.h"
 #include "LCD.h"
 #include "DS3231.h"
+#include "MAX4586.h"
 
 #define VOL_DOWN 0x01
 #define VOL_UP 0x02
-#define PRESET_DOWN 0x04
-#define PRESET_UP 0x08
-#define FREQ_DOWN 0x20
-#define FREQ_UP 0x10
+#define PRESET_DOWN 0x20
+#define PRESET_UP 0x04
+#define FREQ_DOWN 0x10
+#define FREQ_UP 0x08
 
 
 int i = 0;
@@ -65,6 +66,8 @@ unsigned char Timer0Config;
 unsigned char oldDebouncedState;	// Debounced state of the switches
 unsigned char State[MAX_CHECKS];	// Array that maintains bounce status
 unsigned char Index;	// Pointer into State
+
+enum menu {MAIN_MENU, REC, BT };
 
 unsigned char debounce()
 {
@@ -76,10 +79,6 @@ unsigned char debounce()
     oldDebouncedState = newDebouncedState;
     return out;
 }
-
-
-
-
 
 void main(int argc, char** argv) {
     //16bit timer with prescalar=1
@@ -110,29 +109,56 @@ void main(int argc, char** argv) {
     {
         unsigned char buttonState = debounce();
         
+        if ((oldDebouncedState & VOL_UP) && (oldDebouncedState & VOL_DOWN))
+        {
+            menuChanged = 1;
+            menuState++;
+            if (menuState > BT) menuState = MAIN_MENU;
+        }
+        
         switch(menuState)
         {
             case MAIN_MENU:
                 //Redraw the screen edge only if the menu screen has changed
     			if (menuChanged)
     			{
+                    selectOutput(3);
     				setCursorLocation(0, 0);
     				writeToLCD(0x00, 'd'); //Up arrow
                     char freqStr[16];
-    				sprintf(freqStr, "   %.1fMhz", ((float)getFrequency())/10);
+    				sprintf(freqStr, "   %.1fMhz  ", ((float)getFrequency())/10);
                     printLCD(freqStr);
     				setCursorLocation(0,1);
     				writeToLCD(0x01, 'd'); //Down arrow
-    				printLCD((char *)"<<  >>  P+  P- ");
+    				printLCD((char *)"P- <<  >>  P+ ");
     				menuChanged = 0;
+                    __delay_ms(500);
     			}
 
 			    //Volume buttons
                 if (buttonState & VOL_UP) volumeUp();
                 else if(buttonState & VOL_DOWN) volumeDown();
 
-				//Preset Changed
-				if (buttonState & PRESET_UP || buttonState & PRESET_DOWN)
+                if ((oldDebouncedState & PRESET_DOWN) && (oldDebouncedState & FREQ_DOWN))
+                {
+                    seek('d');
+                    char freqStr[16];
+    				sprintf(freqStr, " %.1fMhz   ", ((float)getFrequency())/10);
+                    setCursorLocation(3,0);
+                    printLCD(freqStr);
+                }
+                
+                else if ((oldDebouncedState & PRESET_UP) && (oldDebouncedState & FREQ_UP))
+                {
+                    seek('u');
+                    char freqStr[16];
+    				sprintf(freqStr, " %.1fMhz   ", ((float)getFrequency())/10);
+                    setCursorLocation(3,0);
+                    printLCD(freqStr);
+                }
+                
+                //Preset Changed
+				else if (buttonState & PRESET_UP || buttonState & PRESET_DOWN)
 				{
 					if (buttonState & PRESET_UP) preset++;
 					else if (buttonState & PRESET_DOWN) preset--;
@@ -142,12 +168,12 @@ void main(int argc, char** argv) {
 				    //Display selected preset
 				    setCursorLocation(3,0);
 					char presetStr[16];
-					sprintf(presetStr, "P%d:%.1fMhz", preset, ((float)getFrequency())/10);
+					sprintf(presetStr, "P%d:%.1fMhz  ", preset, ((float)getFrequency())/10);
 					printLCD(presetStr);
 				}
-
+                
     			//Print the currently frequency
-    			if (buttonState & FREQ_UP || buttonState & FREQ_DOWN)
+    			else if (buttonState & FREQ_UP || buttonState & FREQ_DOWN)
 				{
                     if (buttonState & FREQ_UP) tune(getFrequency()+1);
                     if (buttonState & FREQ_DOWN) tune(getFrequency()-1);
@@ -158,7 +184,20 @@ void main(int argc, char** argv) {
                     printLCD(freqStr);
     			} 
                 break;
-        }
+            case BT:
+                if(menuChanged)
+                {
+                    selectOutput(0);
+                    writeToLCD(CLEAR_LCD, 'c');
+                    setCursorLocation(0,0);
+                    printLCD("   Bluetooth");
+                    setCursorLocation(0,1);
+                    printLCD("    Receiver");
+                    menuChanged = 0;
+                    __delay_ms(500);
+                }
+                break;
+         }
     }
 }
 
