@@ -11,7 +11,7 @@
 #define MAX4586_L_ADDR 0x6A
 #define MAX4586_R_ADDR 0x6E
 
-void selectOutput(int outputNumber);
+void selectOutput(unsigned char outputNumber);
 
 
 #endif	/* MAX4586_H */
