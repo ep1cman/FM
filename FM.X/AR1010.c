@@ -103,6 +103,7 @@ void initAR1010()
 
 void tune(unsigned int freq)
 {
+   if((freq-690)>0x1FF) freq=0;
    setBit(TUNE, 0);
    setBit(SEEK, 0);
    unsigned int chan = freq-690;
@@ -128,6 +129,8 @@ void setVolume(unsigned char volume)
     writeRegister(0x03, vol);
     writeRegister(0x0E, vol2);
     currentVolume = volume;
+    clearHMute();
+    setBit(SMUTE,0);
 }
 
 void volumeUp()
@@ -165,10 +168,15 @@ void seek(char direction)
     setBit(SEEK, 1);
 
     //Wait for STC flag
-	while(AR1010readRegister(0x13)&(1<<5) != 1){};
-
+	//while(AR1010readRegister(0x13)&(1<<5) != 1){};
+    __delay_ms(500);
+    __delay_ms(500);
+    __delay_ms(500);
+    __delay_ms(500);
+    __delay_ms(500);
+    
     clearHMute();
-
+    
     //Update CHAN with value from READCHAN
     unsigned int chan = AR1010readRegister(0x13) >> 7;
     writeRegister(2, (ar1010_registers[2]&0xFC00) + chan);

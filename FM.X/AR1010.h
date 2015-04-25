@@ -12,9 +12,12 @@
 
 #define ENABLE 0x00, 0
 #define HMUTE 0x01, 1
-#define SEEKUP 0x02, 15
+#define SEEKUP 0x03, 15
 #define TUNE 0x02, 9
 #define SEEK 0x03, 14
+#define SMUTE 0x01, 2
+
+#define _XTAL_FREQ 1000000
 
 // Utility functions
 void writeRegister(unsigned char address, unsigned int data);
