@@ -10,8 +10,8 @@
 
 #include <xc.h>
 
-#define LCD_RS LATB1
-#define LCD_E LATB0
+#define LCD_RS LATE4
+#define LCD_E LATE5
 #define LCD_DATA LATD
 #define CLEAR_LCD 0x01
 //TODO: Find a way to not need this in two places

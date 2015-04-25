@@ -13,11 +13,13 @@ void writeToLCD(unsigned char data, char commandOrData)
     LCD_E = 0;
     if(commandOrData == 'c') 
         __delay_ms(20);
+    else
+        __delay_ms(2);
 }
 
 void initLCD()
 {
-    TRISB &= 0b11111100; // Set LCD_E and LCD_RS as outputs
+    TRISE &= 0b11001111; // Set LCD_E and LCD_RS as outputs
     TRISD =  0b00000000; // Set LCD_DATA as outputs
     
     //Reset LCD
@@ -46,8 +48,7 @@ void printLCD(char *string)
 
 void setCursorLocation(unsigned char position, unsigned char line)
 {
-    if (line == 2)
-        position += 0x40;
+    if (line) position += 0x40;
     writeToLCD(0x80 + position, 'c');
 }
 
