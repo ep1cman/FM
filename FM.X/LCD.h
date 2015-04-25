@@ -15,7 +15,7 @@
 #define LCD_DATA LATD
 #define CLEAR_LCD 0x01
 //TODO: Find a way to not need this in two places
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 1000000
 
 
 void writeToLCD(unsigned char data, char commandOrData);

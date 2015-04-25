@@ -43,7 +43,7 @@
 
 // CONFIG7L#
 
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 1000000
 
 #include <plib/timers.h>
 #include "AR1010.h"
@@ -69,16 +69,11 @@ unsigned char debounce()
     return out;
 }
 
-void main(int argc, char** argv) {
-    // Internal Clock to 8MHz
-    OSCCONbits.IRCF0 = 1;
-    OSCCONbits.IRCF1 = 1;
-    OSCCONbits.IRCF2 = 1;
 
     //16bit timer with prescalar=1
     Timer0Config = TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_1 ;
     OpenTimer0(Timer0Config);
-    WriteTimer0(0xF800); //Please use HEX. Decimal don't work
+    WriteTimer0(0xF000); //Please use HEX. Decimal don't work
     INTCONbits.TMR0IF = 0; //reset Interrupt Flag
     INTCONbits.TMR0IE =1;
     ei();     // This is like fliping the master switch to enable interrupt
