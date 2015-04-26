@@ -12,7 +12,7 @@
 
 
 unsigned char EEPROMReadRegister(unsigned char address);
-unsigned char EEPROMWriteRegister(unsigned char address, unsigned char data);
+void EEPROMWriteRegister(unsigned char address, unsigned char data);
 
 #endif	/* EEPROM_H */
 

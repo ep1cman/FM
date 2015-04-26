@@ -1,3 +1,6 @@
+#include "EEPROM.h"
+#include <I2C.h>
+
 unsigned char EEPROMReadRegister(unsigned char address) {
 	IdleI2C();
 	StartI2C();
