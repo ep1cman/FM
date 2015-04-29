@@ -5,6 +5,7 @@
 //Commands the two MAX4586 mux chips to switch to the desired output (0-3).
 void selectOutput(unsigned char outputNumber) {
 	unsigned char command =  1 << outputNumber;
+    if (outputNumber>3) command = 0x00; 
     
 	//Write command to the left mux.
 	IdleI2C();
