@@ -31,13 +31,104 @@ void initLCD()
     writeToLCD(0x38, 'c');
     
     //Display ON, cursor OFF, blink OFF
-    writeToLCD(0x0C, 'c');
+    writeToLCD(CURSOR_OFF, 'c');
     
     //Display Clear
     writeToLCD(CLEAR_LCD, 'c');
     
     //Entry Mode, Increment cursor, Don't shift display
     writeToLCD(0x06, 'c'); 
+
+    //Custom Characters
+    //Up Arrow
+    writeToLCD(0x40, 'c');
+    writeToLCD(0b00000100, 'd');
+    writeToLCD(0b00001110, 'd');
+    writeToLCD(0b00010101, 'd');
+    writeToLCD(0b00000100, 'd');
+    writeToLCD(0b00000100, 'd');
+    writeToLCD(0b00000100, 'd');
+    writeToLCD(0b00000100, 'd');
+    writeToLCD(0b00000100, 'd');
+    
+    //Down Arrow
+    writeToLCD(0b00000100, 'd');
+    writeToLCD(0b00000100, 'd');
+    writeToLCD(0b00000100, 'd');
+    writeToLCD(0b00000100, 'd');
+    writeToLCD(0b00000100, 'd');
+    writeToLCD(0b00010101, 'd');
+    writeToLCD(0b00001110, 'd');
+    writeToLCD(0b00000100, 'd');
+    
+    //BT Top Left
+    writeToLCD(0b00000000, 'd');
+    writeToLCD(0b00000111, 'd');
+    writeToLCD(0b00001111, 'd');
+    writeToLCD(0b00011110, 'd');
+    writeToLCD(0b00011110, 'd');
+    writeToLCD(0b00011010, 'd');
+    writeToLCD(0b00011100, 'd');
+    writeToLCD(0b00011110, 'd');
+    
+    //BT Top Right
+    writeToLCD(0b00000000, 'd');
+    writeToLCD(0b00011100, 'd');
+    writeToLCD(0b00011110, 'd');
+    writeToLCD(0b00001111, 'd');
+    writeToLCD(0b00010111, 'd');
+    writeToLCD(0b00011011, 'd');
+    writeToLCD(0b00010111, 'd');
+    writeToLCD(0b00001111, 'd');
+    
+    //BT Bottom Left
+    writeToLCD(0b00011100, 'd');
+    writeToLCD(0b00011010, 'd');
+    writeToLCD(0b00011110, 'd');
+    writeToLCD(0b00011110, 'd');
+    writeToLCD(0b00001111, 'd');
+    writeToLCD(0b00000111, 'd');
+    writeToLCD(0b00000000, 'd');
+    writeToLCD(0b00000000, 'd');
+    
+    //BT Bottom Right
+    writeToLCD(0b00010111, 'd');
+    writeToLCD(0b00011011, 'd');
+    writeToLCD(0b00010111, 'd');
+    writeToLCD(0b00001111, 'd');
+    writeToLCD(0b00011110, 'd');
+    writeToLCD(0b00011100, 'd');
+    writeToLCD(0b00000000, 'd');   
+    writeToLCD(0b00000000, 'd');
+    
+    //Record Circle
+    writeToLCD(0b00000000, 'd');
+    writeToLCD(0b00001110, 'd');
+    writeToLCD(0b00011111, 'd');
+    writeToLCD(0b00011111, 'd');
+    writeToLCD(0b00011111, 'd');
+    writeToLCD(0b00001110, 'd');
+    writeToLCD(0b00000000, 'd');
+    writeToLCD(0b00000000, 'd');
+
+    //Tick
+    writeToLCD(0b00000000, 'd');
+    writeToLCD(0b00000000, 'd');
+    writeToLCD(0b00000001, 'd');
+    writeToLCD(0b00000011, 'd');
+    writeToLCD(0b00010110, 'd');
+    writeToLCD(0b00011100, 'd');
+    writeToLCD(0b00001000, 'd');
+    writeToLCD(0b00000000, 'd');
+    
+    /*//Standby Icon
+    writeToLCD(0b00000000, 'd');
+    writeToLCD(0b00000100, 'd');
+    writeToLCD(0b00010101, 'd');
+    writeToLCD(0b00010101, 'd');
+    writeToLCD(0b00010001, 'd');
+    writeToLCD(0b00001110, 'd');
+    writeToLCD(0b00000000, 'd');*/
 }
 
 void printLCD(char *string)

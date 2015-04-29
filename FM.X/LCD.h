@@ -14,6 +14,8 @@
 #define LCD_E LATE5
 #define LCD_DATA LATD
 #define CLEAR_LCD 0x01
+#define CURSOR_ON 0x0D
+#define CURSOR_OFF 0x0C
 //TODO: Find a way to not need this in two places
 #define _XTAL_FREQ 1000000
 
