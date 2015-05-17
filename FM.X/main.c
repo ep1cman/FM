@@ -95,6 +95,8 @@ void main(int argc, char** argv) {
     //Initialise I2C
     OpenI2C(MASTER, SLEW_OFF);
     TRISC = 0b00011000;
+
+    //Setup ports, turn off ADC
     LATC |= 0b00000100; //Turn on backlight
     TRISB = 0xFF;
     ADCON1 |= 0b1111;
@@ -103,39 +105,45 @@ void main(int argc, char** argv) {
     initLCD();
     setVolume(12);
    
+    //Variable Declarations
     char* buffer [10] = {0,0,0,0,0,0,0,0,0,0};
     struct dateTime scheduleSelect;
     enum menu menuState = FM;
     enum menu oldMenu = MENU;
     unsigned char preset;
-    unsigned char file = 1                           ;
+    unsigned char file = 1;
     
     while(1)
     {
         unsigned char buttonState = debounce();
         unsigned char buttonPressed = (buttonState>0);
-        
+
+        // Return to the menu is VOL_UP and VOL_DOWN are pressed
         if ((oldDebouncedState & VOL_UP) && (oldDebouncedState & VOL_DOWN))
         {
             oldMenu = menuState;
             menuState = MENU;
         }
         
+        //Menu "state machine"
         switch(menuState)
         {
             case MENU:
                 //Turn on LCD Backlight
                 LATC |= 0b00000100;
                 
+                //Draw the menu
                 writeToLCD(CLEAR_LCD, 'c');
                 printLCD("FM BT REC PB OFF");
                 setCursorLocation(0,1);
     			printLCD((char *)"\x7F    \x7E    x    \x07");
                 writeToLCD(CURSOR_ON, 'c');
                 setCursorLocation(0,0);
+
                 enum menu selection = oldMenu;
                 while(menuState == MENU)
                 {
+                    //Handle inputs
                     buttonState = debounce();
                     if (buttonState & PRESET_DOWN)
                         selection--;
@@ -146,8 +154,11 @@ void main(int argc, char** argv) {
                     else if (buttonState & PRESET_UP)
                         menuState = selection;
                     
+                    //Cycle menu selection when it goes off screen
                     if (selection==MENU) selection = OFF;
                     if (selection>OFF) selection = FM;
+
+                    //Highlight selected option
                     switch (selection)
                     {
                         case FM:
@@ -166,9 +177,12 @@ void main(int argc, char** argv) {
                             setCursorLocation(13,0);
                     }
                 }           
+
+                //Clear up menu settings before leaving
                 oldMenu = MENU;
                 writeToLCD(CURSOR_OFF, 'c');
                 break;
+
             case FM:
                 //Redraw the screen edge only if the menu screen has changed
     			if (oldMenu != menuState)
@@ -241,6 +255,7 @@ void main(int argc, char** argv) {
                     if (buttonState & FREQ_DOWN) tune(getFrequency()-1);
     			} 
                 
+                //Update Frequency on screen
                 if (buttonPressed)
                 {
                     char freqStr[16];
@@ -253,6 +268,7 @@ void main(int argc, char** argv) {
             case BT:
                 if(oldMenu != menuState)
                 {
+                    //Show bluetooth logo
                     selectOutput(0);
                     writeToLCD(CLEAR_LCD, 'c');
                     printLCD("   Bluetooth  \x02\x03");
@@ -270,15 +286,16 @@ void main(int argc, char** argv) {
                     getDateTime(&scheduleSelect);
                 }
                 
+                //Show the dates and time to schedule a recording
                 setCursorLocation(0,0);
                 char buffer[16];
                 sprintf(buffer, "  %02d/%02d %02d:%02d   ", scheduleSelect.date, scheduleSelect.month, scheduleSelect.hour, scheduleSelect.min);
                 printLCD(buffer);
                 setCursorLocation(0,1);
                 printLCD((char *)"\x7f    \x7E    \x2B    \x2D");
-                
 
                 break;
+
             case PLAYBACK:
                 if(oldMenu != menuState)
                 {
@@ -347,6 +364,7 @@ void main(int argc, char** argv) {
                 break;
                 
             case OFF:
+                //Turn off audio and LCD backlight
                 if(oldMenu != menuState) 
                 {
                     selectOutput(5);
