@@ -10,12 +10,14 @@
 
 #include <xc.h>
 
-#define LCD_RS LATB1
-#define LCD_E LATB0
+#define LCD_RS LATE4
+#define LCD_E LATE5
 #define LCD_DATA LATD
 #define CLEAR_LCD 0x01
+#define CURSOR_ON 0x0D
+#define CURSOR_OFF 0x0C
 //TODO: Find a way to not need this in two places
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 1000000
 
 
 void writeToLCD(unsigned char data, char commandOrData);

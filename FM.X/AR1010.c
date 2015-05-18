@@ -47,15 +47,17 @@ unsigned int AR1010readRegister(unsigned char address)
     IdleI2C();
     WriteI2C(address);
     IdleI2C();
-    StartI2C();
+    RestartI2C();
+    IdleI2C();
     WriteI2C(AR1010_ADDR+1);
     IdleI2C();
-
     unsigned int val = ReadI2C() << 8;
+    AckI2C();
     IdleI2C();
-    val &= ReadI2C();
-    IdleI2C();
+    val |= ReadI2C();
+    NotAckI2C();
     StopI2C();
+    
     if (address<18)
     {
         ar1010_registers[address] = val;
@@ -101,6 +103,7 @@ void initAR1010()
 
 void tune(unsigned int freq)
 {
+   if((freq-690)>0x1FF) freq=0;
    setBit(TUNE, 0);
    setBit(SEEK, 0);
    unsigned int chan = freq-690;
@@ -117,7 +120,7 @@ unsigned char currentVolume = 0;
 
 void setVolume(unsigned char volume)
 {
-    if (volume<0) 
+    if (volume==255) //Underflow
         volume = 0;
     if (volume>18) 
         volume = 18;
@@ -126,6 +129,8 @@ void setVolume(unsigned char volume)
     writeRegister(0x03, vol);
     writeRegister(0x0E, vol2);
     currentVolume = volume;
+    clearHMute();
+    setBit(SMUTE,0);
 }
 
 void volumeUp()
@@ -163,10 +168,15 @@ void seek(char direction)
     setBit(SEEK, 1);
 
     //Wait for STC flag
-	while(AR1010readRegister(0x13)&(1<<5) != 1){};
-
+	//while(AR1010readRegister(0x13)&(1<<5) != 1){};
+    __delay_ms(500);
+    __delay_ms(500);
+    __delay_ms(500);
+    __delay_ms(500);
+    __delay_ms(500);
+    
     clearHMute();
-
+    
     //Update CHAN with value from READCHAN
     unsigned int chan = AR1010readRegister(0x13) >> 7;
     writeRegister(2, (ar1010_registers[2]&0xFC00) + chan);
